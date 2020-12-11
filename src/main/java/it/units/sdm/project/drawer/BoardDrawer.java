@@ -7,7 +7,7 @@ public class BoardDrawer {
 
     public static void print(Board board) {
 
-        System.out.println("         A     B     C     E     F     G       ");
+        System.out.println("         A     B     C     D     E     F       ");
         for (int k = 0; k < 6; k++) {
             System.out.println("      +-----+-----+-----+-----+-----+-----+ ");
             System.out.print("  " + (k+1) + " ");
