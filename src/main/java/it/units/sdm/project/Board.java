@@ -20,9 +20,10 @@ public class Board {
         return board[i][j];
     }
 
-    public void setCellSymbol(int x, int y, Cell.Symbol symbol) {
-        board[x][y].setSymbol(symbol);
-    }
+    //  metodo inutile, esiste Cell.setSymbol()
+//    public void setCellSymbol(int x, int y, Cell.Symbol symbol) {
+//        board[x][y].setSymbol(symbol);
+//    }
 
     public boolean isFull() {
         boolean isFull = true;
@@ -37,36 +38,31 @@ public class Board {
         return isFull;
     }
 
-    public boolean existsQuintuple() {
-
-        boolean check=false;
-
+    public boolean existsQuintupleInARaw() {
+        boolean checkRighe = false;
+        int count;
         for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                if (i + 4 < SIZE && getCell(i, j).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i + 1, j).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i + 2, j).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i + 3, j).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i + 4, j).getSymbol() == Cell.Symbol.CIRCLE) {
-                            return true;
-                } else if (j + 4 < SIZE && getCell(i, j).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i, j+1).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i, j+2).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i, j+3).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i, j+4).getSymbol() == Cell.Symbol.CIRCLE){
-                    return true;
-                } else if(j + 4 < SIZE && i+4<SIZE &&
-                        getCell(i, j).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i+1, j+1).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i+2, j+2).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i+3, j+3).getSymbol() == Cell.Symbol.CIRCLE &&
-                        getCell(i+4, j+4).getSymbol() == Cell.Symbol.CIRCLE){
-                    return true;
+            count = 0;
+            for (int j = 0; j < SIZE - 2; j++) {
+                if (getCell(i, j).getSymbol() == getCell(i, j+1).getSymbol()) {
+                    count++;
+                    if(count == 4) {
+                        checkRighe = true;
+                    }
                 }
+        else break;
+            }
+            count = 0;
+            for (int j = 1; j < SIZE-1; j++) {
+                if (getCell(i, j).getSymbol() == getCell(i, j+1).getSymbol()) {
+                    count++;
+                    if(count == 4) {
+                        checkRighe = true;
+                    }
+                }
+        else break;
             }
         }
-        return false;
-
-
+        return checkRighe;
     }
 }
