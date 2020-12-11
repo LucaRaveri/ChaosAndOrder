@@ -7,9 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FirstTestClass {
 
     @Test
-    void firstTest(){
+    void boardTests(){
         Board board = new Board();
         assertEquals(null, board.getCell(0, 0));
     }
+
 
 }

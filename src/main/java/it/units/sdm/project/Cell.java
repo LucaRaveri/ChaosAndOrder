@@ -1,18 +1,31 @@
 package it.units.sdm.project;
 
 public class Cell {
-    private final Coordinates coordinates;
-    private Piece piece;
 
-    public Cell(Coordinates coordinates) {
-        this.coordinates = coordinates;
+    public enum Symbol {
+        CROSS, CIRCLE
+
     }
 
-    public Piece getPiece() {
-        return piece;
+    private Symbol symbol;
+
+    public Cell() {
     }
 
-    public void setPiece(Piece piece) {
-        this.piece = piece;
+    public void setSymbol(Symbol symbol) {
+        this.symbol = symbol;
     }
+
+    public Symbol getSymbol() {
+        return symbol;
+    }
+
+    boolean isValid() {
+        if (symbol == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 }
