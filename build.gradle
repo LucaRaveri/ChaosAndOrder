@@ -1,14 +1,15 @@
 plugins {
     id 'java'
 }
-
-group 'org.example'
-version '1.0-SNAPSHOT'
-
+group 'it.units.sdm'
+version '1.0'
 repositories {
     mavenCentral()
 }
-
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation(platform('org.junit:junit-bom:5.6.2'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+}
+test {
+    useJUnitPlatform()
 }
