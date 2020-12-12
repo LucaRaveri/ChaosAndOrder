@@ -20,7 +20,7 @@ public class Cell {
         return symbol;
     }
 
-    boolean isValid() {
+    public boolean isEmpty() {
         if (symbol == null) {
             return false;
         } else {
