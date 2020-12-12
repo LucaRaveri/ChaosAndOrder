@@ -27,7 +27,7 @@ public class Board {
 
         for (int row = 0; row < SIZE; row++) {
             for (int column = 0; column < SIZE; column++) {
-                if (board[row][column] == null) {
+                if (board[row][column].getSymbol() == null) {
                     return false;
                 }
             }
