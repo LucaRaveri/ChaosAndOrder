@@ -1,5 +1,6 @@
 package it.units.sdm.project;
 
+import it.units.sdm.project.entities.Board;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

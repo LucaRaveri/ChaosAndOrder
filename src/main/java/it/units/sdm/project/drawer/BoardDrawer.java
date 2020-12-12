@@ -1,8 +1,7 @@
 package it.units.sdm.project.drawer;
 
-import it.units.sdm.project.Board;
-import it.units.sdm.project.Symbol;
-import it.units.sdm.project.Cell;
+import it.units.sdm.project.entities.Board;
+import it.units.sdm.project.entities.Symbol;
 
 public class BoardDrawer {
 

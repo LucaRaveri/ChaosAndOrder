@@ -1,10 +1,13 @@
-package it.units.sdm.project;
+package it.units.sdm.project.entities;
+
+import it.units.sdm.project.entities.Symbol;
 
 public class Cell {
 
     private Symbol symbol;
 
     public Cell() {
+        symbol = null;
     }
 
     public void setSymbol(Symbol symbol) {
@@ -16,11 +19,7 @@ public class Cell {
     }
 
     public boolean isEmpty() {
-        if (symbol == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return symbol!= null;
     }
 
 }
