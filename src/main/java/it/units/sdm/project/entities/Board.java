@@ -10,6 +10,10 @@ public class Board {
         build();
     }
 
+    public int getSize(){
+        return SIZE;
+    }
+
     public Cell getCell(int row, int column) {
         return board[row][column];
     }

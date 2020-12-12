@@ -11,10 +11,12 @@ public class Game {
 
     private final Board board;
     private final Player player;
+    private final WinnerChecker winnerChecker;
 
     public Game() {
         board = new Board();
         player = new Player();
+        winnerChecker = new WinnerChecker();
     }
 
     public void start() {
@@ -23,15 +25,15 @@ public class Game {
         String command;
 
         do {
+            winnerChecker.setCurrentBoard(board);
             BoardDrawer.print(board);
 //            currentPlayer.update();
             System.out.println("What is your next move?");
             command = scanner.nextLine();
-            Move move = new Move(command);
-            player.makeMove(move, board);
-        } while (!WinnerChecker.thereIsAWinner());
+            player.makeMove(new Move(command), board);
+        } while (!winnerChecker.thereIsAWinner());
 
-        printTheWinner(WinnerChecker.getWinner());
+        printTheWinner(winnerChecker.getWinner());
 
     }
 
