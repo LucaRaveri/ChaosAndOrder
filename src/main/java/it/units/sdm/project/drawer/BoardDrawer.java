@@ -1,6 +1,7 @@
 package it.units.sdm.project.drawer;
 
 import it.units.sdm.project.Board;
+import it.units.sdm.project.Symbol;
 import it.units.sdm.project.Cell;
 
 public class BoardDrawer {
@@ -13,9 +14,9 @@ public class BoardDrawer {
             System.out.print("  " + (k+1) + " ");
             for (int i = 0; i < 6; i++) {
                 System.out.print("  |  ");
-                if (board.getCell(k, i).getSymbol() == Cell.Symbol.CIRCLE) {
+                if (board.getCell(k, i).getSymbol() == Symbol.CIRCLE) {
                     System.out.print("O");
-                } else if (board.getCell(k, i).getSymbol() == Cell.Symbol.CROSS) {
+                } else if (board.getCell(k, i).getSymbol() == Symbol.CROSS) {
                     System.out.print("X");
                 } else {
                     System.out.print(" ");

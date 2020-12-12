@@ -2,11 +2,6 @@ package it.units.sdm.project;
 
 public class Cell {
 
-    public enum Symbol {
-        CROSS, CIRCLE
-
-    }
-
     private Symbol symbol;
 
     public Cell() {
