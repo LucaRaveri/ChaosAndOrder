@@ -31,6 +31,14 @@ public class BoardTester {
         assertEquals(true, board.isFull());
     }
 
+    @Test
+    void testBoardIsNotFull() throws TakenCellException {
+        Board board = new Board();
+        partiallyFillBoard(board);
+        assertEquals(false, board.isFull());
+
+    }
+
     void fillBoard(Board board) throws TakenCellException {
         for (int raw = 1; raw <= board.SIZE; raw++) {
             for (int column = 1; column <= board.SIZE; column++) {
@@ -39,6 +47,11 @@ public class BoardTester {
         }
     }
 
+    void partiallyFillBoard(Board board) throws TakenCellException {
+        board.addSymbol(2, 5, Symbol.CIRCLE);
+        board.addSymbol(5, 2, Symbol.CIRCLE);
+        board.addSymbol(1, 1, Symbol.CROSS);
+    }
 
 }
 
