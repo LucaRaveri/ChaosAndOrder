@@ -42,10 +42,10 @@ public class WinnerChecker {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
-                    break;
+                    continue;
                 }
                 for (int k = 1; k < SIZE_TO_WIN; k++) {
-                    if (board.getCell(i, j + k).getSymbol() == currentSymbol) {
+                    if (board.getCell(i, j + k).getSymbol() == currentSymbol && board.getCell(i, j + k).getSymbol() != null ) {
                         count++;
                     }
                     if (count == 4) {
@@ -60,7 +60,7 @@ public class WinnerChecker {
                 Symbol currentSymbol = board.getCell(j, i).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
-                    break;
+                    continue;
                 }
                 for (int k = 1; k < SIZE_TO_WIN; k++) {
                     if (board.getCell(j + k, i).getSymbol() == currentSymbol) {
@@ -78,7 +78,7 @@ public class WinnerChecker {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
-                    break;
+                    continue;
                 }
                 for (int k = 1; k < SIZE_TO_WIN; k++) {
                     if (board.getCell(i + k, j + k).getSymbol() == currentSymbol) {
@@ -91,12 +91,12 @@ public class WinnerChecker {
             }
         }
         // check diag 2
-        for (int i = SIZE_TO_WIN - 1; i < board.SIZE - 1; i++) {
+        for (int i = SIZE_TO_WIN - 1; i < board.SIZE ; i++) {
             for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
-                    break;
+                    continue;
                 }
                 for (int k = 1; k < SIZE_TO_WIN; k++) {
                     if (board.getCell(i - k, j + k).getSymbol() == currentSymbol) {
