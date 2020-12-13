@@ -3,6 +3,7 @@ package it.units.sdm.project;
 import it.units.sdm.project.entities.Move;
 import it.units.sdm.project.exceptions.BoardIndexOutOfBoundsException;
 import it.units.sdm.project.exceptions.IllegalSymbolException;
+import it.units.sdm.project.exceptions.WrongNumberOfArgumentsException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -22,10 +23,18 @@ public class MoveTester {
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"3 3 kross", "2 3 cyrcle", "1 5 circl", "1 2 crss", "3 2 cros"})
+    @ValueSource(strings = {"3 3 kross", "2 3 cyrcle", "1 5 circl", "1 2 crss", "3 2 cros"}) //wrong symbol
     void testIllegalSymbolException(String command) {
         IllegalSymbolException thrown = assertThrows(
                 IllegalSymbolException.class,
+                () -> new Move(command));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"3 3  ", "2 4 3 circle", "4 circle", "1", ""})
+    void testWrongNumberOfArgumentsException(String command) {
+        WrongNumberOfArgumentsException thrown = assertThrows(
+                WrongNumberOfArgumentsException.class,
                 () -> new Move(command));
     }
 

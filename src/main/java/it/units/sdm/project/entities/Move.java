@@ -11,10 +11,10 @@ public class Move {
 
     public Move(String command) throws IllegalSymbolException, BoardIndexOutOfBoundsException, WrongNumberOfArgumentsException {
 
-        if (command.split(" ").length != 3)
+        if (command.trim().split("[ \t]+").length != 3)
             throw new WrongNumberOfArgumentsException("Wrong number of parameters: " + command.split(" ").length);
 
-        String[] tokens = command.split(" ");
+        String[] tokens = command.trim().split("[ \t]+");
         row = parseRow(tokens[0]);
         column = parseColumn(tokens[1]);
         symbol = parseSymbol(tokens[2]);
