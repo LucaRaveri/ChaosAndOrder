@@ -9,7 +9,7 @@ public class Board {
 
     public Board() {
         board = new Cell[SIZE][SIZE];
-        build();
+        this.build();
     }
 
     public Cell getCell(int row, int column) {

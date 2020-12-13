@@ -31,7 +31,7 @@ public class MoveTester {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"3 3  ", "2 4 3 circle", "4 circle", "1", ""})
+    @ValueSource(strings = {"3 3  ", "2 4 3 circle", "4 circle", "1", ""})  //wrong number of parameters
     void testWrongNumberOfArgumentsException(String command) {
         WrongNumberOfArgumentsException thrown = assertThrows(
                 WrongNumberOfArgumentsException.class,
