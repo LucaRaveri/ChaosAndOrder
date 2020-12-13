@@ -21,7 +21,7 @@ public class Move {
     }
 
     private int parseColumn(String column) throws BoardIndexOutOfBoundsException {
-        if (Integer.parseInt(column) >= 0 && Integer.parseInt(column) < Board.SIZE) {
+        if (Integer.parseInt(column) > 0 && Integer.parseInt(column) <= Board.SIZE) {
             return Integer.parseInt(column);
         } else {
             throw new BoardIndexOutOfBoundsException("the column number inserted doesn't exist.");
@@ -29,7 +29,7 @@ public class Move {
     }
 
     private int parseRow(String row) throws BoardIndexOutOfBoundsException {
-        if (Integer.parseInt(row) >= 0 && Integer.parseInt(row) < Board.SIZE) {
+        if (Integer.parseInt(row) > 0 && Integer.parseInt(row) <= Board.SIZE) {
             return Integer.parseInt(row);
         } else {
             throw new BoardIndexOutOfBoundsException("the row number inserted doesn't exist.");
