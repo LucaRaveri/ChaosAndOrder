@@ -1,7 +1,5 @@
 package it.units.sdm.project.entities;
 
-import it.units.sdm.project.entities.Symbol;
-
 public class Cell {
 
     private Symbol symbol;

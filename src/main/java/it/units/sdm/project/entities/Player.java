@@ -1,5 +1,7 @@
 package it.units.sdm.project.entities;
 
+import it.units.sdm.project.exceptions.TakenCellException;
+
 public class Player {
 
     public void update() {
@@ -10,7 +12,7 @@ public class Player {
         CHAOS, ORDER
     }
 
-    public void makeMove(Move move, Board board) {
+    public void makeMove(Move move, Board board) throws TakenCellException {
         board.addSymbol(move.getRow(), move.getColumn(), move.getSymbol());
     }
 

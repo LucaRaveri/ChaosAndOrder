@@ -1,4 +1,4 @@
-package it.units.sdm.project;
+package it.units.sdm.project.entities;
 
 import it.units.sdm.project.entities.Board;
 import it.units.sdm.project.entities.Player;
@@ -37,8 +37,8 @@ public class WinnerChecker {
     private boolean orderWinCondition() {
         int count;
         // check righe
-        for (int i = 0; i < board.getSize(); i++) {
-            for (int j = 0; j <= board.getSize() - SIZE_TO_WIN; j++) {
+        for (int i = 0; i < board.SIZE; i++) {
+            for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
@@ -55,8 +55,8 @@ public class WinnerChecker {
             }
         }
         // check colonne
-        for (int i = 0; i < board.getSize(); i++) {
-            for (int j = 0; j <= board.getSize() - SIZE_TO_WIN; j++) {
+        for (int i = 0; i < board.SIZE; i++) {
+            for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(j, i).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
@@ -73,8 +73,8 @@ public class WinnerChecker {
             }
         }
         // check diag 1
-        for (int i = 0; i <= board.getSize() - SIZE_TO_WIN; i++) {
-            for (int j = 0; j <= board.getSize() - SIZE_TO_WIN; j++) {
+        for (int i = 0; i <= board.SIZE - SIZE_TO_WIN; i++) {
+            for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
@@ -91,8 +91,8 @@ public class WinnerChecker {
             }
         }
         // check diag 2
-        for (int i = SIZE_TO_WIN - 1; i < board.getSize() - 1; i++) {
-            for (int j = 0; j <= board.getSize() - SIZE_TO_WIN; j++) {
+        for (int i = SIZE_TO_WIN - 1; i < board.SIZE - 1; i++) {
+            for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {

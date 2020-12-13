@@ -1,4 +1,4 @@
-package it.units.sdm.project.drawer;
+package it.units.sdm.project.drawers;
 
 import it.units.sdm.project.entities.Board;
 import it.units.sdm.project.entities.Symbol;

@@ -1,8 +1,10 @@
 package it.units.sdm.project.entities;
 
+import it.units.sdm.project.exceptions.TakenCellException;
+
 public class Board {
 
-    private final int SIZE = 6;
+    public static final int SIZE = 6;
     private final Cell[][] board;
 
     public Board() {
@@ -10,21 +12,18 @@ public class Board {
         build();
     }
 
-    public int getSize(){
-        return SIZE;
-    }
-
     public Cell getCell(int row, int column) {
         return board[row][column];
     }
 
-    public void addSymbol(int x, int y, Symbol symbol) {
-        //TODO: check if the move is valid
-        board[x-1][y-1].setSymbol(symbol);
+    public void addSymbol(int x, int y, Symbol symbol) throws TakenCellException {
+        if (board[x - 1][y - 1].getSymbol() != null) {
+            throw new TakenCellException("trying to modify a non empty cell.");
+        }
+        board[x - 1][y - 1].setSymbol(symbol);
     }
 
     public boolean isFull() {
-
         for (int row = 0; row < SIZE; row++) {
             for (int column = 0; column < SIZE; column++) {
                 if (board[row][column].getSymbol() == null) {
@@ -36,9 +35,9 @@ public class Board {
     }
 
     private void build() {
-        for(int row=0; row<SIZE; row++){
-            for(int column=0; column<SIZE; column++){
-                board[row][column]=new Cell();
+        for (int row = 0; row < SIZE; row++) {
+            for (int column = 0; column < SIZE; column++) {
+                board[row][column] = new Cell();
             }
         }
     }
