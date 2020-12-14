@@ -24,7 +24,7 @@ public class Player {
 
 
     public void makeMove(Move move, Board board) throws TakenCellException {
-        board.addSymbol(move.getRow(), move.getColumn(), move.getSymbol());
+        board.addSymbol(move.getRaw(), move.getColumn(), move.getSymbol());
     }
 
 }

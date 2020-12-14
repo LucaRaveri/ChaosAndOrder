@@ -1,10 +1,7 @@
 package it.units.sdm.project;
 
+import it.units.sdm.project.entities.*;
 import it.units.sdm.project.utils.ConsoleDrawer;
-import it.units.sdm.project.entities.Board;
-import it.units.sdm.project.entities.Move;
-import it.units.sdm.project.entities.Player;
-import it.units.sdm.project.entities.WinnerChecker;
 import it.units.sdm.project.exceptions.BoardIndexOutOfBoundsException;
 import it.units.sdm.project.exceptions.IllegalSymbolException;
 import it.units.sdm.project.exceptions.TakenCellException;
@@ -28,7 +25,7 @@ public class Game {
     public void start() {
 
         Scanner scanner = new Scanner(System.in);
-        String command;
+        String moveLine;
         Player currentPlayer = orderPlayer;
 
         ConsoleDrawer.print(GameMessages.LOGO);
@@ -40,8 +37,10 @@ public class Game {
             try {
                 ConsoleDrawer.print(board);
                 ConsoleDrawer.print(currentPlayer.getRole() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
-                command = scanner.nextLine();
-                currentPlayer.makeMove(new Move(command), board);
+                moveLine = scanner.nextLine();
+                MoveParser moveParser = new MoveParser(moveLine.trim());
+                Move move = new Move(moveParser.getRaw(), moveParser.getRaw(), moveParser.getSymbol());
+                currentPlayer.makeMove(move, board);
                 changeRole(currentPlayer);
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
                     TakenCellException | WrongNumberOfArgumentsException |
