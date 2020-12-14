@@ -15,9 +15,13 @@ public class Move {
             throw new WrongNumberOfArgumentsException("Wrong number of parameters: " + command.split(" ").length);
 
         String[] tokens = command.trim().split("[ \t]+");
-        row = parseRow(tokens[0]);
-        column = parseColumn(tokens[1]);
-        symbol = parseSymbol(tokens[2]);
+        try {
+            row = parseRow(tokens[0]);
+            column = parseColumn(tokens[1]);
+            symbol = parseSymbol(tokens[2]);
+        } catch(NumberFormatException e){
+            throw new NumberFormatException("Bad syntax for the board index.");
+        }
     }
 
     private int parseColumn(String column) throws BoardIndexOutOfBoundsException {

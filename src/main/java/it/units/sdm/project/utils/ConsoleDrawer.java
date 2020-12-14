@@ -1,12 +1,16 @@
-package it.units.sdm.project.drawers;
+package it.units.sdm.project.utils;
 
 import it.units.sdm.project.entities.Board;
 import it.units.sdm.project.entities.Symbol;
 
-public class BoardDrawer {
+public class ConsoleDrawer {
+
+    public static void print(String message){
+        System.out.println(message);
+    }
+
 
     public static void print(Board board) {
-
         System.out.println("         A     B     C     D     E     F       ");
         for (int k = 0; k < 6; k++) {
             System.out.println("      +-----+-----+-----+-----+-----+-----+ ");
@@ -24,7 +28,7 @@ public class BoardDrawer {
             System.out.print("  |  \n");
         }
         System.out.println("      +-----+-----+-----+-----+-----+-----+ ");
-
     }
+
 
 }
