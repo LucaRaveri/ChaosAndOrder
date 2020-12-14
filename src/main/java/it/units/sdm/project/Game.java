@@ -34,25 +34,29 @@ public class Game {
         Player currentPlayer = orderPlayer;
 
         ConsoleDrawer.print(GameMessages.LOGO);
+        ConsoleDrawer.println(GameMessages.WELCOME);
+        ConsoleDrawer.println(GameMessages.INTRO);
+        ConsoleDrawer.println(GameMessages.MOVE_FORMAT);
 
         //TODO: discuss rigorously the syntax of command line inserted by the user
         do {
             try {
                 winnerChecker.setCurrentBoard(board);
-                ConsoleDrawer.print(currentPlayer.getRole() + " " + GameMessages.MAKE_YOUR_MOVE);
                 ConsoleDrawer.print(board);
+                ConsoleDrawer.print(currentPlayer.getRole() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
                 command = scanner.nextLine();
                 currentPlayer.makeMove(new Move(command), board);
                 changeRole(currentPlayer);
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
                     TakenCellException | WrongNumberOfArgumentsException |
                     NumberFormatException e) {
-                ConsoleDrawer.print(e.getMessage() + " " + GameMessages.TRY_AGAIN);
+                ConsoleDrawer.println(e.getMessage() + " " + GameMessages.TRY_AGAIN + "\n");
             }
         } while (!winnerChecker.thereIsAWinner());
 
         ConsoleDrawer.print(board);
-        ConsoleDrawer.print(GameMessages.CONGRATULATIONS + " " + GameMessages.THE_WINNER_IS + " " + winnerChecker.getWinnerRole());
+        ConsoleDrawer.println("\n" + GameMessages.CONGRATULATIONS + " "
+                + GameMessages.THE_WINNER_IS + " " + winnerChecker.getWinnerRole() + "\n");
     }
 
     private void changeRole(Player currentPlayer) {

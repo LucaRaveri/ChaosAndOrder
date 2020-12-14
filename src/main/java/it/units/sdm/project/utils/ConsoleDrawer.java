@@ -6,11 +6,15 @@ import it.units.sdm.project.entities.Symbol;
 public class ConsoleDrawer {
 
     public static void print(String message){
+        System.out.print(message);
+    }
+
+    public static void println(String message){
         System.out.println(message);
     }
 
-
     public static void print(Board board) {
+        System.out.println();
         System.out.println("         A     B     C     D     E     F       ");
         for (int k = 0; k < 6; k++) {
             System.out.println("      +-----+-----+-----+-----+-----+-----+ ");
@@ -28,6 +32,7 @@ public class ConsoleDrawer {
             System.out.print("  |  \n");
         }
         System.out.println("      +-----+-----+-----+-----+-----+-----+ ");
+        System.out.println();
     }
 
 
