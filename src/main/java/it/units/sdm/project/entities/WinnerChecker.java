@@ -17,7 +17,7 @@ public class WinnerChecker {
         return chaosWinCondition() || orderWinCondition();
     }
 
-    public Player.Role getWinner() {
+    public Player.Role getWinnerRole() {
         if (thereIsAWinner()) {
             if (orderWinCondition()) {
                 return Player.Role.ORDER;
