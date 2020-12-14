@@ -6,62 +6,68 @@ import it.units.sdm.project.exceptions.WrongNumberOfArgumentsException;
 
 public class MoveParser {
 
-    private char character;
-    private int raw;
-    private final Symbol symbol;
+    private String moveLine;
+    private static int column;
+    private static int raw;
+    private static Symbol symbol;
 
-    public MoveParser(String moveLine) throws IllegalSymbolException, BoardIndexOutOfBoundsException, WrongNumberOfArgumentsException {
+    public static void setMoveLine(String moveLine) throws IllegalSymbolException, BoardIndexOutOfBoundsException, WrongNumberOfArgumentsException {
 
         String[] tokens = moveLine.trim().split(" ");
 
         if (tokens.length != 2 || tokens[0].length() < 2)
-            throw new WrongNumberOfArgumentsException("parameters inserted differents from two");
+            throw new WrongNumberOfArgumentsException("Move bad syntax");
 
-        character = retrieveCharacter(tokens[0].charAt(0));
+        checkMoveLineFormat(tokens);
+
+        column = retrieveColumn(tokens[0].toLowerCase().charAt(0));
         raw = retrieveRaw(Integer.parseInt(tokens[0].substring(1)));
         symbol = retrieveSymbol(tokens[1]);
 
     }
 
-    private int retrieveRaw(int raw) throws BoardIndexOutOfBoundsException {
-        if (raw < 1 || raw > 6) {
-            throw new BoardIndexOutOfBoundsException("invalid raw inserted");
-        } else {
-            return raw;
-        }
-    }
-
-    private char retrieveCharacter(char character) throws BoardIndexOutOfBoundsException {
-        if (character < 'a' || character > 'f') {
-            throw new BoardIndexOutOfBoundsException("invalid column inserted");
-        } else {
-            return character;
-        }
-    }
-
-    private Symbol retrieveSymbol(String symbol) throws IllegalSymbolException {
-
-        if (symbol.equalsIgnoreCase("X")) {
-            return Symbol.CROSS;
-        } else if (symbol.equalsIgnoreCase("O")) {
-            return Symbol.CIRCLE;
-        } else {
-            throw new IllegalSymbolException("Illegal symbol inserted");
-        }
-    }
-
-
-    public int getRaw() {
+    public static int getRaw() {
         return raw;
     }
 
-    public Symbol getSymbol() {
+    public static Symbol getSymbol() {
         return symbol;
     }
 
 
-    public int getColumn() {
-        return character;
+    public static int getColumn() {
+        return column;
+    }
+
+    private static void checkMoveLineFormat(String[] tokens) throws BoardIndexOutOfBoundsException, IllegalSymbolException {
+
+        if (!tokens[0].substring(0, 1).matches("[a-fA-F]")) {
+            throw new BoardIndexOutOfBoundsException("Bad column value");
+        } else if (!tokens[0].substring(1).matches("[1-6]")) {
+            throw new BoardIndexOutOfBoundsException("Bad raw value");
+        } else if (!tokens[1].matches("[oOxX]")) {
+            throw new IllegalSymbolException("Bad symbol value");
+        }
+    }
+
+
+    private static int retrieveRaw(int raw){
+
+        return raw - 1;
+
+    }
+
+    private static int retrieveColumn(char column){
+
+        //converting the character in the corrent column value
+        return column - 'a';
+
+    }
+
+    private static Symbol retrieveSymbol(String symbol) throws IllegalSymbolException {
+
+        return (symbol.equalsIgnoreCase("X")) ? Symbol.CROSS : Symbol.CIRCLE;
+
     }
 
 

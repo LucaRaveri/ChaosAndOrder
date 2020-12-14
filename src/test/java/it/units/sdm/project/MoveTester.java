@@ -19,7 +19,7 @@ public class MoveTester {
     void testBoardIndexOutOfBoundsException(String command) {
         BoardIndexOutOfBoundsException thrown = assertThrows(
                 BoardIndexOutOfBoundsException.class,
-                () -> new MoveParser(command));
+                () -> MoveParser.setMoveLine(command));
     }
 
 
@@ -28,7 +28,7 @@ public class MoveTester {
     void testIllegalSymbolException(String command) {
         IllegalSymbolException thrown = assertThrows(
                 IllegalSymbolException.class,
-                () -> new MoveParser(command));
+                () -> MoveParser.setMoveLine(command));
     }
 
     @ParameterizedTest
@@ -36,7 +36,7 @@ public class MoveTester {
     void testWrongNumberOfArgumentsException(String command) {
         WrongNumberOfArgumentsException thrown = assertThrows(
                 WrongNumberOfArgumentsException.class,
-                () -> new MoveParser(command));
+                () -> MoveParser.setMoveLine(command));
     }
 
 }

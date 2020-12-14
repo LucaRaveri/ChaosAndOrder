@@ -22,7 +22,7 @@ public class WinnerCheckerTester {
 
     void horizontalQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
         for(int i=0; i<5; i++) {
-            board.addSymbol(raw +1, column +1 + i, Symbol.CIRCLE);
+            board.addSymbol(raw, column + i, Symbol.CIRCLE);
         }
     }
 
@@ -36,7 +36,7 @@ public class WinnerCheckerTester {
 
     void verticalQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
         for(int i=0; i<5; i++) {
-            board.addSymbol(raw +1 + i, column +1, Symbol.CIRCLE);
+            board.addSymbol(raw + i, column, Symbol.CIRCLE);
         }
     }
 
@@ -50,7 +50,7 @@ public class WinnerCheckerTester {
 
     void primaryDiagQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
         for(int i=0; i<5; i++) {
-            board.addSymbol(raw +1 + i, column +1 + i, Symbol.CIRCLE);
+            board.addSymbol(raw + i, column + i, Symbol.CIRCLE);
         }
     }
 
@@ -64,7 +64,7 @@ public class WinnerCheckerTester {
 
     void secondaryDiagQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
         for(int i=0; i<5; i++) {
-            board.addSymbol(raw +1 - i, column +1 + i, Symbol.CIRCLE);
+            board.addSymbol(raw - i, column + i, Symbol.CIRCLE);
         }
     }
 

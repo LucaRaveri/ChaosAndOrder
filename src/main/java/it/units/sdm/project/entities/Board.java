@@ -17,10 +17,10 @@ public class Board {
     }
 
     public void addSymbol(int x, int y, Symbol symbol) throws TakenCellException {
-        if (board[x - 1][y - 1].getSymbol() != null) {
+        if (board[x][y].getSymbol() != null) {
             throw new TakenCellException("trying to modify a non empty cell.");
         }
-        board[x - 1][y - 1].setSymbol(symbol);
+        board[x][y].setSymbol(symbol);
     }
 
     public boolean isFull() {

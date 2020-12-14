@@ -30,7 +30,7 @@ public class Game {
 
         ConsoleDrawer.print(GameMessages.LOGO);
         ConsoleDrawer.println(GameMessages.WELCOME);
-        ConsoleDrawer.println(GameMessages.INTRO);
+        ConsoleDrawer.print(GameMessages.INTRO);
 
         //TODO: discuss rigorously the syntax of command line inserted by the user
         do {
@@ -38,13 +38,12 @@ public class Game {
                 ConsoleDrawer.print(board);
                 ConsoleDrawer.print(currentPlayer.getRole() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
                 moveLine = scanner.nextLine();
-                MoveParser moveParser = new MoveParser(moveLine.trim());
-                Move move = new Move(moveParser.getRaw(), moveParser.getRaw(), moveParser.getSymbol());
+                MoveParser.setMoveLine(moveLine.trim());
+                Move move = new Move(MoveParser.getRaw(), MoveParser.getColumn(), MoveParser.getSymbol());
                 currentPlayer.makeMove(move, board);
                 changeRole(currentPlayer);
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
-                    TakenCellException | WrongNumberOfArgumentsException |
-                    NumberFormatException e) {
+                    TakenCellException | WrongNumberOfArgumentsException e) {
                 ConsoleDrawer.println(e.getMessage() + " " + GameMessages.TRY_AGAIN + "\n");
             }
         } while (!WinnerChecker.thereIsAWinner(board));

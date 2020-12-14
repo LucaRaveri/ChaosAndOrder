@@ -40,8 +40,8 @@ public class BoardTester {
     }
 
     void fillBoard(Board board) throws TakenCellException {
-        for (int raw = 1; raw <= board.SIZE; raw++) {
-            for (int column = 1; column <= board.SIZE; column++) {
+        for (int raw = 0; raw < board.SIZE; raw++) {
+            for (int column = 0; column < board.SIZE; column++) {
                 board.addSymbol(raw, column, Symbol.CIRCLE);
             }
         }
