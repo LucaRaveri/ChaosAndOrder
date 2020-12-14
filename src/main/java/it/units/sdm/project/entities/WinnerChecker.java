@@ -1,25 +1,15 @@
 package it.units.sdm.project.entities;
 
-import it.units.sdm.project.entities.Board;
-import it.units.sdm.project.entities.Player;
-import it.units.sdm.project.entities.Symbol;
-
 public class WinnerChecker {
 
-    private Board board;
     private static final int SIZE_TO_WIN = 5;
-
-    public void setCurrentBoard(Board board) {
-        this.board = board;
+    public static boolean thereIsAWinner(Board board) {
+        return chaosWinCondition(board) || orderWinCondition(board);
     }
 
-    public boolean thereIsAWinner() {
-        return chaosWinCondition() || orderWinCondition();
-    }
-
-    public Player.Role getWinnerRole() {
-        if (thereIsAWinner()) {
-            if (orderWinCondition()) {
+    public static Player.Role getWinnerRole(Board board) {
+        if (thereIsAWinner(board)) {
+            if (orderWinCondition(board)) {
                 return Player.Role.ORDER;
             } else {
                 return Player.Role.CHAOS;
@@ -30,15 +20,18 @@ public class WinnerChecker {
 
     }
 
-    private boolean chaosWinCondition() {
+    private static boolean chaosWinCondition(Board board) {
         return board.isFull();
     }
 
-    private boolean orderWinCondition() {
+    private static boolean orderWinCondition(Board board) {
+        return checkRaws(board) || checkColumns(board) || checkPrimaryDiagonals(board) || checkSecondaryDiagonals(board);
+    }
+
+    private static boolean checkRaws(Board board) {
         int count;
-        // check righe
-        for (int i = 0; i < board.SIZE; i++) {
-            for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
+        for (int i = 0; i < Board.SIZE; i++) {
+            for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
@@ -54,9 +47,13 @@ public class WinnerChecker {
                 }
             }
         }
-        // check colonne
-        for (int i = 0; i < board.SIZE; i++) {
-            for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
+        return false;
+    }
+
+    private static boolean checkColumns(Board board) {
+        int count;
+        for (int i = 0; i < Board.SIZE; i++) {
+            for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(j, i).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
@@ -72,9 +69,13 @@ public class WinnerChecker {
                 }
             }
         }
-        // check diag 1
-        for (int i = 0; i <= board.SIZE - SIZE_TO_WIN; i++) {
-            for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
+        return false;
+    }
+
+    private static boolean checkPrimaryDiagonals(Board board) {
+        int count;
+        for (int i = 0; i <= Board.SIZE - SIZE_TO_WIN; i++) {
+            for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {
@@ -90,9 +91,13 @@ public class WinnerChecker {
                 }
             }
         }
-        // check diag 2
-        for (int i = SIZE_TO_WIN - 1; i < board.SIZE ; i++) {
-            for (int j = 0; j <= board.SIZE - SIZE_TO_WIN; j++) {
+        return false;
+    }
+
+    private static boolean checkSecondaryDiagonals(Board board) {
+        int count;
+        for (int i = SIZE_TO_WIN - 1; i < Board.SIZE ; i++) {
+            for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
                 Symbol currentSymbol = board.getCell(i, j).getSymbol();
                 count = 0;
                 if (currentSymbol == null) {

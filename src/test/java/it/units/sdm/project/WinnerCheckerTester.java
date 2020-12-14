@@ -17,9 +17,7 @@ public class WinnerCheckerTester {
     void testCheckRaw(int raw, int column) throws TakenCellException {
         Board board = new Board();
         horizontalQuintupleFiller(board, raw, column);
-        WinnerChecker checker = new WinnerChecker();
-        checker.setCurrentBoard(board);
-        assertEquals(true, checker.thereIsAWinner());
+        assertEquals(true, WinnerChecker.thereIsAWinner(board));
     }
 
     void horizontalQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
@@ -33,9 +31,7 @@ public class WinnerCheckerTester {
     void testCheckColumn(int raw, int column) throws TakenCellException {
         Board board = new Board();
         verticalQuintupleFiller(board, raw, column);
-        WinnerChecker checker = new WinnerChecker();
-        checker.setCurrentBoard(board);
-        assertEquals(true, checker.thereIsAWinner());
+        assertEquals(true, WinnerChecker.thereIsAWinner(board));
     }
 
     void verticalQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
@@ -49,9 +45,7 @@ public class WinnerCheckerTester {
     void testCheckPrimaryDiag(int raw, int column) throws TakenCellException {
         Board board = new Board();
         primaryDiagQuintupleFiller(board, raw, column);
-        WinnerChecker checker = new WinnerChecker();
-        checker.setCurrentBoard(board);
-        assertEquals(true, checker.thereIsAWinner());
+        assertEquals(true, WinnerChecker.thereIsAWinner(board));
     }
 
     void primaryDiagQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
@@ -65,9 +59,7 @@ public class WinnerCheckerTester {
     void testCheckSecondaryDiag(int raw, int column) throws TakenCellException {
         Board board = new Board();
         secondaryDiagQuintupleFiller(board, raw, column);
-        WinnerChecker checker = new WinnerChecker();
-        checker.setCurrentBoard(board);
-        assertEquals(true, checker.thereIsAWinner());
+        assertEquals(true, WinnerChecker.thereIsAWinner(board));
     }
 
     void secondaryDiagQuintupleFiller(Board board, int raw, int column) throws TakenCellException {

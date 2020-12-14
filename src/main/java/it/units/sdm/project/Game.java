@@ -18,13 +18,11 @@ public class Game {
     private final Board board;
     private final Player chaosPlayer;
     private final Player orderPlayer;
-    private final WinnerChecker winnerChecker;
 
     public Game() {
         board = new Board();
         chaosPlayer = new Player(Player.Role.CHAOS);
         orderPlayer = new Player(Player.Role.ORDER);
-        winnerChecker = new WinnerChecker();
     }
 
     public void start() {
@@ -36,12 +34,10 @@ public class Game {
         ConsoleDrawer.print(GameMessages.LOGO);
         ConsoleDrawer.println(GameMessages.WELCOME);
         ConsoleDrawer.println(GameMessages.INTRO);
-        ConsoleDrawer.println(GameMessages.MOVE_FORMAT);
 
         //TODO: discuss rigorously the syntax of command line inserted by the user
         do {
             try {
-                winnerChecker.setCurrentBoard(board);
                 ConsoleDrawer.print(board);
                 ConsoleDrawer.print(currentPlayer.getRole() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
                 command = scanner.nextLine();
@@ -52,11 +48,11 @@ public class Game {
                     NumberFormatException e) {
                 ConsoleDrawer.println(e.getMessage() + " " + GameMessages.TRY_AGAIN + "\n");
             }
-        } while (!winnerChecker.thereIsAWinner());
+        } while (!WinnerChecker.thereIsAWinner(board));
 
         ConsoleDrawer.print(board);
         ConsoleDrawer.println("\n" + GameMessages.CONGRATULATIONS + " "
-                + GameMessages.THE_WINNER_IS + " " + winnerChecker.getWinnerRole() + "\n");
+                + GameMessages.THE_WINNER_IS + " " + WinnerChecker.getWinnerRole(board) + "\n");
     }
 
     private void changeRole(Player currentPlayer) {

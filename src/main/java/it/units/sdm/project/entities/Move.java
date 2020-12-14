@@ -52,7 +52,6 @@ public class Move {
         return column;
     }
 
-
     private Symbol parseSymbol(String symbol) throws IllegalSymbolException {
         if (symbol.trim().equalsIgnoreCase("CROSS")) {
             return Symbol.CROSS;
