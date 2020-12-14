@@ -1,6 +1,7 @@
 package it.units.sdm.project;
 
 import it.units.sdm.project.drawers.BoardDrawer;
+import it.units.sdm.project.drawers.MessageDrawer;
 import it.units.sdm.project.entities.Board;
 import it.units.sdm.project.entities.Move;
 import it.units.sdm.project.entities.Player;
@@ -31,6 +32,8 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         String command;
         Player currentPlayer = orderPlayer;
+
+        MessageDrawer.printLogo();
 
         //TODO: discuss rigorously the syntax of command line inserted by the user
         do {
