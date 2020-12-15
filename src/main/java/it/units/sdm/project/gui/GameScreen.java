@@ -1,5 +1,7 @@
 package it.units.sdm.project.gui;
 
+import it.units.sdm.project.gui.menucomponents.MenuBar;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +15,10 @@ public class GameScreen extends JFrame {
         setProperties();
         add(new MenuBar(), BorderLayout.NORTH);
         add(new OuterGamePanel(), BorderLayout.CENTER);
+    }
+
+    public static int getWindowWidth(){
+        return WINDOW_WIDTH;
     }
 
     private void setProperties(){

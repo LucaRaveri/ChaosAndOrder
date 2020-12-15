@@ -1,4 +1,4 @@
-package it.units.sdm.project.gui;
+package it.units.sdm.project.gui.menucomponents;
 
 import javax.swing.*;
 import java.awt.*;

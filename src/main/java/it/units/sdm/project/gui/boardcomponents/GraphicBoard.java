@@ -1,8 +1,7 @@
-package it.units.sdm.project.gui;
+package it.units.sdm.project.gui.boardcomponents;
 
 import it.units.sdm.project.entities.Board;
-import it.units.sdm.project.gui.symbols.CircleImage;
-import it.units.sdm.project.gui.symbols.CrossImage;
+import it.units.sdm.project.gui.boardcomponents.GraphicCell;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +19,6 @@ public class GraphicBoard extends JPanel {
 
     private void setProperties() {
         setLayout(new GridLayout(Board.SIZE, Board.SIZE));
-//        setBorder(BorderFactory.createLineBorder(backgroundColor, 5));
         setBackground(backgroundColor);
     }
 
@@ -29,6 +27,7 @@ public class GraphicBoard extends JPanel {
         for (int i = 0; i < Board.SIZE; i++) {
             for (int j = 0; j < Board.SIZE; j++) {
                 graphicCells[i][j] = new GraphicCell();
+                graphicCells[i][j].setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
                 add(graphicCells[i][j]);
             }
         }
