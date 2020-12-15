@@ -1,7 +1,6 @@
 package it.units.sdm.project;
 
-import it.units.sdm.project.entities.Move;
-import it.units.sdm.project.entities.MoveParser;
+import it.units.sdm.project.utils.MoveParser;
 import it.units.sdm.project.exceptions.BoardIndexOutOfBoundsException;
 import it.units.sdm.project.exceptions.IllegalSymbolException;
 import it.units.sdm.project.exceptions.WrongNumberOfArgumentsException;

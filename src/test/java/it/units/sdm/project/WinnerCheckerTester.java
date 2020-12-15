@@ -2,7 +2,7 @@ package it.units.sdm.project;
 
 import it.units.sdm.project.entities.Board;
 import it.units.sdm.project.entities.Symbol;
-import it.units.sdm.project.entities.WinnerChecker;
+import it.units.sdm.project.utils.WinnerChecker;
 import it.units.sdm.project.exceptions.TakenCellException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

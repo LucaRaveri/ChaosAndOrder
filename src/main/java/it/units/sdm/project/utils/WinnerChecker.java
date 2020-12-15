@@ -1,4 +1,8 @@
-package it.units.sdm.project.entities;
+package it.units.sdm.project.utils;
+
+import it.units.sdm.project.entities.Board;
+import it.units.sdm.project.entities.Player;
+import it.units.sdm.project.entities.Symbol;
 
 public class WinnerChecker {
 
@@ -9,10 +13,10 @@ public class WinnerChecker {
 
     public static Player.Role getWinnerRole(Board board) {
         if (thereIsAWinner(board)) {
-            if (orderWinCondition(board)) {
-                return Player.Role.ORDER;
-            } else {
+            if (chaosWinCondition(board)) {
                 return Player.Role.CHAOS;
+            } else {
+                return Player.Role.ORDER;
             }
         } else {
             return null;

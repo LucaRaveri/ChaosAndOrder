@@ -1,5 +1,6 @@
-package it.units.sdm.project.entities;
+package it.units.sdm.project.utils;
 
+import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.BoardIndexOutOfBoundsException;
 import it.units.sdm.project.exceptions.IllegalSymbolException;
 import it.units.sdm.project.exceptions.WrongNumberOfArgumentsException;

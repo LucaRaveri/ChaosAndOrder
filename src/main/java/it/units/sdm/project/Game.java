@@ -7,6 +7,8 @@ import it.units.sdm.project.exceptions.IllegalSymbolException;
 import it.units.sdm.project.exceptions.TakenCellException;
 import it.units.sdm.project.exceptions.WrongNumberOfArgumentsException;
 import it.units.sdm.project.utils.GameMessages;
+import it.units.sdm.project.utils.MoveParser;
+import it.units.sdm.project.utils.WinnerChecker;
 
 import java.util.Scanner;
 
