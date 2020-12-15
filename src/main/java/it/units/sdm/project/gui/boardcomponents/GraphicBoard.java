@@ -1,10 +1,11 @@
 package it.units.sdm.project.gui.boardcomponents;
 
 import it.units.sdm.project.entities.Board;
-import it.units.sdm.project.gui.boardcomponents.GraphicCell;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.GridLayout;
 
 public class GraphicBoard extends JPanel {
 
@@ -20,6 +21,7 @@ public class GraphicBoard extends JPanel {
     private void setProperties() {
         setLayout(new GridLayout(Board.SIZE, Board.SIZE));
         setBackground(backgroundColor);
+        setBorder(BorderFactory.createLineBorder(backgroundColor, 10));
     }
 
     private void initGraphicCells() {
