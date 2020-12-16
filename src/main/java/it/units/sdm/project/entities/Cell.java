@@ -1,5 +1,7 @@
 package it.units.sdm.project.entities;
 
+import java.util.Objects;
+
 public class Cell {
 
     private Symbol symbol;
@@ -20,4 +22,13 @@ public class Cell {
         return symbol!= null;
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

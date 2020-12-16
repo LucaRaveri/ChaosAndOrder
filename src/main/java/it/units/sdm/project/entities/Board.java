@@ -2,6 +2,8 @@ package it.units.sdm.project.entities;
 
 import it.units.sdm.project.exceptions.TakenCellException;
 
+import java.util.Arrays;
+
 public class Board {
 
     public static final int SIZE = 6;
@@ -40,5 +42,15 @@ public class Board {
                 board[row][column] = new Cell();
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }
