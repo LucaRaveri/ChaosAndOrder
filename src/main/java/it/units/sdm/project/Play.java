@@ -1,6 +1,5 @@
 package it.units.sdm.project;
 
-import it.units.sdm.project.console.ConsoleGame;
 import it.units.sdm.project.gui.GUIGame;
 
 public class Play {

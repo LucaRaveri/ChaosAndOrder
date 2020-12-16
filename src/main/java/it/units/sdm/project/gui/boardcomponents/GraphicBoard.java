@@ -1,6 +1,7 @@
 package it.units.sdm.project.gui.boardcomponents;
 
 import it.units.sdm.project.entities.Board;
+import it.units.sdm.project.gui.GameScreen;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -10,7 +11,6 @@ import java.awt.GridLayout;
 public class GraphicBoard extends JPanel {
 
     private static final GraphicCell[][] graphicCells = new GraphicCell[Board.SIZE][Board.SIZE];
-    private static final Color backgroundColor = new Color(0x4D4D4D);
 
     public GraphicBoard() {
         super();
@@ -20,8 +20,7 @@ public class GraphicBoard extends JPanel {
 
     private void setProperties() {
         setLayout(new GridLayout(Board.SIZE, Board.SIZE));
-        setBackground(backgroundColor);
-        setBorder(BorderFactory.createLineBorder(backgroundColor, 10));
+        setBackground(GameScreen.BACKGROUND_COLOR);
     }
 
     private void initGraphicCells() {

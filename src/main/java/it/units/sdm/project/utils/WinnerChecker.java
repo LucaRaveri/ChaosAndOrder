@@ -1,7 +1,7 @@
 package it.units.sdm.project.utils;
 
 import it.units.sdm.project.entities.Board;
-import it.units.sdm.project.entities.Player;
+import it.units.sdm.project.entities.Role;
 import it.units.sdm.project.entities.Symbol;
 
 public class WinnerChecker {
@@ -11,12 +11,12 @@ public class WinnerChecker {
         return chaosWinCondition(board) || orderWinCondition(board);
     }
 
-    public static Player.Role getWinnerRole(Board board) {
+    public static Role getWinnerRole(Board board) {
         if (thereIsAWinner(board)) {
             if (chaosWinCondition(board)) {
-                return Player.Role.CHAOS;
+                return Role.CHAOS;
             } else {
-                return Player.Role.ORDER;
+                return Role.ORDER;
             }
         } else {
             return null;

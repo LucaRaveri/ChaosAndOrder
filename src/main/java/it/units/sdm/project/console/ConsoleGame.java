@@ -15,16 +15,6 @@ import java.util.Scanner;
 
 public class ConsoleGame extends Game {
 
-    private final Board board;
-    private final Player chaosPlayer;
-    private final Player orderPlayer;
-
-    public ConsoleGame() {
-        board = new Board();
-        chaosPlayer = new Player(Player.Role.CHAOS);
-        orderPlayer = new Player(Player.Role.ORDER);
-    }
-
     @Override
     public void start() {
 
@@ -59,7 +49,7 @@ public class ConsoleGame extends Game {
 
     private void changeRole(Player currentPlayer) {
 
-        currentPlayer.setRole((currentPlayer.getRole() == Player.Role.CHAOS) ? Player.Role.ORDER : Player.Role.CHAOS);
+        currentPlayer.setRole((currentPlayer.getRole() == Role.CHAOS) ? Role.ORDER : Role.CHAOS);
 
     }
 

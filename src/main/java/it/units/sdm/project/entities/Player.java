@@ -4,10 +4,6 @@ import it.units.sdm.project.exceptions.TakenCellException;
 
 public class Player {
 
-    public enum Role {
-        CHAOS, ORDER
-    }
-
     private Role role;
 
     public Player(Role role) {

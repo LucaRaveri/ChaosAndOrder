@@ -1,8 +1,6 @@
 package it.units.sdm.project.gui.selectorsymbolcomponents;
 
 import it.units.sdm.project.gui.GameScreen;
-import it.units.sdm.project.gui.symbols.CircleImage;
-import it.units.sdm.project.gui.symbols.CrossImage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +12,7 @@ public class SelectorSymbolPanel extends JPanel {
         super();
         setProperties();
         add(new SelectorSymbolLabel());
-//        add(new SelectorSymbol(new CircleImage()));
-//        add(new SelectorSymbol(new CrossImage()));
+
         SelectorSymbolButtonGroup ssg = new SelectorSymbolButtonGroup();
         add(ssg.getCircleButton());
         add(ssg.getCrossButton());
@@ -23,10 +20,11 @@ public class SelectorSymbolPanel extends JPanel {
     }
 
     public void setProperties(){
-        setLayout(new GridLayout(1, 3));
-        setPreferredSize(new Dimension(GameScreen.getWindowWidth(), 100));
-        setBackground(new Color(0x4D4D4D));
-        setBorder(BorderFactory.createLineBorder(new Color(0x4D4D4D), 10));
+//        setLayout(new GridLayout(1, 3));
+//        setLayout(new FlowLayout());
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        setPreferredSize(new Dimension(GameScreen.WINDOW_WIDTH, 80));
+        setBackground(GameScreen.BACKGROUND_COLOR);
     }
 
 }
