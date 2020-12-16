@@ -14,8 +14,12 @@ public class SelectorSymbolPanel extends JPanel {
         super();
         setProperties();
         add(new SelectorSymbolLabel());
-        add(new SelectorSymbol(new CircleImage()));
-        add(new SelectorSymbol(new CrossImage()));
+//        add(new SelectorSymbol(new CircleImage()));
+//        add(new SelectorSymbol(new CrossImage()));
+        SelectorSymbolButtonGroup ssg = new SelectorSymbolButtonGroup();
+        add(ssg.getCircleButton());
+        add(ssg.getCrossButton());
+
     }
 
     public void setProperties(){
