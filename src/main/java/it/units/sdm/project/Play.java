@@ -1,10 +1,16 @@
 package it.units.sdm.project;
 
+import it.units.sdm.project.console.ConsoleGame;
+import it.units.sdm.project.gui.GUIGame;
+
 public class Play {
 
     public static void main(String[] args) {
 
-        Game game = new Game();
+//        ConsoleGame game = new ConsoleGame();
+//        game.start();
+
+        GUIGame game = new GUIGame();
         game.start();
 
     }

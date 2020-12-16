@@ -14,6 +14,7 @@ public class SelectorSymbolButtonGroup extends ButtonGroup implements ActionList
     JRadioButton circleButton = new JRadioButton(new CircleImage());
 
     public SelectorSymbolButtonGroup() {
+
         crossButton.setHorizontalAlignment(SwingConstants.CENTER);
         circleButton.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -22,6 +23,9 @@ public class SelectorSymbolButtonGroup extends ButtonGroup implements ActionList
 
         add(crossButton);
         add(circleButton);
+
+        crossButton.setBackground(new Color(0x4D4D4D));
+        circleButton.setBackground(new Color(0x4D4D4D));
     }
 
     public JRadioButton getCrossButton() {
