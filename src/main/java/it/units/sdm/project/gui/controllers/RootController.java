@@ -11,13 +11,15 @@ import java.util.ResourceBundle;
 public class RootController implements Initializable {
 
     @FXML
-    AnchorPane anchorPane;
+    private AnchorPane anchorPane;
+
+    @FXML
+    private MenuBarController menuBarController;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-//        Button b = new Button("hey");
-//        anchorPane.getChildren().add(b);
-
+        menuBarController.injectRootController(this);
     }
+
 }
