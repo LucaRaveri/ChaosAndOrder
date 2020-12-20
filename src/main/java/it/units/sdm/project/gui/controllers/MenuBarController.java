@@ -13,6 +13,7 @@ public class MenuBarController implements Initializable{
 
     private RootController rootController;
 
+
     @FXML MenuBar menuBar;
 
     @FXML Menu fileMenu;

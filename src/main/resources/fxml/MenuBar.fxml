@@ -6,20 +6,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="it.units.sdm.project.gui.controllers.MenuBarController"
-            prefHeight="400.0" prefWidth="600.0">
+<MenuBar xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         fx:controller="it.units.sdm.project.gui.controllers.MenuBarController"
+         fx:id="menuBar">
 
-    <MenuBar fx:id="menuBar">
-        <Menu fx:id="fileMenu">
-            <MenuItem fx:id="newGame"/>
-            <MenuItem fx:id="exit"/>
-        </Menu>
-        <Menu fx:id="helpMenu">
-            <MenuItem fx:id="readInstructions"/>
-        </Menu>
-    </MenuBar>
+    <Menu fx:id="fileMenu">
+        <MenuItem fx:id="newGame"/>
+        <MenuItem fx:id="exit"/>
+    </Menu>
+    <Menu fx:id="helpMenu">
+        <MenuItem fx:id="readInstructions"/>
+    </Menu>
+</MenuBar>
 
-
-</AnchorPane>
