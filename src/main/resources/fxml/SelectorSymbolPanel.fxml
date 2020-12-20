@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="it.units.sdm.project.gui.controllers.SelectorSymbolController">
+
+    <ImageView fx:id="circle">
+        <Image url="/circle.png" requestedHeight="50" preserveRatio="true"/>
+    </ImageView>
+    <ImageView fx:id="cross">
+        <Image url="/cross.png" requestedHeight="50" preserveRatio="true"/>
+    </ImageView>
+
+
+</AnchorPane>
