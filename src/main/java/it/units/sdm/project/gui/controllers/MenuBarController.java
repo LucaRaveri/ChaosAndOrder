@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,6 +30,10 @@ public class MenuBarController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        AnchorPane.setRightAnchor(menuBar, 0.0);
+        AnchorPane.setLeftAnchor(menuBar, 0.0);
+
         fileMenu.setText("File");
         newGame.setText("New Game...");
         exit.setText("Exit...");
