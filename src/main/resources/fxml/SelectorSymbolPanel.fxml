@@ -3,9 +3,13 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            fx:id="anchorPane"
             fx:controller="it.units.sdm.project.gui.controllers.SelectorSymbolController">
+
+    <Label fx:id="nextMove" />
 
     <ImageView fx:id="circle">
         <Image url="/circle.png" requestedHeight="50" preserveRatio="true"/>

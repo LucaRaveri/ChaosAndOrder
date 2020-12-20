@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,9 +20,9 @@ public class SelectorSymbolController implements Initializable {
     @FXML
     Label nextMove;
     @FXML
-    ImageView circle;
-    @FXML
     ImageView cross;
+    @FXML
+    ImageView circle;
 
     Symbol symbol;
 
@@ -29,14 +30,21 @@ public class SelectorSymbolController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        AnchorPane.setRightAnchor(anchorPane, 0.0);
+        AnchorPane.setLeftAnchor(anchorPane, 0.0);
+
+        AnchorPane.setTopAnchor(nextMove, 30.0);
         AnchorPane.setTopAnchor(circle, 30.0);
         AnchorPane.setTopAnchor(cross, 30.0);
 
-        AnchorPane.setLeftAnchor(circle, 20.0);
-        AnchorPane.setLeftAnchor(cross, 70.0);
+        AnchorPane.setRightAnchor(cross, 40.0);
+        AnchorPane.setRightAnchor(circle, 120.0);
 
-        circle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CIRCLE);
+        nextMove.setText("You are player ORDER.\nSelect your next symbol!");
+        nextMove.setFont(new Font("Arial", 20));
+
         cross.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CROSS);
+        circle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CIRCLE);
     }
 
     public Symbol getSymbol(){

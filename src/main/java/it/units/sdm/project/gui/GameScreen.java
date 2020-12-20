@@ -18,6 +18,7 @@ public class GameScreen extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Root.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Chaos And Order Game");
         primaryStage.show();
 
     }
