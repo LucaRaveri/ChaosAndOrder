@@ -1,5 +1,6 @@
 package it.units.sdm.project.gui.controllers;
 
+import it.units.sdm.project.entities.Symbol;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,10 +14,16 @@ import java.util.ResourceBundle;
 
 public class SelectorSymbolController implements Initializable {
 
-    @FXML AnchorPane anchorPane;
-    @FXML Label nextMove;
-    @FXML ImageView circle;
-    @FXML ImageView cross;
+    @FXML
+    AnchorPane anchorPane;
+    @FXML
+    Label nextMove;
+    @FXML
+    ImageView circle;
+    @FXML
+    ImageView cross;
+
+    Symbol symbol;
 
 
     @Override
@@ -28,7 +35,11 @@ public class SelectorSymbolController implements Initializable {
         AnchorPane.setLeftAnchor(circle, 20.0);
         AnchorPane.setLeftAnchor(cross, 70.0);
 
-        circle.addEventHandler(MouseEvent.MOUSE_CLICKED, e-> System.out.println("you clicked on the circle"));
-        cross.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> System.out.println("you clicked on on the cross"));
+        circle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CIRCLE);
+        cross.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CROSS);
+    }
+
+    public Symbol getSymbol(){
+        return symbol;
     }
 }
