@@ -1,8 +1,12 @@
 package it.units.sdm.project.utils;
 
 import it.units.sdm.project.entities.Board;
+import it.units.sdm.project.entities.Cell;
 import it.units.sdm.project.entities.Role;
 import it.units.sdm.project.entities.Symbol;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class WinnerChecker {
 
@@ -30,10 +34,10 @@ public class WinnerChecker {
     }
 
     private static boolean orderWinCondition(Board board) {
-        return checkRaws(board) || checkColumns(board) || checkPrimaryDiagonals(board) || checkSecondaryDiagonals(board);
+        return checkRows(board) || checkColumns(board) || checkPrimaryDiagonals(board) || checkSecondaryDiagonals(board);
     }
 
-    private static boolean checkRaws(Board board) {
+    private static boolean checkRows(Board board) {
         int count;
         for (int i = 0; i < Board.SIZE; i++) {
             for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
@@ -54,6 +58,10 @@ public class WinnerChecker {
         }
         return false;
     }
+
+//    private static boolean checkRows(Board board) {
+//        // TODO: refactor using streams
+//    }
 
     private static boolean checkColumns(Board board) {
         int count;
