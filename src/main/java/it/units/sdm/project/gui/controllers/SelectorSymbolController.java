@@ -1,13 +1,17 @@
 package it.units.sdm.project.gui.controllers;
 
 import it.units.sdm.project.entities.Symbol;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.Shadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.net.URL;
@@ -40,16 +44,29 @@ public class SelectorSymbolController implements Initializable {
         AnchorPane.setRightAnchor(cross, 40.0);
         AnchorPane.setRightAnchor(circle, 120.0);
 
-        getClass();
-
         nextMove.setText("You are player ORDER.\nSelect your next symbol!");
         nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 20));
 
-        cross.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CROSS);
-        circle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CIRCLE);
+//        cross.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+//            symbol = Symbol.CROSS;
+//            cross.setEffect(new Shadow(BlurType.GAUSSIAN, Color.RED, 10.0));
+//        });
+//        circle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CIRCLE);
+
     }
 
-    public Symbol getSymbol(){
+    @FXML
+    private void selectSymbol(Event e) {
+        if (e.getSource() == circle) {
+            circle.setEffect(new Shadow(BlurType.GAUSSIAN, Color.AQUA, 5.0));
+            cross.setEffect(null);
+        } else {
+            cross.setEffect(new Shadow(BlurType.GAUSSIAN, Color.RED, 5.0));
+            circle.setEffect(null);
+        }
+    }
+
+    public Symbol getSymbol() {
         return symbol;
     }
 }

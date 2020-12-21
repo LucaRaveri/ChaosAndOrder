@@ -11,10 +11,10 @@
 
     <Label fx:id="nextMove" />
 
-    <ImageView fx:id="circle">
+    <ImageView fx:id="circle" onMouseClicked="#selectSymbol">
         <Image url="/circle.png" requestedHeight="50" preserveRatio="true"/>
     </ImageView>
-    <ImageView fx:id="cross">
+    <ImageView fx:id="cross" onMouseClicked="#selectSymbol">
         <Image url="/cross.png" requestedHeight="50" preserveRatio="true"/>
     </ImageView>
 
