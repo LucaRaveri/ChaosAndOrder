@@ -34,8 +34,10 @@ public class SelectorSymbolController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        AnchorPane.setRightAnchor(anchorPane, 0.0);
-        AnchorPane.setLeftAnchor(anchorPane, 0.0);
+        AnchorPane.setRightAnchor(anchorPane, 50.0);
+        AnchorPane.setLeftAnchor(anchorPane, 50.0);
+
+        AnchorPane.setLeftAnchor(nextMove, 10.0);
 
         AnchorPane.setTopAnchor(nextMove, 30.0);
         AnchorPane.setTopAnchor(circle, 30.0);
@@ -46,12 +48,6 @@ public class SelectorSymbolController implements Initializable {
 
         nextMove.setText("You are player ORDER.\nSelect your next symbol!");
         nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 20));
-
-//        cross.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-//            symbol = Symbol.CROSS;
-//            cross.setEffect(new Shadow(BlurType.GAUSSIAN, Color.RED, 10.0));
-//        });
-//        circle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CIRCLE);
 
     }
 

@@ -4,10 +4,10 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="it.units.sdm.project.gui.controllers.RootController"
-            fx:id="anchorPane"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:id="anchorPane">
 
        <fx:include fx:id="menuBar" source="MenuBar.fxml"/>
        <fx:include fx:id="selectorSymbol" source="SelectorSymbolPanel.fxml"/>
+       <fx:include fx:id="board" source="Board.fxml"/>
 
 </AnchorPane>
