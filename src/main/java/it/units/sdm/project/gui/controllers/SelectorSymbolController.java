@@ -29,6 +29,7 @@ public class SelectorSymbolController implements Initializable {
     ImageView circle;
 
     Symbol symbol;
+    RootController rootController;
 
 
     @Override
@@ -64,5 +65,9 @@ public class SelectorSymbolController implements Initializable {
 
     public Symbol getSymbol() {
         return symbol;
+    }
+
+    public void injectRootCotroller(RootController rootController){
+        this.rootController=rootController;
     }
 }
