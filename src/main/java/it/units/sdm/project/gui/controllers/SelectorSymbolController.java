@@ -40,8 +40,10 @@ public class SelectorSymbolController implements Initializable {
         AnchorPane.setRightAnchor(cross, 40.0);
         AnchorPane.setRightAnchor(circle, 120.0);
 
+        getClass();
+
         nextMove.setText("You are player ORDER.\nSelect your next symbol!");
-        nextMove.setFont(new Font("Arial", 20));
+        nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 20));
 
         cross.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CROSS);
         circle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> symbol = Symbol.CIRCLE);
