@@ -28,8 +28,8 @@ public class SelectorSymbolController implements Initializable {
     @FXML
     ImageView circle;
 
-    Symbol symbol;
     RootController rootController;
+    Symbol symbol;
 
 
     @Override
@@ -47,6 +47,7 @@ public class SelectorSymbolController implements Initializable {
         AnchorPane.setRightAnchor(cross, 40.0);
         AnchorPane.setRightAnchor(circle, 120.0);
 
+        nextMove.setTextFill(Color.WHITE);
         nextMove.setText("You are player ORDER.\nSelect your next symbol!");
         nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 20));
 
