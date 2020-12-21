@@ -6,6 +6,7 @@ import it.units.sdm.project.entities.Symbol;
 
 public class WinnerChecker {
 
+    // TODO: use Streams
     private static final int SIZE_TO_WIN = 5;
     public static boolean thereIsAWinner(Board board) {
         return chaosWinCondition(board) || orderWinCondition(board);
