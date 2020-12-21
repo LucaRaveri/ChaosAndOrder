@@ -57,17 +57,25 @@ public class SelectorSymbolController implements Initializable {
         if (e.getSource() == circle) {
             circle.setEffect(new Shadow(BlurType.GAUSSIAN, Color.AQUA, 5.0));
             cross.setEffect(null);
+            setSymbol(Symbol.CIRCLE);
         } else {
             cross.setEffect(new Shadow(BlurType.GAUSSIAN, Color.RED, 5.0));
             circle.setEffect(null);
+            setSymbol(Symbol.CROSS);
         }
     }
+
+    private void setSymbol(Symbol symbol) {
+        this.symbol = symbol;
+    }
+
+    ;
 
     public Symbol getSymbol() {
         return symbol;
     }
 
-    public void injectRootCotroller(RootController rootController){
-        this.rootController=rootController;
+    public void injectRootCotroller(RootController rootController) {
+        this.rootController = rootController;
     }
 }
