@@ -2,6 +2,7 @@ package it.units.sdm.project.gui.controllers;
 
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
+import it.units.sdm.project.gui.EndGameWindow;
 import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -90,7 +91,10 @@ public class BoardController implements Initializable {
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
 
-            System.out.println(WinnerChecker.thereIsAWinner(rootController.logicBoard));
+            if(WinnerChecker.thereIsAWinner(rootController.logicBoard)){
+                EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
+                endGameWindow.show();
+            }
 
             rootController.changePlayer();
 
@@ -108,7 +112,12 @@ public class BoardController implements Initializable {
             cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
-            System.out.println(WinnerChecker.thereIsAWinner(rootController.logicBoard));
+
+            if(WinnerChecker.thereIsAWinner(rootController.logicBoard)){
+                EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
+                endGameWindow.show();
+            }
+
 
             rootController.changePlayer();
         }

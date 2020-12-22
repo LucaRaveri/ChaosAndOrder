@@ -33,7 +33,7 @@ public class SelectorSymbolController implements Initializable {
     Symbol symbol;
 
     {
-        currentPlayer=new Player(Role.ORDER);
+        currentPlayer = new Player(Role.ORDER);
         currentPlayer.setRole(Role.ORDER);
     }
 

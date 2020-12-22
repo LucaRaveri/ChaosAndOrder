@@ -5,6 +5,7 @@ import it.units.sdm.project.entities.Role;
 import it.units.sdm.project.entities.Symbol;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -32,7 +33,8 @@ public class RootController implements Initializable {
         menuBarController.injectRootController(this);
         boardController.injectRootController(this);
 
-        AnchorPane.setBottomAnchor(boardController.getBoard(), 10.0);
+        AnchorPane.setBottomAnchor(boardController.getBoard(), 20d);
+        AnchorPane.setLeftAnchor(boardController.getBoard(), 135d);
     }
 
     public Symbol getSymbol(){

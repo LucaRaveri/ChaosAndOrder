@@ -22,6 +22,7 @@ public class GameScreen extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Chaos And Order Game");
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }
