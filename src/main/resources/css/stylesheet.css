@@ -8,14 +8,17 @@
     -fx-background-radius: 5.0;
     -fx-border-width: 10;
     -fx-stroke-width: 5;
-    /*-fx-background-insets: 2000;*/
     -fx-stroke: red;
-    -fx-border-color: white;
-    -fx-hgap: 10;
-    -fx-vgap: 10;
+    /*-fx-hgap: 10;
+    -fx-vgap: 10;*/
+    /*-fx-background-color: whitesmoke;*/
+    -fx-border-width: 4;
+    /*-fx-border-color: #4D4D4D*/
+    -fx-border-color: darkgrey;
 }
 
-.border{
-    -fx-border-color: white;
-    -fx-border-width: 5;
+.cell{
+    -fx-border-width: 4;
+    -fx-border-color: darkgrey;
+    -fx-background-color: #4D4D4D;
 }

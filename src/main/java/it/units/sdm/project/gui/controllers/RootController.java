@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,7 +23,7 @@ public class RootController implements Initializable {
     @FXML
     private SelectorSymbolController selectorSymbolController;
 
-//    public Board board = new Board();
+    public Board logicBoard = new Board();
 
 
     @Override
@@ -36,5 +35,6 @@ public class RootController implements Initializable {
     public Symbol getSymbol(){
         return selectorSymbolController.getSymbol();
     }
+
 
 }
