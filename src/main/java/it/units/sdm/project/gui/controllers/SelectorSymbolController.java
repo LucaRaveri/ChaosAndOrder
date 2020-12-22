@@ -7,9 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.Shadow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -70,13 +68,12 @@ public class SelectorSymbolController implements Initializable {
         this.symbol = symbol;
     }
 
-    ;
 
     public Symbol getSymbol() {
         return symbol;
     }
 
-    public void injectRootCotroller(RootController rootController) {
+    public void injectRootController(RootController rootController) {
         this.rootController = rootController;
     }
 }

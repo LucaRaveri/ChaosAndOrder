@@ -1,0 +1,21 @@
+.root{
+    -fx-background-color:#4D4D4D;
+    -fx-text-fill: white;
+}
+
+.grid{
+    /*-fx-background-image: url("/Board.JPG");*/
+    -fx-background-radius: 5.0;
+    -fx-border-width: 10;
+    -fx-stroke-width: 5;
+    /*-fx-background-insets: 2000;*/
+    -fx-stroke: red;
+    -fx-border-color: white;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.border{
+    -fx-border-color: white;
+    -fx-border-width: 5;
+}
