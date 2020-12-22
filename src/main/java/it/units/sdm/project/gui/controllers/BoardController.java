@@ -35,6 +35,7 @@ public class BoardController implements Initializable {
     {
         cross = new Image(getClass().getResourceAsStream("/cross.png"));
         circle = new Image(getClass().getResourceAsStream("/circle.png"));
+
         mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/pop.mp3").toString()));
         mediaPlayer.seek(Duration.ZERO);
 
@@ -54,7 +55,6 @@ public class BoardController implements Initializable {
         AnchorPane.setBottomAnchor(board, 50.0);
 
 
-//        board.setGridLinesVisible(true);
         board.getStyleClass().add("grid");
 
 
@@ -98,13 +98,12 @@ public class BoardController implements Initializable {
             rootController.logicBoard.addSymbol(i, j, symbol);
             System.out.println(WinnerChecker.thereIsAWinner(rootController.logicBoard));
 
+            rootController.changePlayer();
+
         } else if (symbol == Symbol.CROSS) {
             ImageView imageView = new ImageView(cross);
             imageView.setFitWidth(50);
             imageView.setFitHeight(50);
-
-            /* add animation */
-
 
             mediaPlayer.seek(Duration.ZERO);
             scaleTransition.setNode(imageView);
@@ -112,12 +111,14 @@ public class BoardController implements Initializable {
             mediaPlayer.play();
             scaleTransition.play();
 
-
             cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
             System.out.println(WinnerChecker.thereIsAWinner(rootController.logicBoard));
+
+            rootController.changePlayer();
         }
+
 
     }
 

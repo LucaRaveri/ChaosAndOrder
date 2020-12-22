@@ -1,5 +1,7 @@
 package it.units.sdm.project.gui.controllers;
 
+import it.units.sdm.project.entities.Player;
+import it.units.sdm.project.entities.Role;
 import it.units.sdm.project.entities.Symbol;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -27,8 +29,13 @@ public class SelectorSymbolController implements Initializable {
     ImageView circle;
 
     RootController rootController;
+    Player currentPlayer;
     Symbol symbol;
 
+    {
+        currentPlayer=new Player(Role.ORDER);
+        currentPlayer.setRole(Role.ORDER);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,5 +82,16 @@ public class SelectorSymbolController implements Initializable {
 
     public void injectRootController(RootController rootController) {
         this.rootController = rootController;
+    }
+
+    public void switchPlayer() {
+        if (currentPlayer.getRole() == Role.ORDER) {
+            nextMove.setText("You are player CHAOS.\nSelect your next symbol!");
+            currentPlayer.setRole(Role.CHAOS);
+        } else {
+            nextMove.setText("You are player ORDER.\nSelect your next symbol!");
+            currentPlayer.setRole(Role.ORDER);
+        }
+
     }
 }
