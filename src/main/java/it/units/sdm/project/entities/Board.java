@@ -3,22 +3,24 @@ package it.units.sdm.project.entities;
 import it.units.sdm.project.exceptions.TakenCellException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Board {
 
     public static final int SIZE = 6;
-    private final List<Cell> board;
+    private final List<Cell> cells;
 
     public Board() {
-        board = new ArrayList<>();
+        cells = new ArrayList<>();
         this.build();
     }
 
+    public List<Cell> getCells() {
+        return cells;
+    }
+
     public Cell getCell(int row, int column) {
-        return board.stream()
+        return cells.stream()
                 .filter(c -> c.getRow() == row && c.getColumn() == column)
                 .findFirst().get();
     }
@@ -30,26 +32,15 @@ public class Board {
         getCell(x,y).setSymbol(symbol);
     }
 
-//    public boolean isFull() {
-//        for (int row = 0; row < SIZE; row++) {
-//            for (int column = 0; column < SIZE; column++) {
-//                if (board[row][column].getSymbol() == null) {
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
-
     public boolean isFull() {
-        return !board.stream()
+        return !cells.stream()
                 .anyMatch(Cell::isEmpty);
     }
 
     private void build() {
         for (int row = 0; row < SIZE; row++) {
             for (int column = 0; column < SIZE; column++) {
-                board.add( new Cell(row, column));
+                cells.add( new Cell(row, column));
             }
         }
     }
