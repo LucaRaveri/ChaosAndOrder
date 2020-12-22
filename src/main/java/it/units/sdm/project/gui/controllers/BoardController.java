@@ -90,53 +90,6 @@ public class BoardController implements Initializable {
     }
 
     private void makeMove(StackPane cell, Symbol symbol) throws TakenCellException {
-        if (symbol == Symbol.CIRCLE) {
-            ImageView imageView = new ImageView(circle);
-            imageView.setFitWidth(50);
-            imageView.setFitHeight(50);
-
-            scaleTransition.setNode(imageView);
-            mediaPlayer.seek(Duration.ZERO);
-
-            mediaPlayer.play();
-            scaleTransition.play();
-
-            cell.getChildren().add(imageView);
-            cell.setDisable(true);
-            rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
-
-            if (WinnerChecker.thereIsAWinner(rootController.logicBoard)) {
-                EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
-                endGameWindow.show();
-            }
-
-            rootController.changePlayer();
-
-        } else if (symbol == Symbol.CROSS) {
-            ImageView imageView = new ImageView(cross);
-            imageView.setFitWidth(50);
-            imageView.setFitHeight(50);
-
-            mediaPlayer.seek(Duration.ZERO);
-            scaleTransition.setNode(imageView);
-
-            mediaPlayer.play();
-            scaleTransition.play();
-
-            cell.getChildren().add(imageView);
-            cell.setDisable(true);
-            rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
-
-            if (WinnerChecker.thereIsAWinner(rootController.logicBoard)) {
-                EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
-                endGameWindow.show();
-            }
-
-            rootController.changePlayer();
-        }
-    }
-
-    private void makeMove(int i, int j, Symbol symbol) throws TakenCellException {
 
         ImageView imageView = new ImageView();
         imageView.setFitHeight(50);
@@ -154,9 +107,9 @@ public class BoardController implements Initializable {
         mediaPlayer.play();
         scaleTransition.play();
 
-        cells[i][j].getChildren().add(imageView);
-        cells[i][j].setDisable(true);
-        rootController.logicBoard.addSymbol(i, j, symbol);
+        cell.getChildren().add(imageView);
+        cell.setDisable(true);
+        rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
 
         if (WinnerChecker.thereIsAWinner(rootController.logicBoard)) {
             EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
