@@ -2,11 +2,9 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
+<GridPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:id="anchorPane"
+            fx:id="board"
             fx:controller="it.units.sdm.project.gui.controllers.BoardController">
 
-<GridPane fx:id="board"/>
-
-</AnchorPane>
+</GridPane>

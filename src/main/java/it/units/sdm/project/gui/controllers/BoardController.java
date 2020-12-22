@@ -6,6 +6,7 @@ import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -21,8 +22,6 @@ import java.util.ResourceBundle;
 public class BoardController implements Initializable {
 
     @FXML
-    AnchorPane anchorPane;
-    @FXML
     GridPane board;
 
     RootController rootController;
@@ -37,7 +36,6 @@ public class BoardController implements Initializable {
         circle = new Image(getClass().getResourceAsStream("/circle.png"));
 
         mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/pop.mp3").toString()));
-        mediaPlayer.seek(Duration.ZERO);
 
         scaleTransition = new ScaleTransition(Duration.seconds(0.3));
         scaleTransition.setFromX(0);
@@ -49,11 +47,6 @@ public class BoardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        AnchorPane.setBottomAnchor(anchorPane, 0.0);
-        AnchorPane.setLeftAnchor(anchorPane, 120.0);
-        AnchorPane.setBottomAnchor(board, 50.0);
-
 
         board.getStyleClass().add("grid");
 
@@ -96,6 +89,7 @@ public class BoardController implements Initializable {
             cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
+
             System.out.println(WinnerChecker.thereIsAWinner(rootController.logicBoard));
 
             rootController.changePlayer();
@@ -119,9 +113,11 @@ public class BoardController implements Initializable {
             rootController.changePlayer();
         }
 
-
     }
 
+    public GridPane getBoard() {
+        return board;
+    }
 
     public void injectRootController(RootController rootController) {
         this.rootController = rootController;
