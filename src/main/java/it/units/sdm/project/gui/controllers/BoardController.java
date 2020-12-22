@@ -21,7 +21,6 @@ public class BoardController implements Initializable {
     GridPane board;
 
     RootController rootController;
-
     Rectangle[][] cells = new Rectangle[6][6];
 
     @Override
@@ -43,21 +42,22 @@ public class BoardController implements Initializable {
                 cells[i][j].setHeight(80);
                 cells[i][j].setWidth(80);
                 cells[i][j].setFill(Color.WHITE);
-                cells[i][j].setOnMouseClicked(event -> setSymbol(row, column, rootController.getSymbol()));
+                cells[i][j].setOnMouseClicked(event -> makeMove(row, column, rootController.getSymbol()));
                 board.add(cells[i][j], i, j);
             }
         }
 
     }
 
-    private void setSymbol(int i, int j, Symbol symbol) {
+    private void makeMove(int i, int j, Symbol symbol) {
+
+
         if (symbol == Symbol.CIRCLE) {
             cells[i][j].setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/circle.png"))));
-        } else if (symbol == Symbol.CROSS) {
-            cells[i][j].setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/cross.png"))));
         } else {
-            System.out.println("The user has to select the symbol before inserting it");
+            cells[i][j].setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/cross.png"))));
         }
+        cells[i][j].setDisable(true);
     }
 
 
