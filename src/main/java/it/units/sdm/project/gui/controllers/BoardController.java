@@ -2,6 +2,7 @@ package it.units.sdm.project.gui.controllers;
 
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
+import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +15,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -27,8 +27,17 @@ public class BoardController implements Initializable {
 
     RootController rootController;
     StackPane[][] cells = new StackPane[6][6];
-    Image cross = new Image(getClass().getResourceAsStream("/cross.png"));
-    Image circle =new Image(getClass().getResourceAsStream("/circle.png"));
+    Image cross;
+    Image circle;
+    MediaPlayer mediaPlayer;
+
+    {
+        cross = new Image(getClass().getResourceAsStream("/cross.png"));
+        circle = new Image(getClass().getResourceAsStream("/circle.png"));
+        mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/pop.mp3").toString()));
+        mediaPlayer.seek(Duration.ZERO);
+//        mediaPlayer.setOnReady();
+    }
 
 
     @Override
@@ -37,6 +46,7 @@ public class BoardController implements Initializable {
         AnchorPane.setBottomAnchor(anchorPane, 0.0);
         AnchorPane.setLeftAnchor(anchorPane, 120.0);
         AnchorPane.setBottomAnchor(board, 50.0);
+
 
 //        board.setGridLinesVisible(true);
         board.getStyleClass().add("grid");
@@ -77,11 +87,16 @@ public class BoardController implements Initializable {
             scaleTransition.setFromY(0);
             scaleTransition.setToX(1);
             scaleTransition.setToY(1);
+
+            mediaPlayer.seek(Duration.ZERO);
+            mediaPlayer.play();
             scaleTransition.play();
 
             cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
+            System.out.println(WinnerChecker.thereIsAWinner(rootController.logicBoard));
+
         } else if (symbol == Symbol.CROSS) {
             ImageView imageView = new ImageView(cross);
             imageView.setFitWidth(50);
@@ -94,16 +109,15 @@ public class BoardController implements Initializable {
             scaleTransition.setToX(1);
             scaleTransition.setToY(1);
 
-            Media sound = new Media(new File("C:\\Users\\massi\\OneDrive\\Desktop\\pop-sound.mp3").toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.seek(Duration.ZERO);
             mediaPlayer.play();
-
             scaleTransition.play();
 
 
             cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
+            System.out.println(WinnerChecker.thereIsAWinner(rootController.logicBoard));
         }
 
     }
