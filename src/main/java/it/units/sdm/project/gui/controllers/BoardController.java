@@ -23,8 +23,8 @@ public class BoardController implements Initializable {
 
     RootController rootController;
     StackPane[][] cells = new StackPane[6][6];
-    ImageView cross = new ImageView(new Image(getClass().getResourceAsStream("/cross.png")));
-    ImageView circle = new ImageView(new Image(getClass().getResourceAsStream("/circle.png")));
+    Image cross = new Image(getClass().getResourceAsStream("/cross.png"));
+    Image circle =new Image(getClass().getResourceAsStream("/circle.png"));
 
 
     @Override
@@ -37,10 +37,10 @@ public class BoardController implements Initializable {
 //        board.setGridLinesVisible(true);
         board.getStyleClass().add("grid");
 
-        cross.setFitWidth(50);
-        cross.setFitHeight(50);
-        circle.setFitHeight(50);
-        circle.setFitWidth(50);
+//        cross.setFitWidth(50);
+//        cross.setFitHeight(50);
+//        circle.setFitHeight(50);
+//        circle.setFitWidth(50);
 
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells.length; j++) {
@@ -67,14 +67,17 @@ public class BoardController implements Initializable {
     private void makeMove(int i, int j, Symbol symbol) throws TakenCellException {
 
         if (symbol == Symbol.CIRCLE) {
-//            cells[i][j].setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/circle.png"))));
-            cells[i][j].getChildren().add(circle);
+            ImageView imageView = new ImageView(circle);
+            imageView.setFitWidth(50);
+            imageView.setFitHeight(50);
+            cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
         } else if (symbol == Symbol.CROSS) {
-//            cells[i][j].setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/cross.png"))));
-//            cells[i][j].setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/cross.png"))));
-            cells[i][j].getChildren().add(cross);
+            ImageView imageView = new ImageView(cross);
+            imageView.setFitWidth(50);
+            imageView.setFitHeight(50);
+            cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
         }
