@@ -7,10 +7,8 @@ import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
@@ -33,8 +31,8 @@ public class BoardController implements Initializable {
     ScaleTransition scaleTransition;
 
     {
-        cross = new Image(getClass().getResourceAsStream("/cross.png"));
-        circle = new Image(getClass().getResourceAsStream("/circle.png"));
+        cross = new Image(getClass().getResourceAsStream("/images/cross.png"));
+        circle = new Image(getClass().getResourceAsStream("/images/circle.png"));
 
         mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/pop.mp3").toString()));
 
