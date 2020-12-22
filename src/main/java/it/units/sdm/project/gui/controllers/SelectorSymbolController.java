@@ -7,8 +7,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.effect.BlurType;
-import javafx.scene.effect.Shadow;
+import javafx.scene.effect.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -31,10 +30,13 @@ public class SelectorSymbolController implements Initializable {
     RootController rootController;
     Player currentPlayer;
     Symbol symbol;
+    Effect effect;
 
     {
         currentPlayer = new Player(Role.ORDER);
         currentPlayer.setRole(Role.ORDER);
+        symbol = Symbol.CIRCLE;
+        effect = new DropShadow(50d, Color.WHITE);
     }
 
     @Override
@@ -56,16 +58,23 @@ public class SelectorSymbolController implements Initializable {
         nextMove.setText("You are player ORDER.\nSelect your next symbol!");
         nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 20));
 
+        circle.setEffect(effect);
     }
 
     @FXML
     private void selectSymbol(Event e) {
+
+        Symbol currentSymbol, oldSymbol;
+
+        currentSymbol = (e.getSource() == circle) ? Symbol.CIRCLE : Symbol.CROSS;
+        oldSymbol = (currentSymbol == Symbol.CIRCLE) ? Symbol.CROSS : Symbol.CIRCLE;
+
         if (e.getSource() == circle) {
-            circle.setEffect(new Shadow(BlurType.GAUSSIAN, Color.AQUA, 5.0));
+            circle.setEffect(effect);
             cross.setEffect(null);
             setSymbol(Symbol.CIRCLE);
         } else {
-            cross.setEffect(new Shadow(BlurType.GAUSSIAN, Color.RED, 5.0));
+            cross.setEffect(effect);
             circle.setEffect(null);
             setSymbol(Symbol.CROSS);
         }
@@ -92,6 +101,5 @@ public class SelectorSymbolController implements Initializable {
             nextMove.setText("You are player ORDER.\nSelect your next symbol!");
             currentPlayer.setRole(Role.ORDER);
         }
-
     }
 }

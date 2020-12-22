@@ -25,14 +25,13 @@ public class RootController implements Initializable {
 
     public Board logicBoard = new Board();
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         menuBarController.injectRootController(this);
         boardController.injectRootController(this);
 
-        AnchorPane.setBottomAnchor(boardController.getBoard(), 20d);
-        AnchorPane.setLeftAnchor(boardController.getBoard(), 135d);
+        AnchorPane.setBottomAnchor(boardController.getBoard(), 25d);
+        AnchorPane.setLeftAnchor(boardController.getBoard(), 50d);
     }
 
     public Symbol getSymbol(){

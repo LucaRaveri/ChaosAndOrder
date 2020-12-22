@@ -16,7 +16,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
 
 public class BoardController implements Initializable {
 
@@ -49,6 +51,21 @@ public class BoardController implements Initializable {
 
         board.getStyleClass().add("grid");
 
+//        Stream<StackPane> cellStream = Arrays.stream(cells).flatMap(Arrays::stream);
+//        cellStream.forEach(cell -> {
+//            cell = new StackPane();
+//            cell.setPrefWidth(80);
+//            cell.setPrefHeight(80);
+//            cell.getStyleClass().add("cell");
+//            final StackPane finalCell = cell;
+//            cell.setOnMouseClicked(event -> {
+//                try {
+//                    makeMove(finalCell, rootController.getSymbol());
+//                } catch (TakenCellException e) {
+//                    e.getMessage();
+//                }
+//            });
+//        });
 
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells.length; j++) {
@@ -61,8 +78,8 @@ public class BoardController implements Initializable {
                 cells[i][j].getStyleClass().add("cell");
                 cells[i][j].setOnMouseClicked(event -> {
                     try {
-                        makeMove(row, column, rootController.getSymbol());
-                    } catch (TakenCellException e) {
+                        makeMove(cells[row][column], rootController.getSymbol());
+                    } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                 });
@@ -72,8 +89,7 @@ public class BoardController implements Initializable {
 
     }
 
-    private void makeMove(int i, int j, Symbol symbol) throws TakenCellException {
-
+    private void makeMove(StackPane cell, Symbol symbol) throws TakenCellException {
         if (symbol == Symbol.CIRCLE) {
             ImageView imageView = new ImageView(circle);
             imageView.setFitWidth(50);
@@ -85,11 +101,11 @@ public class BoardController implements Initializable {
             mediaPlayer.play();
             scaleTransition.play();
 
-            cells[i][j].getChildren().add(imageView);
-            cells[i][j].setDisable(true);
-            rootController.logicBoard.addSymbol(i, j, symbol);
+            cell.getChildren().add(imageView);
+            cell.setDisable(true);
+            rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
 
-            if(WinnerChecker.thereIsAWinner(rootController.logicBoard)){
+            if (WinnerChecker.thereIsAWinner(rootController.logicBoard)) {
                 EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
                 endGameWindow.show();
             }
@@ -107,19 +123,47 @@ public class BoardController implements Initializable {
             mediaPlayer.play();
             scaleTransition.play();
 
-            cells[i][j].getChildren().add(imageView);
-            cells[i][j].setDisable(true);
-            rootController.logicBoard.addSymbol(i, j, symbol);
+            cell.getChildren().add(imageView);
+            cell.setDisable(true);
+            rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
 
-            if(WinnerChecker.thereIsAWinner(rootController.logicBoard)){
+            if (WinnerChecker.thereIsAWinner(rootController.logicBoard)) {
                 EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
                 endGameWindow.show();
             }
 
-
             rootController.changePlayer();
         }
+    }
 
+    private void makeMove(int i, int j, Symbol symbol) throws TakenCellException {
+
+        ImageView imageView = new ImageView();
+        imageView.setFitHeight(50);
+        imageView.setFitWidth(50);
+
+        if (symbol == Symbol.CIRCLE) {
+            imageView.setImage(circle);
+        } else {
+            imageView.setImage(cross);
+        }
+
+        scaleTransition.setNode(imageView);
+        mediaPlayer.seek(Duration.ZERO);
+
+        mediaPlayer.play();
+        scaleTransition.play();
+
+        cells[i][j].getChildren().add(imageView);
+        cells[i][j].setDisable(true);
+        rootController.logicBoard.addSymbol(i, j, symbol);
+
+        if (WinnerChecker.thereIsAWinner(rootController.logicBoard)) {
+            EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
+            endGameWindow.show();
+        }
+
+        rootController.changePlayer();
     }
 
     public GridPane getBoard() {

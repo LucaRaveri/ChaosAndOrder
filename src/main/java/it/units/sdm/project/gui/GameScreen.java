@@ -17,7 +17,7 @@ public class GameScreen extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Root.fxml"));
-        Scene scene = new Scene(root, 750, 700, Color.web("0x4D4D4D"));
+        Scene scene = new Scene(root, 600, 650, Color.web("0x4D4D4D"));
         scene.getStylesheets().add("/css/stylesheet.css");
 
         primaryStage.setScene(scene);
