@@ -30,13 +30,19 @@ public class BoardController implements Initializable {
     Image cross;
     Image circle;
     MediaPlayer mediaPlayer;
+    ScaleTransition scaleTransition;
 
     {
         cross = new Image(getClass().getResourceAsStream("/cross.png"));
         circle = new Image(getClass().getResourceAsStream("/circle.png"));
         mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/pop.mp3").toString()));
         mediaPlayer.seek(Duration.ZERO);
-//        mediaPlayer.setOnReady();
+
+        scaleTransition = new ScaleTransition(Duration.seconds(0.3));
+        scaleTransition.setFromX(0);
+        scaleTransition.setFromY(0);
+        scaleTransition.setToX(1);
+        scaleTransition.setToY(1);
     }
 
 
@@ -81,14 +87,9 @@ public class BoardController implements Initializable {
             imageView.setFitWidth(50);
             imageView.setFitHeight(50);
 
-            /* add animation */
-            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.3), imageView);
-            scaleTransition.setFromX(0);
-            scaleTransition.setFromY(0);
-            scaleTransition.setToX(1);
-            scaleTransition.setToY(1);
-
+            scaleTransition.setNode(imageView);
             mediaPlayer.seek(Duration.ZERO);
+
             mediaPlayer.play();
             scaleTransition.play();
 
@@ -103,13 +104,11 @@ public class BoardController implements Initializable {
             imageView.setFitHeight(50);
 
             /* add animation */
-            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.3), imageView);
-            scaleTransition.setFromX(0);
-            scaleTransition.setFromY(0);
-            scaleTransition.setToX(1);
-            scaleTransition.setToY(1);
+
 
             mediaPlayer.seek(Duration.ZERO);
+            scaleTransition.setNode(imageView);
+
             mediaPlayer.play();
             scaleTransition.play();
 
