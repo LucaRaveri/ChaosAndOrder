@@ -2,15 +2,19 @@ package it.units.sdm.project.gui.controllers;
 
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,10 +41,6 @@ public class BoardController implements Initializable {
 //        board.setGridLinesVisible(true);
         board.getStyleClass().add("grid");
 
-//        cross.setFitWidth(50);
-//        cross.setFitHeight(50);
-//        circle.setFitHeight(50);
-//        circle.setFitWidth(50);
 
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells.length; j++) {
@@ -70,6 +70,15 @@ public class BoardController implements Initializable {
             ImageView imageView = new ImageView(circle);
             imageView.setFitWidth(50);
             imageView.setFitHeight(50);
+
+            /* add animation */
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.3), imageView);
+            scaleTransition.setFromX(0);
+            scaleTransition.setFromY(0);
+            scaleTransition.setToX(1);
+            scaleTransition.setToY(1);
+            scaleTransition.play();
+
             cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
@@ -77,6 +86,21 @@ public class BoardController implements Initializable {
             ImageView imageView = new ImageView(cross);
             imageView.setFitWidth(50);
             imageView.setFitHeight(50);
+
+            /* add animation */
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.3), imageView);
+            scaleTransition.setFromX(0);
+            scaleTransition.setFromY(0);
+            scaleTransition.setToX(1);
+            scaleTransition.setToY(1);
+
+            Media sound = new Media(new File("C:\\Users\\massi\\OneDrive\\Desktop\\pop-sound.mp3").toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+
+            scaleTransition.play();
+
+
             cells[i][j].getChildren().add(imageView);
             cells[i][j].setDisable(true);
             rootController.logicBoard.addSymbol(i, j, symbol);
@@ -88,4 +112,6 @@ public class BoardController implements Initializable {
     public void injectRootController(RootController rootController) {
         this.rootController = rootController;
     }
+
+
 }
