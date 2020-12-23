@@ -6,12 +6,12 @@
          fx:controller="it.units.sdm.project.gui.controllers.MenuBarController"
          fx:id="menuBar">
 
-    <Menu fx:id="fileMenu">
-        <MenuItem fx:id="newGame"/>
-        <MenuItem fx:id="exit"/>
+    <Menu fx:id="fileMenu" text="File">
+        <MenuItem fx:id="newGame" text="New Game..."/>
+        <MenuItem fx:id="exit" text="Exit..." />
     </Menu>
-    <Menu fx:id="helpMenu">
-        <MenuItem fx:id="readInstructions"/>
+    <Menu fx:id="helpMenu" text="Help">
+        <MenuItem fx:id="readInstructions" text="Read Instructions..."/>
     </Menu>
 </MenuBar>
 

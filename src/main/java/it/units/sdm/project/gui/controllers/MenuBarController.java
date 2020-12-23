@@ -1,5 +1,6 @@
 package it.units.sdm.project.gui.controllers;
 
+import it.units.sdm.project.gui.windows.InstructionsWindow;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
@@ -12,9 +13,6 @@ import java.util.ResourceBundle;
 
 public class MenuBarController implements Initializable{
 
-    private RootController rootController;
-
-
     @FXML MenuBar menuBar;
 
     @FXML Menu fileMenu;
@@ -24,22 +22,19 @@ public class MenuBarController implements Initializable{
     @FXML Menu helpMenu;
     @FXML MenuItem readInstructions;
 
-    public void injectRootController(RootController rootController){
-        this.rootController = rootController;
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         AnchorPane.setRightAnchor(menuBar, 0.0);
         AnchorPane.setLeftAnchor(menuBar, 0.0);
 
-        fileMenu.setText("File");
-        newGame.setText("New Game...");
-        exit.setText("Exit...");
+        exit.setOnAction(event-> System.exit(0));
 
-        helpMenu.setText("Help");
-        readInstructions.setText("Read Instructions...");
+        readInstructions.setOnAction(event -> {
+            InstructionsWindow instructionsWindow = new InstructionsWindow();
+            instructionsWindow.show();
+        });
 
     }
+
 }

@@ -2,7 +2,7 @@ package it.units.sdm.project.gui.controllers;
 
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
-import it.units.sdm.project.gui.EndGameWindow;
+import it.units.sdm.project.gui.windows.EndGameWindow;
 import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
@@ -16,9 +16,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.Arrays;
 import java.util.ResourceBundle;
-import java.util.stream.Stream;
 
 public class BoardController implements Initializable {
 

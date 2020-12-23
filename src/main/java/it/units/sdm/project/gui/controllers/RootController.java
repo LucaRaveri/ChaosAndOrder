@@ -15,9 +15,6 @@ public class RootController implements Initializable {
     private AnchorPane anchorPane;
 
     @FXML
-    private MenuBarController menuBarController;
-
-    @FXML
     private BoardController boardController;
 
     @FXML
@@ -27,7 +24,6 @@ public class RootController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        menuBarController.injectRootController(this);
         boardController.injectRootController(this);
 
         AnchorPane.setBottomAnchor(boardController.getBoard(), 25d);
