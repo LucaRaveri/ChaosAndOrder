@@ -7,7 +7,11 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -18,29 +22,43 @@ import java.util.ResourceBundle;
 
 public class SelectorSymbolController implements Initializable {
 
-    @FXML
-    AnchorPane anchorPane;
-    @FXML
-    Label nextMove;
-    @FXML
-    ImageView cross;
-    @FXML
-    ImageView circle;
+    @FXML    AnchorPane anchorPane;
+    @FXML    Label nextMove;
+    @FXML    RadioButton crossRadio;
+    @FXML    RadioButton circleRadio;
 
-    RootController rootController;
+    ToggleGroup toggleGroup;
+    ImageView cross = new ImageView(new Image("/images/cross.png"));
+    ImageView circle = new ImageView(new Image("/images/circle.png"));
+
     Player currentPlayer;
     Symbol symbol;
-    Effect effect;
+    Effect circleEffect;
+    Effect crossEffect;
 
     {
         currentPlayer = new Player(Role.ORDER);
-        currentPlayer.setRole(Role.ORDER);
         symbol = Symbol.CIRCLE;
-        effect = new DropShadow(50d, Color.WHITE);
+
+        circleEffect = new DropShadow(10d, Color.BLUE);
+        crossEffect = new DropShadow(10d, Color.RED);
+
+        cross.setFitWidth(50);
+        cross.setFitHeight(50);
+        circle.setFitWidth(50);
+        circle.setFitHeight(50);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        toggleGroup = new ToggleGroup();
+        crossRadio.setToggleGroup(toggleGroup);
+        circleRadio.setToggleGroup(toggleGroup);
+        crossRadio.setGraphic(cross);
+        circleRadio.setGraphic(circle);
+
+//        circleButton.setEffect(circleEffect);
 
         AnchorPane.setRightAnchor(anchorPane, 50.0);
         AnchorPane.setLeftAnchor(anchorPane, 50.0);
@@ -48,36 +66,16 @@ public class SelectorSymbolController implements Initializable {
         AnchorPane.setLeftAnchor(nextMove, 10.0);
 
         AnchorPane.setTopAnchor(nextMove, 50.0);
-        AnchorPane.setTopAnchor(circle, 50.0);
-        AnchorPane.setTopAnchor(cross, 50.0);
+        AnchorPane.setTopAnchor(circleRadio, 50.0);
+        AnchorPane.setTopAnchor(crossRadio, 50.0);
 
-        AnchorPane.setRightAnchor(cross, 40.0);
-        AnchorPane.setRightAnchor(circle, 120.0);
+        AnchorPane.setRightAnchor(crossRadio, 40.0);
+        AnchorPane.setRightAnchor(circleRadio, 120.0);
 
         nextMove.setTextFill(Color.WHITE);
         nextMove.setText("You are player ORDER.\nSelect your next symbol!");
         nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 20));
 
-        circle.setEffect(effect);
-    }
-
-    @FXML
-    private void selectSymbol(Event e) {
-
-        Symbol currentSymbol, oldSymbol;
-
-        currentSymbol = (e.getSource() == circle) ? Symbol.CIRCLE : Symbol.CROSS;
-        oldSymbol = (currentSymbol == Symbol.CIRCLE) ? Symbol.CROSS : Symbol.CIRCLE;
-
-        if (e.getSource() == circle) {
-            circle.setEffect(effect);
-            cross.setEffect(null);
-            setSymbol(Symbol.CIRCLE);
-        } else {
-            cross.setEffect(effect);
-            circle.setEffect(null);
-            setSymbol(Symbol.CROSS);
-        }
     }
 
     private void setSymbol(Symbol symbol) {
@@ -86,12 +84,11 @@ public class SelectorSymbolController implements Initializable {
 
 
     public Symbol getSymbol() {
-        return symbol;
+
+        return (toggleGroup.getSelectedToggle()==circleRadio)? Symbol.CIRCLE: Symbol.CROSS;
+
     }
 
-    public void injectRootController(RootController rootController) {
-        this.rootController = rootController;
-    }
 
     public void switchPlayer() {
         if (currentPlayer.getRole() == Role.ORDER) {

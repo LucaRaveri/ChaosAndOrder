@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="anchorPane"
@@ -11,12 +10,17 @@
 
     <Label fx:id="nextMove"/>
 
-    <ImageView fx:id="circle" onMouseClicked="#selectSymbol" pickOnBounds="true">
-        <Image url="/images/circle.png" requestedHeight="50" preserveRatio="true"/>
-    </ImageView>
-    <ImageView fx:id="cross" onMouseClicked="#selectSymbol" pickOnBounds="true">
-        <Image url="/images/cross.png" requestedHeight="50" preserveRatio="true"/>
-    </ImageView>
+    <RadioButton fx:id="crossRadio">
+        <!--        <ImageView pickOnBounds="true">-->
+        <!--            <Image url="/images/cross.png" />-->
+        <!--        </ImageView>-->
+    </RadioButton>
+
+    <RadioButton fx:id="circleRadio" selected="true">
+        <!--        <ImageView fx:id="circle" onMouseClicked="#selectSymbol" pickOnBounds="true">-->
+        <!--            <Image url="/images/circle.png" requestedHeight="50" preserveRatio="true"/>-->
+        <!--        </ImageView>-->
+    </RadioButton>
 
 
 </AnchorPane>
