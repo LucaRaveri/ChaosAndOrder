@@ -36,7 +36,7 @@ public class BoardController implements Initializable {
         cross = new Image(getClass().getResourceAsStream("/images/cross.png"));
         circle = new Image(getClass().getResourceAsStream("/images/circle.png"));
 
-        mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/pop.mp3").toString()));
+        mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/sounds/pop.mp3").toString()));
 
         scaleTransition = new ScaleTransition(Duration.seconds(0.3));
         scaleTransition.setFromX(0);
@@ -66,6 +66,8 @@ public class BoardController implements Initializable {
 //                }
 //            });
 //        });
+
+
 
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells.length; j++) {

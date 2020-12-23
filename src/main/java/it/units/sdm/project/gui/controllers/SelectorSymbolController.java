@@ -3,29 +3,35 @@ package it.units.sdm.project.gui.controllers;
 import it.units.sdm.project.entities.Player;
 import it.units.sdm.project.entities.Role;
 import it.units.sdm.project.entities.Symbol;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.effect.*;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SelectorSymbolController implements Initializable {
 
-    @FXML AnchorPane anchorPane;
-    @FXML Label nextMove;
-    @FXML RadioButton crossRadio;
-    @FXML RadioButton circleRadio;
+    @FXML
+    AnchorPane anchorPane;
+    @FXML
+    Label nextMove;
+    @FXML
+    RadioButton crossRadio;
+    @FXML
+    RadioButton circleRadio;
 
     ToggleGroup toggleGroup;
     ImageView cross = new ImageView(new Image("/images/cross.png"));
@@ -35,6 +41,7 @@ public class SelectorSymbolController implements Initializable {
     Symbol symbol;
     Effect circleEffect;
     Effect crossEffect;
+    MediaPlayer mediaPlayer;
 
     {
         currentPlayer = new Player(Role.ORDER);
@@ -47,6 +54,8 @@ public class SelectorSymbolController implements Initializable {
         cross.setFitHeight(50);
         circle.setFitWidth(50);
         circle.setFitHeight(50);
+
+        mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/sounds/switch-symbol.mp3").toString()));
     }
 
     @Override
@@ -59,7 +68,6 @@ public class SelectorSymbolController implements Initializable {
         circleRadio.setGraphic(circle);
         circleRadio.setEffect(circleEffect);
 
-//        circleButton.setEffect(circleEffect);
 
         AnchorPane.setRightAnchor(anchorPane, 50.0);
         AnchorPane.setLeftAnchor(anchorPane, 50.0);
@@ -80,14 +88,18 @@ public class SelectorSymbolController implements Initializable {
     }
 
     public Symbol getSymbol() {
-        return (toggleGroup.getSelectedToggle()==circleRadio)? Symbol.CIRCLE: Symbol.CROSS;
+        return (toggleGroup.getSelectedToggle() == circleRadio) ? Symbol.CIRCLE : Symbol.CROSS;
     }
 
-    public void setEffect(){
-        if(toggleGroup.getSelectedToggle()==circleRadio){
+    public void setEffect() {
+
+        mediaPlayer.seek(Duration.ZERO);
+        mediaPlayer.play();
+
+        if (toggleGroup.getSelectedToggle() == circleRadio) {
             circleRadio.setEffect(circleEffect);
             crossRadio.setEffect(null);
-        } else{
+        } else {
             crossRadio.setEffect(crossEffect);
             circleRadio.setEffect(null);
         }
