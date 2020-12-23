@@ -10,12 +10,13 @@ import javafx.stage.Stage;
 
 public class InstructionsWindow extends Stage {
 
-    private static String INSTRUCTIONS = "Order and Chaos is a tic-tac-toe variant, played on a 6x6 game board. \n" +
-            "The player Order strives to create a five-in-a-row of either Xs or Os, \n" +
-            "while opponent Chaos endeavors to prevent this. Order moves first. \n";
+    private static String INSTRUCTIONS = "Order and Chaos is a tic-tac-toe variant, played on a 6x6 game board.\n" +
+            "The player Order strives to create a five-in-a-row of either Xs or Os,\n" +
+            "while opponent Chaos endeavors to prevent this. Order moves first.\n";
 
     public InstructionsWindow() {
         super();
+        setTitle("Chaos & Order Instructions");
         initModality(Modality.APPLICATION_MODAL);
         setResizable(false);
 

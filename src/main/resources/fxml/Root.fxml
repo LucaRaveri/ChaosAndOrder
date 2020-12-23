@@ -6,7 +6,7 @@
             fx:controller="it.units.sdm.project.gui.controllers.RootController"
             fx:id="anchorPane">
 
-       <fx:include fx:id="menuBar" source="MenuBar.fxml"/>
+       <fx:include fx:id="menuBar" source="MenuBar.fxml" />
        <fx:include fx:id="selectorSymbol" source="SelectorSymbolPanel.fxml"/>
        <fx:include fx:id="board" source="Board.fxml"/>
 

@@ -28,6 +28,7 @@ public class RootController implements Initializable {
 
         AnchorPane.setBottomAnchor(boardController.getBoard(), 25d);
         AnchorPane.setLeftAnchor(boardController.getBoard(), 50d);
+
     }
 
     public Symbol getSymbol(){

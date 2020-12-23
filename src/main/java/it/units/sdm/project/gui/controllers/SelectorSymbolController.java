@@ -71,12 +71,9 @@ public class SelectorSymbolController implements Initializable {
 
         AnchorPane.setRightAnchor(anchorPane, 50.0);
         AnchorPane.setLeftAnchor(anchorPane, 50.0);
+        AnchorPane.setTopAnchor(anchorPane, 50.0);
 
         AnchorPane.setLeftAnchor(nextMove, 10.0);
-        AnchorPane.setTopAnchor(nextMove, 50.0);
-
-        AnchorPane.setTopAnchor(circleRadio, 50.0);
-        AnchorPane.setTopAnchor(crossRadio, 50.0);
 
         AnchorPane.setRightAnchor(crossRadio, 40.0);
         AnchorPane.setRightAnchor(circleRadio, 120.0);

@@ -3,8 +3,12 @@
     -fx-text-fill: white;
 }
 
+.menubar{
+    -fx-border-width: 2;
+    -fx-border-color: blue;
+}
+
 .grid{
-    -fx-border-width: 10;
     -fx-border-width: 4;
     -fx-border-color: darkgrey;
 }

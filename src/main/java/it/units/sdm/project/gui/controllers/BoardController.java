@@ -95,6 +95,7 @@ public class BoardController implements Initializable {
         imageView.setFitHeight(50);
         imageView.setFitWidth(50);
 
+
         if (symbol == Symbol.CIRCLE) {
             imageView.setImage(circle);
         } else {
