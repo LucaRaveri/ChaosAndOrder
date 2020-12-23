@@ -22,10 +22,10 @@ import java.util.ResourceBundle;
 
 public class SelectorSymbolController implements Initializable {
 
-    @FXML    AnchorPane anchorPane;
-    @FXML    Label nextMove;
-    @FXML    RadioButton crossRadio;
-    @FXML    RadioButton circleRadio;
+    @FXML AnchorPane anchorPane;
+    @FXML Label nextMove;
+    @FXML RadioButton crossRadio;
+    @FXML RadioButton circleRadio;
 
     ToggleGroup toggleGroup;
     ImageView cross = new ImageView(new Image("/images/cross.png"));
@@ -57,6 +57,7 @@ public class SelectorSymbolController implements Initializable {
         circleRadio.setToggleGroup(toggleGroup);
         crossRadio.setGraphic(cross);
         circleRadio.setGraphic(circle);
+        circleRadio.setEffect(circleEffect);
 
 //        circleButton.setEffect(circleEffect);
 
@@ -64,8 +65,8 @@ public class SelectorSymbolController implements Initializable {
         AnchorPane.setLeftAnchor(anchorPane, 50.0);
 
         AnchorPane.setLeftAnchor(nextMove, 10.0);
-
         AnchorPane.setTopAnchor(nextMove, 50.0);
+
         AnchorPane.setTopAnchor(circleRadio, 50.0);
         AnchorPane.setTopAnchor(crossRadio, 50.0);
 
@@ -78,15 +79,18 @@ public class SelectorSymbolController implements Initializable {
 
     }
 
-    private void setSymbol(Symbol symbol) {
-        this.symbol = symbol;
+    public Symbol getSymbol() {
+        return (toggleGroup.getSelectedToggle()==circleRadio)? Symbol.CIRCLE: Symbol.CROSS;
     }
 
-
-    public Symbol getSymbol() {
-
-        return (toggleGroup.getSelectedToggle()==circleRadio)? Symbol.CIRCLE: Symbol.CROSS;
-
+    public void setEffect(){
+        if(toggleGroup.getSelectedToggle()==circleRadio){
+            circleRadio.setEffect(circleEffect);
+            crossRadio.setEffect(null);
+        } else{
+            crossRadio.setEffect(crossEffect);
+            circleRadio.setEffect(null);
+        }
     }
 
 

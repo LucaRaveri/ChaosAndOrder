@@ -8,19 +8,9 @@
             fx:id="anchorPane"
             fx:controller="it.units.sdm.project.gui.controllers.SelectorSymbolController">
 
-    <Label fx:id="nextMove"/>
+    <Label fx:id="nextMove" />
 
-    <RadioButton fx:id="crossRadio">
-        <!--        <ImageView pickOnBounds="true">-->
-        <!--            <Image url="/images/cross.png" />-->
-        <!--        </ImageView>-->
-    </RadioButton>
-
-    <RadioButton fx:id="circleRadio" selected="true">
-        <!--        <ImageView fx:id="circle" onMouseClicked="#selectSymbol" pickOnBounds="true">-->
-        <!--            <Image url="/images/circle.png" requestedHeight="50" preserveRatio="true"/>-->
-        <!--        </ImageView>-->
-    </RadioButton>
-
+    <RadioButton fx:id="crossRadio" onAction="#setEffect" pickOnBounds="true" />
+    <RadioButton fx:id="circleRadio" onAction="#setEffect" selected="true" pickOnBounds="true" />
 
 </AnchorPane>
