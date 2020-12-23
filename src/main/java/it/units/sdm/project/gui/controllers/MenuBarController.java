@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
