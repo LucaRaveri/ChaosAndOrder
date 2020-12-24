@@ -14,22 +14,25 @@ import static java.util.stream.IntStream.range;
 public class WinnerChecker {
 
     private static final int SIZE_TO_WIN = 5;
+    private static Role winnerRole;
 
     public static boolean thereIsAWinner(Board board) {
         return chaosWinCondition(board) || orderWinCondition(board);
     }
 
+    private static void setWinnerRole(Role role){
+        winnerRole = role;
+    }
+
     public static Role getWinnerRole(Board board) {
         if (thereIsAWinner(board)) {
             if (chaosWinCondition(board)) {
-                return Role.CHAOS;
-            } else {
-                return Role.ORDER;
+                setWinnerRole(Role.CHAOS);
+            } else if (orderWinCondition(board)) {
+                setWinnerRole(Role.ORDER);
             }
-        } else {
-            return null;
         }
-
+         return winnerRole;
     }
 
     private static boolean chaosWinCondition(Board board) {
@@ -113,7 +116,8 @@ public class WinnerChecker {
         return  cells.allMatch(c -> c.getSymbol() == Symbol.CROSS);
     }
 
-/*    public static boolean isQuintuple(Stream<Cell> cells) {
-        return isAQuintupleCross(cells) || isAQuintupleCircle(cells);
-    }*/
+    public static boolean isAQuintuple(Stream<Cell> cells) {
+        Supplier<Stream<Cell>> cellSupplier = () -> cells;
+        return isAQuintupleCross(cellSupplier.get()) || isAQuintupleCircle(cellSupplier.get());
+    }
 }

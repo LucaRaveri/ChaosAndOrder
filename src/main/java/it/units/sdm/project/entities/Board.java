@@ -4,6 +4,7 @@ import it.units.sdm.project.exceptions.TakenCellException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Board {
 
@@ -33,8 +34,8 @@ public class Board {
     }
 
     public boolean isFull() {
-        return !cells.stream()
-                .anyMatch(Cell::isEmpty);
+        return cells.stream()
+                .noneMatch(Cell::isEmpty);
     }
 
     private void build() {
@@ -44,5 +45,11 @@ public class Board {
             }
         }
     }
+
+    /*TODO: check if it can be done
+    private void build(){
+        cells.stream().forEach(cells.add(Cell::new));
+    }*/
+
 
 }
