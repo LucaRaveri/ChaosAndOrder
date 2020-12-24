@@ -40,7 +40,7 @@ public class WinnerChecker {
         return checkRows(board) || checkColumns(board) || checkDiagonals(board);
     }
 
-    public static boolean checkRows(Board board) {
+/*    public static boolean checkRows(Board board) {
         OptionalInt rowNumber = range(0, Board.SIZE).parallel().filter(x -> {
             Supplier<Stream<Cell>> stream = () -> range(0,Board.SIZE).mapToObj(i -> board.getCell(x,i));;
             Supplier<Stream<Cell>> firstFiveElements = () -> stream.get().limit(5);
@@ -51,9 +51,20 @@ public class WinnerChecker {
                     isAQuintupleCross(lastFiveElements.get());
         }).findAny();
         return rowNumber.isPresent();
+    }*/
+
+    public static boolean checkRows(Board board) {
+        OptionalInt rowNumber = range(0, Board.SIZE).parallel().filter(x ->
+        {
+            Supplier<Stream<Cell>> stream = () -> board.getCells().stream().filter(c -> c.getRow() == x);
+            //() -> range(0,Board.SIZE).mapToObj(i -> board.getCell(x,i));
+            return isAQuintupleCircle(stream.get().limit(5)) || isAQuintupleCross(stream.get().limit(5))
+                    || isAQuintupleCircle(stream.get().skip(1)) || isAQuintupleCross(stream.get().skip(1));
+        }).findAny();
+        return rowNumber.isPresent();
     }
 
-    public static boolean checkColumns(Board board) {
+/*    public static boolean checkColumns(Board board) {
         OptionalInt columnNumber = range(0, Board.SIZE).parallel().filter(x -> {
             Supplier<Stream<Cell>> stream = () -> range(0,Board.SIZE).mapToObj(i -> board.getCell(i,x));
             Supplier<Stream<Cell>> firstFiveElements = () -> stream.get().limit(5);
@@ -62,6 +73,17 @@ public class WinnerChecker {
                     isAQuintupleCross(firstFiveElements.get()) ||
                     isAQuintupleCircle(lastFiveElements.get()) ||
                     isAQuintupleCross(lastFiveElements.get());
+        }).findAny();
+        return columnNumber.isPresent();
+    }*/
+
+    public static boolean checkColumns(Board board) {
+        OptionalInt columnNumber = range(0, Board.SIZE).parallel().filter(x ->
+        {
+            Supplier<Stream<Cell>> stream = () -> board.getCells().stream().filter(c -> c.getColumn() == x);
+            //() -> range(0,Board.SIZE).mapToObj(i -> board.getCell(i,x));
+            return isAQuintupleCircle(stream.get().limit(5)) || isAQuintupleCross(stream.get().limit(5))
+                    || isAQuintupleCircle(stream.get().skip(1)) || isAQuintupleCross(stream.get().skip(1));
         }).findAny();
         return columnNumber.isPresent();
     }
@@ -140,4 +162,8 @@ public class WinnerChecker {
     public static boolean isAQuintupleCross(Stream<Cell> cells) {
         return  cells.allMatch(c -> c.getSymbol() == Symbol.CROSS);
     }
+
+/*    public static boolean isQuintuple(Stream<Cell> cells) {
+        return isAQuintupleCross(cells) || isAQuintupleCircle(cells);
+    }*/
 }
