@@ -33,7 +33,7 @@ public class WinnerChecker {
     }
 
     private static boolean chaosWinCondition(Board board) {
-        return board.isFull();
+        return board.isFull() && !orderWinCondition(board);
     }
 
     private static boolean orderWinCondition(Board board) {
