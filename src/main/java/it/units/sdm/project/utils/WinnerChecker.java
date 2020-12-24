@@ -40,18 +40,6 @@ public class WinnerChecker {
         return checkRows(board) || checkColumns(board) || checkDiagonals(board);
     }
 
-/*    public static boolean checkRows(Board board) {
-        OptionalInt rowNumber = range(0, Board.SIZE).parallel().filter(x -> {
-            Supplier<Stream<Cell>> stream = () -> range(0,Board.SIZE).mapToObj(i -> board.getCell(x,i));;
-            Supplier<Stream<Cell>> firstFiveElements = () -> stream.get().limit(5);
-            Supplier<Stream<Cell>> lastFiveElements = () -> stream.get().skip(1);
-            return isAQuintupleCircle(firstFiveElements.get()) ||
-                    isAQuintupleCross(firstFiveElements.get()) ||
-                    isAQuintupleCircle(lastFiveElements.get()) ||
-                    isAQuintupleCross(lastFiveElements.get());
-        }).findAny();
-        return rowNumber.isPresent();
-    }*/
 
     public static boolean checkRows(Board board) {
         OptionalInt rowNumber = range(0, Board.SIZE).parallel().filter(x ->
@@ -64,18 +52,6 @@ public class WinnerChecker {
         return rowNumber.isPresent();
     }
 
-/*    public static boolean checkColumns(Board board) {
-        OptionalInt columnNumber = range(0, Board.SIZE).parallel().filter(x -> {
-            Supplier<Stream<Cell>> stream = () -> range(0,Board.SIZE).mapToObj(i -> board.getCell(i,x));
-            Supplier<Stream<Cell>> firstFiveElements = () -> stream.get().limit(5);
-            Supplier<Stream<Cell>> lastFiveElements = () -> stream.get().skip(1);
-            return isAQuintupleCircle(firstFiveElements.get()) ||
-                    isAQuintupleCross(firstFiveElements.get()) ||
-                    isAQuintupleCircle(lastFiveElements.get()) ||
-                    isAQuintupleCross(lastFiveElements.get());
-        }).findAny();
-        return columnNumber.isPresent();
-    }*/
 
     public static boolean checkColumns(Board board) {
         OptionalInt columnNumber = range(0, Board.SIZE).parallel().filter(x ->
@@ -98,61 +74,35 @@ public class WinnerChecker {
     }
 
     private static boolean checkPrimaryDiagonal(Board board) {
-        Supplier<Stream<Cell>> diagonal = () -> range(0,Board.SIZE).mapToObj(i -> board.getCell(i,i));
-        Supplier<Stream<Cell>> firstFiveElements = () -> diagonal.get().limit(5);
-        if(isAQuintupleCircle(firstFiveElements.get()) || isAQuintupleCross(firstFiveElements.get())) {
-            return true;
-        }
-        Supplier<Stream<Cell>> lastFiveElements = () -> diagonal.get().skip(1);
-        if(isAQuintupleCircle(lastFiveElements.get()) || isAQuintupleCross(lastFiveElements.get())) {
-            return true;
-        }
-        return false;
+        Supplier<Stream<Cell>> LeftToRightDiagonal = () -> range(0, Board.SIZE).mapToObj(i -> board.getCell(i, i)); //parallel()?
+        return isAQuintupleCircle(LeftToRightDiagonal.get().limit(5)) || isAQuintupleCross(LeftToRightDiagonal.get().limit(5))
+                || isAQuintupleCircle(LeftToRightDiagonal.get().skip(1)) || isAQuintupleCross(LeftToRightDiagonal.get().skip(1));
     }
 
     private static boolean checkSecondaryDiagonal(Board board) {
-        Supplier<Stream<Cell>> diagonal = () -> range(0,Board.SIZE).mapToObj(i -> board.getCell(i,Board.SIZE-1-i));
-        Supplier<Stream<Cell>> firstFiveElements = () -> diagonal.get().limit(5);
-        if(isAQuintupleCircle(firstFiveElements.get()) || isAQuintupleCross(firstFiveElements.get())) {
-            return true;
-        }
-        Supplier<Stream<Cell>> lastFiveElements = () -> diagonal.get().skip(1);
-        if(isAQuintupleCircle(lastFiveElements.get()) || isAQuintupleCross(lastFiveElements.get())) {
-            return true;
-        }
-        return false;
+        Supplier<Stream<Cell>> RightToLeftDiagonal = () -> range(0, Board.SIZE).mapToObj(i -> board.getCell(i, Board.SIZE-1-i)); //parallel()?
+        return isAQuintupleCircle(RightToLeftDiagonal.get().limit(5)) || isAQuintupleCross(RightToLeftDiagonal.get().limit(5))
+                || isAQuintupleCircle(RightToLeftDiagonal.get().skip(1)) || isAQuintupleCross(RightToLeftDiagonal.get().skip(1));
     }
 
     private static boolean checkPrimaryUpperDiagonal(Board board) {
         Supplier<Stream<Cell>> shortDiagonal = () -> range(0,Board.SIZE-1).mapToObj(i -> board.getCell(i,i+1));
-        if(isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get())) {
-            return true;
-        }
-        return false;
+        return (isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get()));
     }
 
     private static boolean checkPrimaryLowerDiagonal(Board board) {
         Supplier<Stream<Cell>> shortDiagonal = () -> range(1,Board.SIZE).mapToObj(i -> board.getCell(i,i-1));
-        if(isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get())) {
-            return true;
-        }
-        return false;
+        return (isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get()));
     }
 
     private static boolean checkSecondaryUpperDiagonal(Board board) {
         Supplier<Stream<Cell>> shortDiagonal = () -> range(1,Board.SIZE).mapToObj(i -> board.getCell(i,Board.SIZE-i));
-        if(isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get())) {
-            return true;
-        }
-        return false;
+        return (isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get()));
     }
 
     private static boolean checkSecondaryLowerDiagonal(Board board) {
         Supplier<Stream<Cell>> shortDiagonal = () -> range(0,Board.SIZE).mapToObj(i -> board.getCell(i,Board.SIZE-i-2));
-        if(isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get())) {
-            return true;
-        }
-        return false;
+        return (isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get()));
     }
 
     public static boolean isAQuintupleCircle(Stream<Cell> cells) {
