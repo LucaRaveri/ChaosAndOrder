@@ -1,122 +1,156 @@
 package it.units.sdm.project.utils;
 
 import it.units.sdm.project.entities.Board;
+import it.units.sdm.project.entities.Cell;
 import it.units.sdm.project.entities.Role;
-import it.units.sdm.project.entities.Symbol;
+import it.units.sdm.project.utils.predicates.ContainsQuintuple;
+
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class WinnerChecker {
 
     private static final int SIZE_TO_WIN = 5;
+    private static Role winnerRole;
+    private static ContainsQuintuple containsQuintuple = new ContainsQuintuple();
+
+    public static boolean checkRows(Board board) {
+        Stream<Cell[]> rows = IntStream.range(0, Board.SIZE).parallel()
+                .mapToObj(row -> board.getCells().stream().filter(cell -> cell.getRow() == row).toArray(Cell[]::new));
+
+        return rows.filter(row -> containsQuintuple.test(row)).findAny().isPresent();
+
+    }
+
+    public static boolean checkColumns(Board board) {
+        Stream<Cell[]> columns = IntStream.range(0, Board.SIZE).parallel()
+                .mapToObj(column -> board.getCells().stream().filter(cell -> cell.getColumn() == column).toArray(Cell[]::new));
+
+        return columns.filter(column -> containsQuintuple.test(column)).findAny().isPresent();
+
+    }
+
+    public static boolean checkGoingToDownDiagonals(Board board) {
+
+        Stream<Cell[]> diagonals = IntStream.rangeClosed(-1, 1).parallel()
+                .mapToObj(index -> board.getCells().stream().filter(cell -> cell.getRow() == cell.getColumn() + index).toArray(Cell[]::new));
+
+        return diagonals.filter(diagonal -> containsQuintuple.test(diagonal)).findAny().isPresent();
+
+    }
+
+    public static boolean checkGoingToUpDiagonals(Board board) {
+
+        Stream<Cell[]> diagonals = IntStream.rangeClosed(4, 6).parallel()
+                .mapToObj(sum -> board.getCells().stream().filter(cell -> cell.getRow() + cell.getColumn() == sum).toArray(Cell[]::new));
+
+        return diagonals.filter(diagonal -> containsQuintuple.test(diagonal)).findAny().isPresent();
+
+    }
+
     public static boolean thereIsAWinner(Board board) {
         return chaosWinCondition(board) || orderWinCondition(board);
+    }
+
+    private static void setWinnerRole(Role role) {
+        winnerRole = role;
     }
 
     public static Role getWinnerRole(Board board) {
         if (thereIsAWinner(board)) {
             if (chaosWinCondition(board)) {
-                return Role.CHAOS;
-            } else {
-                return Role.ORDER;
+                setWinnerRole(Role.CHAOS);
+            } else if (orderWinCondition(board)) {
+                setWinnerRole(Role.ORDER);
             }
-        } else {
-            return null;
         }
-
+        return winnerRole;
     }
 
     private static boolean chaosWinCondition(Board board) {
-        return board.isFull();
+        return board.isFull() && !orderWinCondition(board);
     }
 
     private static boolean orderWinCondition(Board board) {
-        return checkRaws(board) || checkColumns(board) || checkPrimaryDiagonals(board) || checkSecondaryDiagonals(board);
+        return checkRows(board) || checkColumns(board) || checkGoingToDownDiagonals(board)|| checkGoingToUpDiagonals(board);
     }
 
-    private static boolean checkRaws(Board board) {
-        int count;
-        for (int i = 0; i < Board.SIZE; i++) {
-            for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
-                Symbol currentSymbol = board.getCell(i, j).getSymbol();
-                count = 0;
-                if (currentSymbol == null) {
-                    continue;
-                }
-                for (int k = 1; k < SIZE_TO_WIN; k++) {
-                    if (board.getCell(i, j + k).getSymbol() == currentSymbol && board.getCell(i, j + k).getSymbol() != null ) {
-                        count++;
-                    }
-                    if (count == 4) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
 
-    private static boolean checkColumns(Board board) {
-        int count;
-        for (int i = 0; i < Board.SIZE; i++) {
-            for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
-                Symbol currentSymbol = board.getCell(j, i).getSymbol();
-                count = 0;
-                if (currentSymbol == null) {
-                    continue;
-                }
-                for (int k = 1; k < SIZE_TO_WIN; k++) {
-                    if (board.getCell(j + k, i).getSymbol() == currentSymbol) {
-                        count++;
-                    }
-                    if (count >= 4) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
+//    public static boolean checkRows(Board board) {
+//        OptionalInt rowNumber = range(0, Board.SIZE).parallel().filter(x ->
+//        {
+//            Supplier<Stream<Cell>> stream = () -> board.getCells().stream().filter(c -> c.getRow() == x);
+//            //() -> range(0,Board.SIZE).mapToObj(i -> board.getCell(x,i));
+//            return isAQuintupleCircle(stream.get().limit(5)) || isAQuintupleCross(stream.get().limit(5))
+//                    || isAQuintupleCircle(stream.get().skip(1)) || isAQuintupleCross(stream.get().skip(1));
+//        }).findAny();
+//        return rowNumber.isPresent();
+//    }
 
-    private static boolean checkPrimaryDiagonals(Board board) {
-        int count;
-        for (int i = 0; i <= Board.SIZE - SIZE_TO_WIN; i++) {
-            for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
-                Symbol currentSymbol = board.getCell(i, j).getSymbol();
-                count = 0;
-                if (currentSymbol == null) {
-                    continue;
-                }
-                for (int k = 1; k < SIZE_TO_WIN; k++) {
-                    if (board.getCell(i + k, j + k).getSymbol() == currentSymbol) {
-                        count++;
-                    }
-                    if (count >= 4) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
 
-    private static boolean checkSecondaryDiagonals(Board board) {
-        int count;
-        for (int i = SIZE_TO_WIN - 1; i < Board.SIZE ; i++) {
-            for (int j = 0; j <= Board.SIZE - SIZE_TO_WIN; j++) {
-                Symbol currentSymbol = board.getCell(i, j).getSymbol();
-                count = 0;
-                if (currentSymbol == null) {
-                    continue;
-                }
-                for (int k = 1; k < SIZE_TO_WIN; k++) {
-                    if (board.getCell(i - k, j + k).getSymbol() == currentSymbol) {
-                        count++;
-                    }
-                    if (count >= 4) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
+//    public static boolean checkColumns(Board board) {
+//        OptionalInt columnNumber = range(0, Board.SIZE).parallel().filter(x ->
+//        {
+//            Supplier<Stream<Cell>> stream = () -> board.getCells().stream().filter(c -> c.getColumn() == x);
+//            //() -> range(0,Board.SIZE).mapToObj(i -> board.getCell(i,x));
+//            return isAQuintupleCircle(stream.get().limit(5)) || isAQuintupleCross(stream.get().limit(5))
+//                    || isAQuintupleCircle(stream.get().skip(1)) || isAQuintupleCross(stream.get().skip(1));
+//        }).findAny();
+//        return columnNumber.isPresent();
+//    }
+
+
+//    public static boolean checkDiagonals(Board board) {
+//        return checkPrimaryDiagonal(board) ||
+//                checkPrimaryUpperDiagonal(board) ||
+//                checkPrimaryLowerDiagonal(board) ||
+//                checkSecondaryDiagonal(board) ||
+//                checkSecondaryUpperDiagonal(board) ||
+//                checkSecondaryLowerDiagonal(board);
+//    }
+
+//    private static boolean checkPrimaryDiagonal(Board board) {
+//        Supplier<Stream<Cell>> LeftToRightDiagonal = () -> range(0, Board.SIZE).mapToObj(i -> board.getCell(i, i)); //parallel()?
+//        return isAQuintupleCircle(LeftToRightDiagonal.get().limit(5)) || isAQuintupleCross(LeftToRightDiagonal.get().limit(5))
+//                || isAQuintupleCircle(LeftToRightDiagonal.get().skip(1)) || isAQuintupleCross(LeftToRightDiagonal.get().skip(1));
+//    }
+//
+//    private static boolean checkSecondaryDiagonal(Board board) {
+//        Supplier<Stream<Cell>> RightToLeftDiagonal = () -> range(0, Board.SIZE).mapToObj(i -> board.getCell(i, Board.SIZE - 1 - i)); //parallel()?
+//        return isAQuintupleCircle(RightToLeftDiagonal.get().limit(5)) || isAQuintupleCross(RightToLeftDiagonal.get().limit(5))
+//                || isAQuintupleCircle(RightToLeftDiagonal.get().skip(1)) || isAQuintupleCross(RightToLeftDiagonal.get().skip(1));
+//    }
+//
+//    private static boolean checkPrimaryUpperDiagonal(Board board) {
+//        Supplier<Stream<Cell>> shortDiagonal = () -> range(0, Board.SIZE - 1).mapToObj(i -> board.getCell(i, i + 1));
+//        return (isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get()));
+//    }
+//
+//    private static boolean checkPrimaryLowerDiagonal(Board board) {
+//        Supplier<Stream<Cell>> shortDiagonal = () -> range(1, Board.SIZE).mapToObj(i -> board.getCell(i, i - 1));
+//        return (isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get()));
+//    }
+//
+//    private static boolean checkSecondaryUpperDiagonal(Board board) {
+//        Supplier<Stream<Cell>> shortDiagonal = () -> range(1, Board.SIZE).mapToObj(i -> board.getCell(i, Board.SIZE - i));
+//        return (isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get()));
+//    }
+//
+//    private static boolean checkSecondaryLowerDiagonal(Board board) {
+//        Supplier<Stream<Cell>> shortDiagonal = () -> range(0, Board.SIZE).mapToObj(i -> board.getCell(i, Board.SIZE - i - 2));
+//        return (isAQuintupleCircle(shortDiagonal.get()) || isAQuintupleCross(shortDiagonal.get()));
+//    }
+//
+//    public static boolean isAQuintupleCircle(Stream<Cell> cells) {
+//        return cells.allMatch(c -> c.getSymbol() == Symbol.CIRCLE);
+//    }
+//
+//    public static boolean isAQuintupleCross(Stream<Cell> cells) {
+//        return cells.allMatch(c -> c.getSymbol() == Symbol.CROSS);
+//    }
+//
+//    public static boolean isAQuintuple(Stream<Cell> cells) {
+//        Supplier<Stream<Cell>> cellSupplier = () -> cells;
+//        return isAQuintupleCross(cellSupplier.get()) || isAQuintupleCircle(cellSupplier.get());
+//    }
 }

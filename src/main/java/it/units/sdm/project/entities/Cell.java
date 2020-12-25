@@ -5,9 +5,13 @@ import java.util.Objects;
 public class Cell {
 
     private Symbol symbol;
+    private int row;
+    private int column;
 
-    public Cell() {
-        symbol = null;
+    public Cell(int row, int column) {
+        this.row = row;
+        this.column = column;
+        this.symbol = null;
     }
 
     public void setSymbol(Symbol symbol) {
@@ -18,8 +22,16 @@ public class Cell {
         return symbol;
     }
 
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
     public boolean isEmpty() {
-        return symbol!= null;
+        return symbol == null;
     }
 
     @Override
