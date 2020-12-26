@@ -3,12 +3,13 @@ package it.units.sdm.project.gui.controllers;
 import it.units.sdm.project.entities.Move;
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
+import it.units.sdm.project.gui.imageviews.CircleImageView;
+import it.units.sdm.project.gui.imageviews.CrossImageView;
 import it.units.sdm.project.gui.windows.EndGameWindow;
 import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -26,22 +27,17 @@ public class BoardController implements Initializable {
 
     RootController rootController;
     StackPane[][] cells = new StackPane[6][6];
-    Image cross;
-    Image circle;
     MediaPlayer mediaPlayer;
-    ScaleTransition scaleTransition;
+    ScaleTransition animation;
 
     {
-        cross = new Image(getClass().getResourceAsStream("/images/cross.png"));
-        circle = new Image(getClass().getResourceAsStream("/images/circle.png"));
-
         mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/sounds/pop.mp3").toString()));
 
-        scaleTransition = new ScaleTransition(Duration.seconds(0.3));
-        scaleTransition.setFromX(0);
-        scaleTransition.setFromY(0);
-        scaleTransition.setToX(1);
-        scaleTransition.setToY(1);
+        animation = new ScaleTransition(Duration.seconds(0.3));
+        animation.setFromX(0);
+        animation.setFromY(0);
+        animation.setToX(1);
+        animation.setToY(1);
     }
 
 
@@ -49,23 +45,6 @@ public class BoardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         board.getStyleClass().add("grid");
-
-//        Stream<StackPane> cellStream = Arrays.stream(cells).flatMap(Arrays::stream);
-//        cellStream.forEach(cell -> {
-//            cell = new StackPane();
-//            cell.setPrefWidth(80);
-//            cell.setPrefHeight(80);
-//            cell.getStyleClass().add("cell");
-//            final StackPane finalCell = cell;
-//            cell.setOnMouseClicked(event -> {
-//                try {
-//                    makeMove(finalCell, rootController.getSymbol());
-//                } catch (TakenCellException e) {
-//                    e.getMessage();
-//                }
-//            });
-//        });
-
 
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells.length; j++) {
@@ -91,22 +70,13 @@ public class BoardController implements Initializable {
 
     private void makeMove(StackPane cell, Symbol symbol) throws TakenCellException {
 
-        ImageView imageView = new ImageView();
-        imageView.setFitHeight(50);
-        imageView.setFitWidth(50);
+        ImageView imageView = (symbol == Symbol.CIRCLE) ? new CircleImageView() : new CrossImageView();
 
-
-        if (symbol == Symbol.CIRCLE) {
-            imageView.setImage(circle);
-        } else {
-            imageView.setImage(cross);
-        }
-
-        scaleTransition.setNode(imageView);
+        animation.setNode(imageView);
         mediaPlayer.seek(Duration.ZERO);
 
         mediaPlayer.play();
-        scaleTransition.play();
+        animation.play();
 
         cell.getChildren().add(imageView);
         cell.setDisable(true);
