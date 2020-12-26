@@ -5,10 +5,11 @@ import it.units.sdm.project.exceptions.BoardIndexOutOfBoundsException;
 import it.units.sdm.project.exceptions.IllegalSymbolException;
 import it.units.sdm.project.exceptions.WrongNumberOfArgumentsException;
 
+//TODO: keep it static?
 public class MoveParser {
 
     private static int column;
-    private static int raw;
+    private static int row;
     private static Symbol symbol;
 
     public static void setMoveLine(String moveLine) throws IllegalSymbolException, BoardIndexOutOfBoundsException, WrongNumberOfArgumentsException {
@@ -21,13 +22,13 @@ public class MoveParser {
         checkMoveLineFormat(tokens);
 
         column = retrieveColumn(tokens[0].toLowerCase().charAt(0));
-        raw = retrieveRaw(Integer.parseInt(tokens[0].substring(1)));
+        row = retrieveRaw(Integer.parseInt(tokens[0].substring(1)));
         symbol = retrieveSymbol(tokens[1]);
 
     }
 
-    public static int getRaw() {
-        return raw;
+    public static int getRow() {
+        return row;
     }
 
     public static Symbol getSymbol() {

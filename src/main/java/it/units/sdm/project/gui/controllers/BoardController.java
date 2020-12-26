@@ -1,5 +1,6 @@
 package it.units.sdm.project.gui.controllers;
 
+import it.units.sdm.project.entities.Move;
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
 import it.units.sdm.project.gui.windows.EndGameWindow;
@@ -109,7 +110,7 @@ public class BoardController implements Initializable {
 
         cell.getChildren().add(imageView);
         cell.setDisable(true);
-        rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
+        rootController.logicBoard.insert(new Move(board.getRowIndex(cell), board.getColumnIndex(cell), symbol));
 
 
         if (WinnerChecker.getWinnerRole(rootController.logicBoard) != null) {

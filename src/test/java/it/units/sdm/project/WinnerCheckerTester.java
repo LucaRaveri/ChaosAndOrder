@@ -1,6 +1,7 @@
 package it.units.sdm.project;
 
 import it.units.sdm.project.entities.Board;
+import it.units.sdm.project.entities.Move;
 import it.units.sdm.project.entities.Player;
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.utils.WinnerChecker;
@@ -23,7 +24,7 @@ public class WinnerCheckerTester {
 
     void horizontalQuintupleFiller(Board board, int row, int column) throws TakenCellException {
         for (int i = 0; i < 5; i++) {
-            board.addSymbol(row, column + i, Symbol.CIRCLE);
+            board.insert(new Move(row, column + i, Symbol.CIRCLE));
         }
     }
 
@@ -77,7 +78,7 @@ public class WinnerCheckerTester {
 
     void verticalQuintupleFiller(Board board, int row, int column) throws TakenCellException {
         for (int i = 0; i < 5; i++) {
-            board.addSymbol(row + i, column, Symbol.CIRCLE);
+            board.insert(new Move(row + i, column, Symbol.CIRCLE));
         }
     }
 
@@ -91,7 +92,7 @@ public class WinnerCheckerTester {
 
     void primaryDiagQuintupleFiller(Board board, int row, int column) throws TakenCellException {
         for (int i = 0; i < 5; i++) {
-            board.addSymbol(row + i, column + i, Symbol.CIRCLE);
+            board.insert(new Move(row + i, column + i, Symbol.CIRCLE));
         }
     }
 
@@ -105,7 +106,7 @@ public class WinnerCheckerTester {
 
     void secondaryDiagQuintupleFiller(Board board, int row, int column) throws TakenCellException {
         for (int i = 0; i < 5; i++) {
-            board.addSymbol(row - i, column + i, Symbol.CIRCLE);
+            board.insert(new Move(row - i, column + i, Symbol.CIRCLE));
         }
     }
 

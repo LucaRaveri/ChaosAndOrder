@@ -1,6 +1,7 @@
 package it.units.sdm.project;
 
 import it.units.sdm.project.entities.Board;
+import it.units.sdm.project.entities.Move;
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
 import org.junit.jupiter.api.Test;
@@ -19,8 +20,8 @@ public class BoardTester {
         TakenCellException thrown = assertThrows(
                 TakenCellException.class,
                 () -> {
-                    board.addSymbol(x, y, symbol1);
-                    board.addSymbol(x, y, symbol2);
+                    board.insert(new Move(x, y, symbol1));
+                    board.insert(new Move(x, y, symbol2));
                 });
     }
 
@@ -42,15 +43,15 @@ public class BoardTester {
     void fillBoard(Board board) throws TakenCellException {
         for (int raw = 0; raw < board.SIZE; raw++) {
             for (int column = 0; column < board.SIZE; column++) {
-                board.addSymbol(raw, column, Symbol.CIRCLE);
+                board.insert(new Move(raw, column, Symbol.CIRCLE));
             }
         }
     }
 
     void partiallyFillBoard(Board board) throws TakenCellException {
-        board.addSymbol(2, 5, Symbol.CIRCLE);
-        board.addSymbol(5, 2, Symbol.CIRCLE);
-        board.addSymbol(1, 1, Symbol.CROSS);
+        board.insert(new Move(2, 5, Symbol.CIRCLE));
+        board.insert(new Move(5, 2, Symbol.CIRCLE));
+        board.insert(new Move(1, 1, Symbol.CROSS));
     }
 
 }

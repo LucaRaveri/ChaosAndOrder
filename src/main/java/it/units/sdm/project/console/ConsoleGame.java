@@ -24,18 +24,14 @@ public class ConsoleGame {
 
     public void start() {
 
-        String moveLine;
         Scanner scanner = new Scanner(System.in);
-
-
 
         do {
             try {
                 ConsoleDrawer.print(board);
                 ConsoleDrawer.print(currentPlayer.name() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
-                moveLine = scanner.nextLine();
-                MoveParser.setMoveLine(moveLine.trim());
-                Move move = new Move(MoveParser.getRaw(), MoveParser.getColumn(), MoveParser.getSymbol());
+                MoveParser.setMoveLine(scanner.nextLine());
+                Move move = new Move(MoveParser.getRow(), MoveParser.getColumn(), MoveParser.getSymbol());
                 board.insert(move);
                 currentPlayer = (currentPlayer == Player.CHAOS) ? Player.ORDER : Player.CHAOS;
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
@@ -45,7 +41,7 @@ public class ConsoleGame {
         } while (WinnerChecker.getWinnerRole(board) == null);
 
         ConsoleDrawer.print(board);
-        //TODO: avoid Winnercher.getWinnerRole(board), is expansive
+        //TODO: avoid WinnerChecker.getWinnerRole(board), is expansive
         ConsoleDrawer.println("\n" + GameMessages.CONGRATULATIONS + " "
                 + GameMessages.THE_WINNER_IS + " " + WinnerChecker.getWinnerRole(board) + "\n");
     }
