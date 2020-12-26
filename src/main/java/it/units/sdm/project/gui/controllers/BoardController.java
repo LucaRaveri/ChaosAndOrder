@@ -67,7 +67,6 @@ public class BoardController implements Initializable {
 //        });
 
 
-
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells.length; j++) {
                 final int row, column;
@@ -114,7 +113,7 @@ public class BoardController implements Initializable {
         rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
 
 
-        if (!Role.isEmpty(WinnerChecker.getWinnerRole(rootController.logicBoard))) {
+        if (WinnerChecker.getWinnerRole(rootController.logicBoard) != null) {
             EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
             endGameWindow.show();
         }

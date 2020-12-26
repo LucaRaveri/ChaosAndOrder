@@ -72,7 +72,7 @@ public class WinnerCheckerTester {
     void testCheckColumn(int row, int column) throws TakenCellException {
         Board board = new Board();
         verticalQuintupleFiller(board, row, column);
-        assertFalse(Role.isEmpty(WinnerChecker.getWinnerRole(board)));
+        assertEquals(Role.ORDER, WinnerChecker.getWinnerRole(board));
     }
 
     void verticalQuintupleFiller(Board board, int row, int column) throws TakenCellException {
@@ -86,7 +86,7 @@ public class WinnerCheckerTester {
     void testCheckPrimaryDiag(int row, int column) throws TakenCellException {
         Board board = new Board();
         primaryDiagQuintupleFiller(board, row, column);
-        assertFalse(Role.isEmpty(WinnerChecker.getWinnerRole(board)));
+        assertEquals(Role.ORDER, WinnerChecker.getWinnerRole(board));
     }
 
     void primaryDiagQuintupleFiller(Board board, int row, int column) throws TakenCellException {
@@ -100,7 +100,7 @@ public class WinnerCheckerTester {
     void testCheckSecondaryDiag(int row, int column) throws TakenCellException {
         Board board = new Board();
         secondaryDiagQuintupleFiller(board, row, column);
-        assertFalse(Role.isEmpty(WinnerChecker.getWinnerRole(board)));
+        assertEquals(Role.ORDER, WinnerChecker.getWinnerRole(board));
     }
 
     void secondaryDiagQuintupleFiller(Board board, int row, int column) throws TakenCellException {
