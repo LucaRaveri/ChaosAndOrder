@@ -26,6 +26,14 @@ public class Board {
                 .findFirst().get();
     }
 
+    //TODO: rename method?
+    public void insert(Move move) throws TakenCellException {
+        if (getCell(move.getRow(), move.getColumn()).getSymbol() != null) {
+            throw new TakenCellException("Trying to modify a non empty cell.");
+        }
+        getCell(move.getRow(),move.getColumn()).setSymbol(move.getSymbol());
+    }
+
     public void addSymbol(int x, int y, Symbol symbol) throws TakenCellException {
         if (getCell(x,y).getSymbol() != null) {
             throw new TakenCellException("Trying to modify a non empty cell.");

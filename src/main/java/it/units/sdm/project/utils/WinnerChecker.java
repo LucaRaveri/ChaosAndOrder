@@ -2,7 +2,7 @@ package it.units.sdm.project.utils;
 
 import it.units.sdm.project.entities.Board;
 import it.units.sdm.project.entities.Cell;
-import it.units.sdm.project.entities.Role;
+import it.units.sdm.project.entities.Player;
 import it.units.sdm.project.utils.predicates.ContainsQuintuple;
 
 import java.util.stream.IntStream;
@@ -56,13 +56,13 @@ public class WinnerChecker {
     }
 
 
-    public static Role getWinnerRole(Board board) {
+    public static Player getWinnerRole(Board board) {
 
         //TODO: discuss if it is the case to avoid multiple returns
         if (chaosWinCondition(board)) {
-            return Role.CHAOS;
+            return Player.CHAOS;
         } else if (orderWinCondition(board)) {
-            return Role.ORDER;
+            return Player.ORDER;
         } else {
             return null;
         }

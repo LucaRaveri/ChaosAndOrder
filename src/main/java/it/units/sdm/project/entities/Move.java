@@ -25,23 +25,4 @@ public class Move {
         return column;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Move move = (Move) o;
-        return row == move.row &&
-                column == move.column &&
-                symbol == move.symbol;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(row, column, symbol);
-    }
-
-    @Override
-    public String toString() {
-        return row + " " + column + " " + symbol.name();
-    }
 }

@@ -1,6 +1,5 @@
 package it.units.sdm.project.gui.windows;
 
-import it.units.sdm.project.entities.Role;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;

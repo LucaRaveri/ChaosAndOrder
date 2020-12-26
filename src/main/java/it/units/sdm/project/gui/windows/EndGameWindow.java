@@ -1,6 +1,6 @@
 package it.units.sdm.project.gui.windows;
 
-import it.units.sdm.project.entities.Role;
+import it.units.sdm.project.entities.Player;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
@@ -12,16 +12,16 @@ import javafx.stage.Stage;
 public class EndGameWindow extends Stage {
 
 
-    public EndGameWindow(Role role) {
+    public EndGameWindow(Player player) {
 
         super();
         initModality(Modality.APPLICATION_MODAL);
         setResizable(false);
 
         Label label = new Label();
-        label.setText("Player " + role.name() + " wins!");
+        label.setText("Player " + player.name() + " wins!");
 
-        if (role == Role.CHAOS) {
+        if (player == Player.CHAOS) {
             label.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Paint_Drops.ttf"), 40));
         }
 

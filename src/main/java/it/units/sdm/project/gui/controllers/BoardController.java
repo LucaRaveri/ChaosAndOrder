@@ -1,6 +1,5 @@
 package it.units.sdm.project.gui.controllers;
 
-import it.units.sdm.project.entities.Role;
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
 import it.units.sdm.project.gui.windows.EndGameWindow;

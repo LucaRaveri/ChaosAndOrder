@@ -1,7 +1,6 @@
 package it.units.sdm.project.gui.controllers;
 
 import it.units.sdm.project.entities.Player;
-import it.units.sdm.project.entities.Role;
 import it.units.sdm.project.entities.Symbol;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,7 +43,7 @@ public class SelectorSymbolController implements Initializable {
     MediaPlayer mediaPlayer;
 
     {
-        currentPlayer = new Player(Role.ORDER);
+        currentPlayer = Player.ORDER;
         symbol = Symbol.CIRCLE;
 
         circleEffect = new DropShadow(10d, Color.BLUE);
@@ -104,12 +103,12 @@ public class SelectorSymbolController implements Initializable {
 
 
     public void switchPlayer() {
-        if (currentPlayer.getRole() == Role.ORDER) {
+        if (currentPlayer == Player.ORDER) {
             nextMove.setText("You are player CHAOS.\nSelect your next symbol!");
-            currentPlayer.setRole(Role.CHAOS);
+            currentPlayer = Player.CHAOS;
         } else {
             nextMove.setText("You are player ORDER.\nSelect your next symbol!");
-            currentPlayer.setRole(Role.ORDER);
+            currentPlayer = Player.ORDER;
         }
     }
 }
