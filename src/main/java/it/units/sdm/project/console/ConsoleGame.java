@@ -16,25 +16,19 @@ public class ConsoleGame {
 
     private final Board board;
     private Player currentPlayer;
-    private final Scanner scanner;
-    private Player winner;
 
     public ConsoleGame() {
         board = new Board();
         currentPlayer = Player.ORDER;
-        scanner = new Scanner(System.in);
     }
 
     public void start() {
 
         String moveLine;
-//        Player currentPlayer = orderPlayer;
+        Scanner scanner = new Scanner(System.in);
 
-        ConsoleDrawer.print(GameMessages.LOGO);
-        ConsoleDrawer.println(GameMessages.WELCOME);
-        ConsoleDrawer.print(GameMessages.INTRO);
 
-        //TODO: discuss if it is worth to keep Player class
+
         do {
             try {
                 ConsoleDrawer.print(board);
@@ -42,18 +36,16 @@ public class ConsoleGame {
                 moveLine = scanner.nextLine();
                 MoveParser.setMoveLine(moveLine.trim());
                 Move move = new Move(MoveParser.getRaw(), MoveParser.getColumn(), MoveParser.getSymbol());
-//                currentPlayer.makeMove(move, board);
-//                board.addSymbol(move.getRow(), move.getColumn(), move.getSymbol());
                 board.insert(move);
-                winner = WinnerChecker.getWinnerRole(board);
                 currentPlayer = (currentPlayer == Player.CHAOS) ? Player.ORDER : Player.CHAOS;
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
                     TakenCellException | WrongNumberOfArgumentsException e) {
                 ConsoleDrawer.println(e.getMessage() + " " + GameMessages.TRY_AGAIN + "\n");
             }
-        } while (winner == null);
+        } while (WinnerChecker.getWinnerRole(board) == null);
 
         ConsoleDrawer.print(board);
+        //TODO: avoid Winnercher.getWinnerRole(board), is expansive
         ConsoleDrawer.println("\n" + GameMessages.CONGRATULATIONS + " "
                 + GameMessages.THE_WINNER_IS + " " + WinnerChecker.getWinnerRole(board) + "\n");
     }
