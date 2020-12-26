@@ -1,5 +1,6 @@
 package it.units.sdm.project.utils;
 
+//TODO: it is worth to keep this class?
 public class GameMessages {
 
     public static final String TRY_AGAIN = "Try again.";
@@ -11,6 +12,8 @@ public class GameMessages {
             "Order and Chaos is a tic-tac-toe variant, played on a 6×6 gameboard. \n" +
             "The player Order strives to create a five-in-a-row of either Xs or Os, \n" +
             "while opponent Chaos endeavors to prevent this. Order moves first. \n";
+
+    //TODO: create message winner logo
 
     public static final String LOGO =
             "  ____ _                          _              _    ___          _           " + "\n" +

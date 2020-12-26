@@ -1,8 +1,7 @@
 package it.units.sdm.project.entities;
 
-import java.util.Objects;
-
 public class Move {
+
     private final int row;
     private final int column;
     private final Symbol symbol;

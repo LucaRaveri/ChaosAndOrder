@@ -15,27 +15,22 @@ public class ContainsQuintuple implements Predicate<Cell[]> {
 
         Supplier<Stream<Cell>> cellsStream = () -> Arrays.stream(cells);
 
-        if (cells.length == 6) {
+        switch (cells.length){
 
-            boolean firstBool = Arrays.stream(Symbol.values())
-                    .filter(symbol -> cellsStream.get().limit(5).allMatch(cell -> cell.getSymbol() == symbol))
-                    .findAny().isPresent();
+            case 6:
+                boolean firstFiveMatch = Arrays.stream(Symbol.values())
+                        .anyMatch(symbol -> cellsStream.get().limit(5).allMatch(cell -> cell.getSymbol() == symbol));
+                boolean lastFiveMatch = Arrays.stream(Symbol.values())
+                        .anyMatch(symbol -> cellsStream.get().skip(1).allMatch(cell -> cell.getSymbol() == symbol));
+                return firstFiveMatch || lastFiveMatch;
 
-            boolean secondBool = Arrays.stream(Symbol.values())
-                    .filter(symbol -> cellsStream.get().skip(1).allMatch(cell -> cell.getSymbol() == symbol))
-                    .findAny().isPresent();
-
-            return firstBool || secondBool;
-
-        } else if (cells.length==5){
-
-            boolean thirdBoolean = Arrays.stream(Symbol.values())
-                    .filter(symbol -> cellsStream.get().allMatch(cell -> cell.getSymbol() == symbol))
-                    .findAny().isPresent();
-            return thirdBoolean;
-        } else{
-            return false;
+            case 5:
+                return Arrays.stream(Symbol.values())
+                        .anyMatch(symbol -> cellsStream.get().allMatch(cell -> cell.getSymbol() == symbol));
+            default:
+                return false;
         }
+
     }
 
 }

@@ -1,12 +1,10 @@
 package it.units.sdm.project.entities;
 
-import java.util.Objects;
-
 public class Cell {
 
     private Symbol symbol;
-    private int row;
-    private int column;
+    private final int row;
+    private final int column;
 
     public Cell(int row, int column) {
         this.row = row;
@@ -34,13 +32,4 @@ public class Cell {
         return symbol == null;
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
 }
