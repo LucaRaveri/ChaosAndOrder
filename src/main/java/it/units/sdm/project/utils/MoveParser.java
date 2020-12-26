@@ -7,7 +7,6 @@ import it.units.sdm.project.exceptions.WrongNumberOfArgumentsException;
 
 public class MoveParser {
 
-    private String moveLine;
     private static int column;
     private static int raw;
     private static Symbol symbol;

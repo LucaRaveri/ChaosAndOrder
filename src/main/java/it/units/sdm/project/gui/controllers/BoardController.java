@@ -112,7 +112,7 @@ public class BoardController implements Initializable {
         cell.setDisable(true);
         rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
 
-        if (WinnerChecker.thereIsAWinner(rootController.logicBoard)) {
+        if (!WinnerChecker.getWinnerRole(rootController.logicBoard).isEmpty()) {
             EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
             endGameWindow.show();
         }

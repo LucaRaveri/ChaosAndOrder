@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class WinnerCheckerTester {
 
@@ -72,7 +71,7 @@ public class WinnerCheckerTester {
     void testCheckColumn(int raw, int column) throws TakenCellException {
         Board board = new Board();
         verticalQuintupleFiller(board, raw, column);
-        assertEquals(true, WinnerChecker.thereIsAWinner(board));
+        assertFalse(WinnerChecker.getWinnerRole(board).isEmpty());
     }
 
     void verticalQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
@@ -86,7 +85,7 @@ public class WinnerCheckerTester {
     void testCheckPrimaryDiag(int raw, int column) throws TakenCellException {
         Board board = new Board();
         primaryDiagQuintupleFiller(board, raw, column);
-        assertEquals(true, WinnerChecker.thereIsAWinner(board));
+        assertFalse(WinnerChecker.getWinnerRole(board).isEmpty());
     }
 
     void primaryDiagQuintupleFiller(Board board, int raw, int column) throws TakenCellException {
@@ -100,7 +99,7 @@ public class WinnerCheckerTester {
     void testCheckSecondaryDiag(int raw, int column) throws TakenCellException {
         Board board = new Board();
         secondaryDiagQuintupleFiller(board, raw, column);
-        assertEquals(true, WinnerChecker.thereIsAWinner(board));
+        assertFalse(WinnerChecker.getWinnerRole(board).isEmpty());
     }
 
     void secondaryDiagQuintupleFiller(Board board, int raw, int column) throws TakenCellException {

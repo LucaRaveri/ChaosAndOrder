@@ -1,6 +1,5 @@
 package it.units.sdm.project.console;
 
-import it.units.sdm.project.Game;
 import it.units.sdm.project.entities.*;
 import it.units.sdm.project.utils.ConsoleDrawer;
 import it.units.sdm.project.exceptions.BoardIndexOutOfBoundsException;
@@ -13,12 +12,23 @@ import it.units.sdm.project.utils.WinnerChecker;
 
 import java.util.Scanner;
 
-public class ConsoleGame extends Game {
+public class ConsoleGame {
 
-    @Override
+    private final Board board;
+    private final Player chaosPlayer;
+    private final Player orderPlayer;
+    private final Scanner scanner;
+    private Role winner;
+
+    public ConsoleGame() {
+        board = new Board();
+        chaosPlayer = new Player(Role.CHAOS);
+        orderPlayer = new Player(Role.ORDER);
+        scanner = new Scanner(System.in);
+    }
+
     public void start() {
 
-        Scanner scanner = new Scanner(System.in);
         String moveLine;
         Player currentPlayer = orderPlayer;
 
@@ -26,7 +36,7 @@ public class ConsoleGame extends Game {
         ConsoleDrawer.println(GameMessages.WELCOME);
         ConsoleDrawer.print(GameMessages.INTRO);
 
-        //TODO: discuss rigorously the syntax of command line inserted by the user
+        //TODO: discuss if it is worth to keep Player class
         do {
             try {
                 ConsoleDrawer.print(board);
@@ -36,11 +46,12 @@ public class ConsoleGame extends Game {
                 Move move = new Move(MoveParser.getRaw(), MoveParser.getColumn(), MoveParser.getSymbol());
                 currentPlayer.makeMove(move, board);
                 changeRole(currentPlayer);
+                winner = WinnerChecker.getWinnerRole(board);
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
                     TakenCellException | WrongNumberOfArgumentsException e) {
                 ConsoleDrawer.println(e.getMessage() + " " + GameMessages.TRY_AGAIN + "\n");
             }
-        } while (!WinnerChecker.thereIsAWinner(board));
+        } while (winner.isEmpty());
 
         ConsoleDrawer.print(board);
         ConsoleDrawer.println("\n" + GameMessages.CONGRATULATIONS + " "
