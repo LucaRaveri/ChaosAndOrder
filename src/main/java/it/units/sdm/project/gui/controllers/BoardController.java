@@ -105,10 +105,8 @@ public class BoardController implements Initializable {
     public void toEmptyBoard() {
 
         cells = cells.stream().peek(cell -> {
-            cell.getChildren().removeAll(cell.getChildren());
+            if(cell.isDisable()) cell.getChildren().removeAll(cell.getChildren());
         }).collect(Collectors.toSet());
-
-
 
         System.out.println("[BoardController]: fired");
     }
