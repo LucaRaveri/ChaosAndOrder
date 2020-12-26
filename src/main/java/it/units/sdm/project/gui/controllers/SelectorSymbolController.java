@@ -2,6 +2,8 @@ package it.units.sdm.project.gui.controllers;
 
 import it.units.sdm.project.entities.Player;
 import it.units.sdm.project.entities.Symbol;
+import it.units.sdm.project.gui.imageviews.CircleImageView;
+import it.units.sdm.project.gui.imageviews.CrossImageView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -9,7 +11,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
@@ -33,26 +34,21 @@ public class SelectorSymbolController implements Initializable {
     RadioButton circleRadio;
 
     ToggleGroup toggleGroup;
-    ImageView cross = new ImageView(new Image("/images/cross.png"));
-    ImageView circle = new ImageView(new Image("/images/circle.png"));
+    ImageView cross = new CrossImageView();
+    ImageView circle = new CircleImageView();
 
     Player currentPlayer;
-    Symbol symbol;
+    Symbol currentSymbol;
     Effect circleEffect;
     Effect crossEffect;
     MediaPlayer mediaPlayer;
 
     {
         currentPlayer = Player.ORDER;
-        symbol = Symbol.CIRCLE;
+        currentSymbol = Symbol.CIRCLE;
 
         circleEffect = new DropShadow(10d, Color.BLUE);
         crossEffect = new DropShadow(10d, Color.RED);
-
-        cross.setFitWidth(50);
-        cross.setFitHeight(50);
-        circle.setFitWidth(50);
-        circle.setFitHeight(50);
 
         mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/sounds/switch-symbol.mp3").toString()));
     }
@@ -83,7 +79,7 @@ public class SelectorSymbolController implements Initializable {
 
     }
 
-    public Symbol getSymbol() {
+    public Symbol getCurrentSymbol() {
         return (toggleGroup.getSelectedToggle() == circleRadio) ? Symbol.CIRCLE : Symbol.CROSS;
     }
 
@@ -102,13 +98,8 @@ public class SelectorSymbolController implements Initializable {
     }
 
 
-    public void switchPlayer() {
-        if (currentPlayer == Player.ORDER) {
-            nextMove.setText("You are player CHAOS.\nSelect your next symbol!");
-            currentPlayer = Player.CHAOS;
-        } else {
-            nextMove.setText("You are player ORDER.\nSelect your next symbol!");
-            currentPlayer = Player.ORDER;
-        }
+    public void switchCurrentPlayer() {
+        currentPlayer = (currentPlayer == Player.CHAOS) ? Player.ORDER : Player.CHAOS;
+        nextMove.setText("You are player " + currentPlayer.name() + ".\nSelect your next symbol!");
     }
 }

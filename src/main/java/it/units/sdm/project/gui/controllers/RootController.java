@@ -15,6 +15,9 @@ public class RootController implements Initializable {
     private AnchorPane anchorPane;
 
     @FXML
+    private MenuBarController menuBarController;
+
+    @FXML
     private BoardController boardController;
 
     @FXML
@@ -25,6 +28,7 @@ public class RootController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         boardController.injectRootController(this);
+        menuBarController.injectRootController(this);
 
         AnchorPane.setBottomAnchor(boardController.getBoard(), 25d);
         AnchorPane.setLeftAnchor(boardController.getBoard(), 50d);
@@ -32,11 +36,15 @@ public class RootController implements Initializable {
     }
 
     public Symbol getSymbol(){
-        return selectorSymbolController.getSymbol();
+        return selectorSymbolController.getCurrentSymbol();
     }
 
     public void changePlayer(){
-        selectorSymbolController.switchPlayer();
+        selectorSymbolController.switchCurrentPlayer();
     }
 
+    public void newGame() {
+        boardController.toEmptyBoard();
+        System.out.println("[RootController]: fired");
+    }
 }

@@ -8,7 +8,7 @@
 
         <Menu fx:id="fileMenu" text="File">
             <MenuItem fx:id="newGame" text="New Game..."/>
-            <MenuItem fx:id="exit" text="Exit..."/>
+            <MenuItem fx:id="exitGame" text="Exit..."/>
         </Menu>
 
         <Menu fx:id="helpMenu" text="Help">

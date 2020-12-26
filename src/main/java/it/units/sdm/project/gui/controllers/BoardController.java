@@ -1,5 +1,6 @@
 package it.units.sdm.project.gui.controllers;
 
+import it.units.sdm.project.entities.Board;
 import it.units.sdm.project.entities.Move;
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
@@ -18,7 +19,10 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BoardController implements Initializable {
 
@@ -26,7 +30,7 @@ public class BoardController implements Initializable {
     GridPane board;
 
     RootController rootController;
-    StackPane[][] cells = new StackPane[6][6];
+    Set<StackPane> cells = new HashSet<>(36);
     MediaPlayer mediaPlayer;
     ScaleTransition animation;
 
@@ -40,29 +44,36 @@ public class BoardController implements Initializable {
         animation.setToY(1);
     }
 
+    public GridPane getBoard() {
+        return board;
+    }
+
+    public void injectRootController(RootController rootController) {
+        this.rootController = rootController;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         board.getStyleClass().add("grid");
 
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells.length; j++) {
-                final int row, column;
-                row = i;
-                column = j;
-                cells[i][j] = new StackPane();
-                cells[i][j].setPrefHeight(80);
-                cells[i][j].setPrefWidth(80);
-                cells[i][j].getStyleClass().add("cell");
-                cells[i][j].setOnMouseClicked(event -> {
+        for (int i = 0; i < Board.SIZE; i++) {
+            for (int j = 0; j < Board.SIZE; j++) {
+                StackPane cell = new StackPane();
+                GridPane.setRowIndex(cell, i);
+                GridPane.setColumnIndex(cell, j);
+                cell.setPrefHeight(80);
+                cell.setPrefWidth(80);
+                cell.getStyleClass().add("cell");
+                cell.setOnMouseClicked(event -> {
                     try {
-                        makeMove(cells[row][column], rootController.getSymbol());
+                        makeMove(cell, rootController.getSymbol());
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
                 });
-                board.add(cells[i][j], i, j);
+                board.add(cell, i, j);
+                cells.add(cell);
             }
         }
 
@@ -91,13 +102,15 @@ public class BoardController implements Initializable {
         rootController.changePlayer();
     }
 
-    public GridPane getBoard() {
-        return board;
-    }
+    public void toEmptyBoard() {
 
-    public void injectRootController(RootController rootController) {
-        this.rootController = rootController;
-    }
+        cells = cells.stream().peek(cell -> {
+            cell.getChildren().removeAll(cell.getChildren());
+        }).collect(Collectors.toSet());
 
+
+
+        System.out.println("[BoardController]: fired");
+    }
 
 }

@@ -13,29 +13,45 @@ import java.util.ResourceBundle;
 
 public class MenuBarController implements Initializable {
 
-    @FXML MenuBar menuBar;
+    @FXML
+    MenuBar menuBar;
 
-    @FXML Menu fileMenu ;
-    @FXML MenuItem newGame;
-    @FXML MenuItem exit;
+    @FXML
+    Menu fileMenu;
+    @FXML
+    MenuItem newGame;
+    @FXML
+    MenuItem exitGame;
 
-    @FXML Menu helpMenu;
-    @FXML MenuItem readInstructions;
+    @FXML
+    Menu helpMenu;
+    @FXML
+    MenuItem readInstructions;
+
+    RootController rootController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
         AnchorPane.setRightAnchor(menuBar, 0.0);
         AnchorPane.setLeftAnchor(menuBar, 0.0);
 
-        exit.setOnAction(event -> System.exit(0));
+        // TODO: implement newGame
+        newGame.setOnAction(event -> {
+            rootController.newGame();
+            System.out.println("[MenuBarController]: fired");
+        });
+        exitGame.setOnAction(event -> System.exit(0));
 
         readInstructions.setOnAction(event -> {
             InstructionsWindow instructionsWindow = new InstructionsWindow();
             instructionsWindow.show();
         });
 
+    }
+
+    public void injectRootController(RootController rootController) {
+        this.rootController = rootController;
     }
 
 }
