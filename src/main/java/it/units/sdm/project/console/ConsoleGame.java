@@ -51,7 +51,7 @@ public class ConsoleGame {
                     TakenCellException | WrongNumberOfArgumentsException e) {
                 ConsoleDrawer.println(e.getMessage() + " " + GameMessages.TRY_AGAIN + "\n");
             }
-        } while (winner.isEmpty());
+        } while (winner==null);
 
         ConsoleDrawer.print(board);
         ConsoleDrawer.println("\n" + GameMessages.CONGRATULATIONS + " "

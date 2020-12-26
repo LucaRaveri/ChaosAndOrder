@@ -10,26 +10,27 @@ import java.util.stream.Stream;
 
 public class WinnerChecker {
 
-    private static ContainsQuintuple containsQuintuple = new ContainsQuintuple();
+    private static final ContainsQuintuple containsQuintuple = new ContainsQuintuple();
 
-    public static boolean checkRows(Board board) {
+    private static boolean checkRows(Board board) {
+
         Stream<Cell[]> rows = IntStream.range(0, Board.SIZE).parallel()
                 .mapToObj(row -> board.getCells().stream().filter(cell -> cell.getRow() == row).toArray(Cell[]::new));
 
-        return rows.filter(row -> containsQuintuple.test(row)).findAny().isPresent();
-
+        return rows.anyMatch(containsQuintuple);
     }
 
-    public static boolean checkColumns(Board board) {
+    private static boolean checkColumns(Board board) {
+
         Stream<Cell[]> columns = IntStream.range(0, Board.SIZE).parallel()
                 .mapToObj(column -> board.getCells().stream().filter(cell -> cell.getColumn() == column).toArray(Cell[]::new));
 
-        return columns.filter(column -> containsQuintuple.test(column)).findAny().isPresent();
+        return columns.anyMatch(containsQuintuple);
 
     }
 
     //TODO: rename method to be more readable
-    public static boolean checkGoingToDownDiagonals(Board board) {
+    private static boolean checkGoingToDownDiagonals(Board board) {
 
         // the cells in which are interested in have their row index moved by one from their column index or equal to
         Stream<Cell[]> diagonals = IntStream.rangeClosed(-1, 1)
@@ -39,18 +40,18 @@ public class WinnerChecker {
                         .filter(cell -> cell.getRow() == cell.getColumn() + index)
                         .toArray(Cell[]::new));
 
-        return diagonals.filter(diagonal -> containsQuintuple.test(diagonal)).findAny().isPresent();
+        return diagonals.anyMatch(containsQuintuple);
 
     }
 
     //TODO: rename method to be more readable
-    public static boolean checkGoingToUpDiagonals(Board board) {
+    private static boolean checkGoingToUpDiagonals(Board board) {
 
         // the cells in which we are interested in have the summation of indexes in the interval [4,6]
         Stream<Cell[]> diagonals = IntStream.rangeClosed(4, 6).parallel()
                 .mapToObj(sum -> board.getCells().stream().filter(cell -> cell.getRow() + cell.getColumn() == sum).toArray(Cell[]::new));
 
-        return diagonals.filter(diagonal -> containsQuintuple.test(diagonal)).findAny().isPresent();
+        return diagonals.anyMatch(containsQuintuple);
 
     }
 

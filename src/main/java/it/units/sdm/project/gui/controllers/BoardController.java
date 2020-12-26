@@ -1,5 +1,6 @@
 package it.units.sdm.project.gui.controllers;
 
+import it.units.sdm.project.entities.Role;
 import it.units.sdm.project.entities.Symbol;
 import it.units.sdm.project.exceptions.TakenCellException;
 import it.units.sdm.project.gui.windows.EndGameWindow;
@@ -112,7 +113,8 @@ public class BoardController implements Initializable {
         cell.setDisable(true);
         rootController.logicBoard.addSymbol(board.getRowIndex(cell), board.getColumnIndex(cell), symbol);
 
-        if (!WinnerChecker.getWinnerRole(rootController.logicBoard).isEmpty()) {
+
+        if (!Role.isEmpty(WinnerChecker.getWinnerRole(rootController.logicBoard))) {
             EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
             endGameWindow.show();
         }
