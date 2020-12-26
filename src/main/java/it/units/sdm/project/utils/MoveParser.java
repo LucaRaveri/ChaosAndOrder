@@ -63,7 +63,7 @@ public class MoveParser {
     }
 
     private static Symbol retrieveSymbol(String symbol){
-        return (symbol.equalsIgnoreCase("X")) ? Symbol.CROSS : Symbol.CIRCLE;
+        return symbol.equalsIgnoreCase("X") ? Symbol.CROSS : Symbol.CIRCLE;
     }
 
 
