@@ -8,10 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -33,8 +31,6 @@ public class SelectorSymbolController implements Initializable {
     @FXML
     RadioButton circleRadio;
 
-    ToggleGroup toggleGroup;
-
     Player currentPlayer;
     Symbol currentSymbol;
     Effect circleEffect, crossEffect;
@@ -53,9 +49,6 @@ public class SelectorSymbolController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        toggleGroup = new ToggleGroup();
-        crossRadio.setToggleGroup(toggleGroup);
-        circleRadio.setToggleGroup(toggleGroup);
         crossRadio.setGraphic(new CrossImageView());
         circleRadio.setGraphic(new CircleImageView());
         circleRadio.setEffect(circleEffect);
@@ -67,7 +60,7 @@ public class SelectorSymbolController implements Initializable {
     }
 
     public Symbol getCurrentSymbol() {
-        return (toggleGroup.getSelectedToggle() == circleRadio) ? Symbol.CIRCLE : Symbol.CROSS;
+        return (circleRadio.isSelected()) ? Symbol.CIRCLE : Symbol.CROSS;
     }
 
     @FXML
@@ -76,7 +69,7 @@ public class SelectorSymbolController implements Initializable {
         mediaPlayer.seek(Duration.ZERO);
         mediaPlayer.play();
 
-        if (toggleGroup.getSelectedToggle() == circleRadio) {
+        if (circleRadio.isSelected()) {
             circleRadio.setEffect(circleEffect);
             crossRadio.setEffect(null);
         } else {

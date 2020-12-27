@@ -43,10 +43,6 @@ public class BoardController implements Initializable {
         animation.setToY(1);
     }
 
-    public GridPane getGraphicBoard() {
-        return graphicBoard;
-    }
-
     public void injectRootController(RootController rootController) {
         this.rootController = rootController;
     }
@@ -76,15 +72,15 @@ public class BoardController implements Initializable {
 
     private void makeMove(StackPane cell, Symbol symbol) throws TakenCellException {
 
-        ImageView imageView = (symbol == Symbol.CIRCLE) ? new CircleImageView() : new CrossImageView();
+        ImageView symbolIcon = (symbol == Symbol.CIRCLE) ? new CircleImageView() : new CrossImageView();
 
-        animation.setNode(imageView);
+        animation.setNode(symbolIcon);
         mediaPlayer.seek(Duration.ZERO);
 
         mediaPlayer.play();
         animation.play();
 
-        cell.getChildren().add(imageView);
+        cell.getChildren().add(symbolIcon);
         cell.setDisable(true);
         rootController.logicBoard.insert(new Move(graphicBoard.getRowIndex(cell), graphicBoard.getColumnIndex(cell), symbol));
 
