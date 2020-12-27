@@ -9,9 +9,7 @@ import it.units.sdm.project.gui.imageviews.CrossImageView;
 import it.units.sdm.project.gui.windows.EndGameWindow;
 import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -22,16 +20,14 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class BoardController implements Initializable {
 
     @FXML
-    GridPane board;
+    GridPane graphicBoard;
 
     RootController rootController;
     MediaPlayer mediaPlayer;
@@ -47,8 +43,8 @@ public class BoardController implements Initializable {
         animation.setToY(1);
     }
 
-    public GridPane getBoard() {
-        return board;
+    public GridPane getGraphicBoard() {
+        return graphicBoard;
     }
 
     public void injectRootController(RootController rootController) {
@@ -57,8 +53,6 @@ public class BoardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        board.getStyleClass().add("grid");
 
         for (int i = 0; i < Board.SIZE; i++) {
             for (int j = 0; j < Board.SIZE; j++) {
@@ -75,10 +69,9 @@ public class BoardController implements Initializable {
                         System.out.println(e.getMessage());
                     }
                 });
-                board.add(cell, i, j);
+                graphicBoard.add(cell, i, j);
             }
         }
-
     }
 
     private void makeMove(StackPane cell, Symbol symbol) throws TakenCellException {
@@ -93,8 +86,7 @@ public class BoardController implements Initializable {
 
         cell.getChildren().add(imageView);
         cell.setDisable(true);
-        rootController.logicBoard.insert(new Move(board.getRowIndex(cell), board.getColumnIndex(cell), symbol));
-
+        rootController.logicBoard.insert(new Move(graphicBoard.getRowIndex(cell), graphicBoard.getColumnIndex(cell), symbol));
 
         if (WinnerChecker.getWinnerRole(rootController.logicBoard) != null) {
             EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
@@ -110,14 +102,14 @@ public class BoardController implements Initializable {
 //            if (cell.isDisable()) cell.getChildren().removeAll(cell.getChildren());
 //        }).collect(Collectors.toSet());
 
-        Collection<Node> cells = board.getChildren()
+        Collection<Node> cells = graphicBoard.getChildren()
                 .stream()
 //                .filter(cell -> cell instanceof StackPane)
                 .peek(cell -> ((StackPane) cell).getChildren().removeAll(((StackPane) cell).getChildren()))
                 .collect(Collectors.toCollection(FXCollections::observableSet));
 
-        board.getChildren().removeAll(board.getChildren());
-        board.getChildren().addAll(cells);
+        graphicBoard.getChildren().removeAll(graphicBoard.getChildren());
+        graphicBoard.getChildren().addAll(cells);
     }
 
 }

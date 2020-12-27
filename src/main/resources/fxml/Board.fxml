@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <GridPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:id="board"
-            fx:controller="it.units.sdm.project.gui.controllers.BoardController">
+          xmlns:fx="http://javafx.com/fxml"
+          fx:id="graphicBoard"
+          fx:controller="it.units.sdm.project.gui.controllers.BoardController"
+          styleClass="grid">
 
 </GridPane>

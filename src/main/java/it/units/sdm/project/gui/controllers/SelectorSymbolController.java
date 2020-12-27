@@ -34,13 +34,10 @@ public class SelectorSymbolController implements Initializable {
     RadioButton circleRadio;
 
     ToggleGroup toggleGroup;
-    ImageView cross = new CrossImageView();
-    ImageView circle = new CircleImageView();
 
     Player currentPlayer;
     Symbol currentSymbol;
-    Effect circleEffect;
-    Effect crossEffect;
+    Effect circleEffect, crossEffect;
     MediaPlayer mediaPlayer;
 
     {
@@ -59,22 +56,12 @@ public class SelectorSymbolController implements Initializable {
         toggleGroup = new ToggleGroup();
         crossRadio.setToggleGroup(toggleGroup);
         circleRadio.setToggleGroup(toggleGroup);
-        crossRadio.setGraphic(cross);
-        circleRadio.setGraphic(circle);
+        crossRadio.setGraphic(new CrossImageView());
+        circleRadio.setGraphic(new CircleImageView());
         circleRadio.setEffect(circleEffect);
 
-
-        AnchorPane.setRightAnchor(anchorPane, 50.0);
-        AnchorPane.setLeftAnchor(anchorPane, 50.0);
-        AnchorPane.setTopAnchor(anchorPane, 50.0);
-
-        AnchorPane.setLeftAnchor(nextMove, 10.0);
-
-        AnchorPane.setRightAnchor(crossRadio, 40.0);
-        AnchorPane.setRightAnchor(circleRadio, 120.0);
-
         nextMove.setTextFill(Color.WHITE);
-        nextMove.setText("You are player ORDER.\nSelect your next symbol!");
+        nextMove.setText("You are player " + currentPlayer.name() + ".\nSelect your next symbol!");
         nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 20));
 
     }
@@ -83,7 +70,8 @@ public class SelectorSymbolController implements Initializable {
         return (toggleGroup.getSelectedToggle() == circleRadio) ? Symbol.CIRCLE : Symbol.CROSS;
     }
 
-    public void setEffect() {
+    @FXML
+    private void setEffect() {
 
         mediaPlayer.seek(Duration.ZERO);
         mediaPlayer.play();

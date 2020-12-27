@@ -8,9 +8,9 @@
             fx:id="anchorPane"
             fx:controller="it.units.sdm.project.gui.controllers.SelectorSymbolController">
 
-    <Label fx:id="nextMove"/>
+    <Label fx:id="nextMove" AnchorPane.leftAnchor="10.0"/>
 
-    <RadioButton fx:id="crossRadio" onAction="#setEffect" pickOnBounds="true"/>
-    <RadioButton fx:id="circleRadio" onAction="#setEffect" selected="true" pickOnBounds="true"/>
+    <RadioButton fx:id="crossRadio" onAction="#setEffect" AnchorPane.rightAnchor="40"/>
+    <RadioButton fx:id="circleRadio" onAction="#setEffect" selected="true" AnchorPane.rightAnchor="120"/>
 
 </AnchorPane>

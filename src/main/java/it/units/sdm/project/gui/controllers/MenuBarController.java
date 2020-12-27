@@ -27,10 +27,6 @@ public class MenuBarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        AnchorPane.setRightAnchor(menuBar, 0.0);
-        AnchorPane.setLeftAnchor(menuBar, 0.0);
-
-        // TODO: implement newGame
         newGame.setOnAction(event -> rootController.newGame());
         exitGame.setOnAction(event -> System.exit(0));
 

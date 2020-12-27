@@ -25,10 +25,6 @@ public class RootController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         boardController.injectRootController(this);
         menuBarController.injectRootController(this);
-
-        AnchorPane.setBottomAnchor(boardController.getBoard(), 25d);
-        AnchorPane.setLeftAnchor(boardController.getBoard(), 50d);
-
     }
 
     public Symbol getSymbol(){
