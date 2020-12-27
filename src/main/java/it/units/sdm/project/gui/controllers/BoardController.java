@@ -9,10 +9,8 @@ import it.units.sdm.project.gui.imageviews.CrossImageView;
 import it.units.sdm.project.gui.windows.EndGameWindow;
 import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -21,8 +19,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ResourceBundle;
+import java.util.stream.IntStream;
 
 public class BoardController implements Initializable {
 
@@ -50,13 +48,12 @@ public class BoardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        for (int i = 0; i < Board.SIZE; i++) {
-            for (int j = 0; j < Board.SIZE; j++) {
+        // TODO: introducing unordered()?
+        IntStream.range(0, Board.SIZE).forEach(row -> {
+            IntStream.range(0, Board.SIZE).forEach(column -> {
                 StackPane cell = new StackPane();
-                GridPane.setRowIndex(cell, i);
-                GridPane.setColumnIndex(cell, j);
-                cell.setPrefHeight(80);
-                cell.setPrefWidth(80);
+                GridPane.setConstraints(cell, row, column);
+                cell.setPrefSize(80, 80);
                 cell.getStyleClass().add("cell");
                 cell.setOnMouseClicked(event -> {
                     try {
@@ -65,9 +62,10 @@ public class BoardController implements Initializable {
                         System.out.println(e.getMessage());
                     }
                 });
-                graphicBoard.add(cell, i, j);
-            }
-        }
+                graphicBoard.add(cell, row, column);
+            });
+        });
+
     }
 
     private void makeMove(StackPane cell, Symbol symbol) throws TakenCellException {
@@ -82,30 +80,30 @@ public class BoardController implements Initializable {
 
         cell.getChildren().add(symbolIcon);
         cell.setDisable(true);
-        rootController.logicBoard.insert(new Move(graphicBoard.getRowIndex(cell), graphicBoard.getColumnIndex(cell), symbol));
+        rootController.getLogicBoard().insert(new Move(GridPane.getRowIndex(cell), GridPane.getColumnIndex(cell), symbol));
 
-        if (WinnerChecker.getWinnerRole(rootController.logicBoard) != null) {
-            EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.logicBoard));
+        if (WinnerChecker.getWinnerRole(rootController.getLogicBoard()) != null) {
+            EndGameWindow endGameWindow = new EndGameWindow(rootController.getCurrentPlayer());
             endGameWindow.show();
+        } else {
+            rootController.changePlayer();
         }
 
-        rootController.changePlayer();
     }
 
     public void toEmptyBoard() {
 
-//        cells = cells.stream().peek(cell -> {
-//            if (cell.isDisable()) cell.getChildren().removeAll(cell.getChildren());
-//        }).collect(Collectors.toSet());
+        rootController.setBoard(new Board());
+        initialize(null, null);
 
-        Collection<Node> cells = graphicBoard.getChildren()
-                .stream()
-//                .filter(cell -> cell instanceof StackPane)
-                .peek(cell -> ((StackPane) cell).getChildren().removeAll(((StackPane) cell).getChildren()))
-                .collect(Collectors.toCollection(FXCollections::observableSet));
-
-        graphicBoard.getChildren().removeAll(graphicBoard.getChildren());
-        graphicBoard.getChildren().addAll(cells);
+//        Collection<Node> cells = graphicBoard.getChildren()
+//                .stream()
+//                .filter(cell -> cell instanceof StackPane) //TODO: discuss if it is worth to keep it
+//                .peek(cell -> ((StackPane) cell).getChildren().removeAll(((StackPane) cell).getChildren()))
+//                .collect(Collectors.toCollection(FXCollections::observableSet));
+//
+//        graphicBoard.getChildren().removeAll(graphicBoard.getChildren());
+//        graphicBoard.getChildren().addAll(cells);
     }
 
 }

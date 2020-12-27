@@ -2,17 +2,22 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="anchorPane"
             fx:controller="it.units.sdm.project.gui.controllers.SelectorSymbolController">
 
-    <fx:define> <ToggleGroup fx:id="toggleGroup"/></fx:define>
+    <fx:define>
+        <ToggleGroup fx:id="toggleGroup"/>
+    </fx:define>
 
     <Label fx:id="nextMove" AnchorPane.leftAnchor="10.0"/>
+
     <RadioButton fx:id="crossRadio" onAction="#setEffect" AnchorPane.rightAnchor="40" toggleGroup="$toggleGroup"/>
-    <RadioButton fx:id="circleRadio" onAction="#setEffect" selected="true" AnchorPane.rightAnchor="120" toggleGroup="$toggleGroup"/>
+    <RadioButton fx:id="circleRadio" onAction="#setEffect" AnchorPane.rightAnchor="120" toggleGroup="$toggleGroup"
+                 selected="true"/>
+
 
 </AnchorPane>

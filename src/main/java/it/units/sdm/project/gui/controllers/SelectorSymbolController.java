@@ -62,6 +62,9 @@ public class SelectorSymbolController implements Initializable {
     public Symbol getCurrentSymbol() {
         return (circleRadio.isSelected()) ? Symbol.CIRCLE : Symbol.CROSS;
     }
+    public Player getCurrentPlayer(){
+        return currentPlayer;
+    }
 
     @FXML
     private void setEffect() {
@@ -76,6 +79,24 @@ public class SelectorSymbolController implements Initializable {
             crossRadio.setEffect(crossEffect);
             circleRadio.setEffect(null);
         }
+
+//        ToggleGroup tg = new ToggleGroup();
+//
+//        circleRadio.selectedProperty().addListener((observable, oldValue, newValue) -> {
+//            if(oldValue==true){
+//                circleRadio.setEffect(circleEffect);
+//            } else{
+//                circleRadio.setEffect(null);
+//            }
+//        });
+//
+//        crossRadio.selectedProperty().addListener((observable, oldValue, newValue) -> {
+//            if(newValue==true){
+//                circleRadio.setEffect(crossEffect);
+//            } else{
+//                circleRadio.setEffect(null);
+//            }
+//        });
     }
 
 
