@@ -11,17 +11,13 @@ import java.util.ResourceBundle;
 
 public class RootController implements Initializable {
 
-    @FXML
-    private AnchorPane anchorPane;
+    @FXML private AnchorPane anchorPane;
 
-    @FXML
-    private MenuBarController menuBarController;
+    @FXML private MenuBarController menuBarController;
 
-    @FXML
-    private BoardController boardController;
+    @FXML private BoardController boardController;
 
-    @FXML
-    private SelectorSymbolController selectorSymbolController;
+    @FXML private SelectorSymbolController selectorSymbolController;
 
     public Board logicBoard = new Board();
 
@@ -45,6 +41,5 @@ public class RootController implements Initializable {
 
     public void newGame() {
         boardController.toEmptyBoard();
-        System.out.println("[RootController]: fired");
     }
 }

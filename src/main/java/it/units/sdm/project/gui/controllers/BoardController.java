@@ -9,8 +9,12 @@ import it.units.sdm.project.gui.imageviews.CrossImageView;
 import it.units.sdm.project.gui.windows.EndGameWindow;
 import it.units.sdm.project.utils.WinnerChecker;
 import javafx.animation.ScaleTransition;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -18,10 +22,10 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.net.URL;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class BoardController implements Initializable {
@@ -30,7 +34,6 @@ public class BoardController implements Initializable {
     GridPane board;
 
     RootController rootController;
-    Set<StackPane> cells = new HashSet<>(36);
     MediaPlayer mediaPlayer;
     ScaleTransition animation;
 
@@ -68,12 +71,11 @@ public class BoardController implements Initializable {
                 cell.setOnMouseClicked(event -> {
                     try {
                         makeMove(cell, rootController.getSymbol());
-                    } catch (Exception e) {
+                    } catch (TakenCellException e) {
                         System.out.println(e.getMessage());
                     }
                 });
                 board.add(cell, i, j);
-                cells.add(cell);
             }
         }
 
@@ -104,11 +106,18 @@ public class BoardController implements Initializable {
 
     public void toEmptyBoard() {
 
-        cells = cells.stream().peek(cell -> {
-            if(cell.isDisable()) cell.getChildren().removeAll(cell.getChildren());
-        }).collect(Collectors.toSet());
+//        cells = cells.stream().peek(cell -> {
+//            if (cell.isDisable()) cell.getChildren().removeAll(cell.getChildren());
+//        }).collect(Collectors.toSet());
 
-        System.out.println("[BoardController]: fired");
+        Collection<Node> cells = board.getChildren()
+                .stream()
+//                .filter(cell -> cell instanceof StackPane)
+                .peek(cell -> ((StackPane) cell).getChildren().removeAll(((StackPane) cell).getChildren()))
+                .collect(Collectors.toCollection(FXCollections::observableSet));
+
+        board.getChildren().removeAll(board.getChildren());
+        board.getChildren().addAll(cells);
     }
 
 }

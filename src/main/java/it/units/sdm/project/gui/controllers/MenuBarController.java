@@ -13,20 +13,14 @@ import java.util.ResourceBundle;
 
 public class MenuBarController implements Initializable {
 
-    @FXML
-    MenuBar menuBar;
+    @FXML MenuBar menuBar;
 
-    @FXML
-    Menu fileMenu;
-    @FXML
-    MenuItem newGame;
-    @FXML
-    MenuItem exitGame;
+    @FXML Menu fileMenu;
+    @FXML MenuItem newGame;
+    @FXML MenuItem exitGame;
 
-    @FXML
-    Menu helpMenu;
-    @FXML
-    MenuItem readInstructions;
+    @FXML Menu helpMenu;
+    @FXML MenuItem readInstructions;
 
     RootController rootController;
 
@@ -37,10 +31,7 @@ public class MenuBarController implements Initializable {
         AnchorPane.setLeftAnchor(menuBar, 0.0);
 
         // TODO: implement newGame
-        newGame.setOnAction(event -> {
-            rootController.newGame();
-            System.out.println("[MenuBarController]: fired");
-        });
+        newGame.setOnAction(event -> rootController.newGame());
         exitGame.setOnAction(event -> System.exit(0));
 
         readInstructions.setOnAction(event -> {
