@@ -2,6 +2,7 @@ package it.units.sdm.project.gui.windows;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -16,6 +17,7 @@ public class InstructionsWindow extends Stage {
     public InstructionsWindow() {
         super();
         setTitle("Chaos & Order Instructions");
+        getIcons().add(new Image(getClass().getResourceAsStream("/images/application_icon.png")));
         initModality(Modality.APPLICATION_MODAL);
         setResizable(false);
 

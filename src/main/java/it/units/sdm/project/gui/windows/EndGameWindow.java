@@ -3,6 +3,7 @@ package it.units.sdm.project.gui.windows;
 import it.units.sdm.project.entities.Player;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -17,12 +18,15 @@ public class EndGameWindow extends Stage {
         super();
         initModality(Modality.APPLICATION_MODAL);
         setResizable(false);
+        getIcons().add(new Image(getClass().getResourceAsStream("/images/application_icon.png")));
 
         Label label = new Label();
         label.setText("Player " + player.name() + " wins!");
 
         if (player == Player.CHAOS) {
             label.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Paint_Drops.ttf"), 40));
+        } else{
+            label.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 40));
         }
 
         StackPane layout = new StackPane();
