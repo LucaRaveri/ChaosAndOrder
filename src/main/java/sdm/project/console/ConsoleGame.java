@@ -30,7 +30,7 @@ public class ConsoleGame {
 
         do {
             try {
-                ConsoleDrawer.print(board);
+                ConsoleDrawer.println(board);
                 ConsoleDrawer.print(currentPlayer.name() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
                 MoveParser.setMoveLine(scanner.nextLine());
                 Move move = new Move(MoveParser.getRow(), MoveParser.getColumn(), MoveParser.getSymbol());
@@ -42,10 +42,15 @@ public class ConsoleGame {
             }
         } while (WinnerChecker.getWinnerRole(board) == null);
 
-        ConsoleDrawer.print(board);
+        ConsoleDrawer.println(board);
         //TODO: avoid WinnerChecker.getWinnerRole(board), is expansive
-        ConsoleDrawer.println("\n" + GameMessages.CONGRATULATIONS + " "
-                + GameMessages.THE_WINNER_IS + " " + WinnerChecker.getWinnerRole(board) + "\n");
+        if(WinnerChecker.getWinnerRole(board)==Player.CHAOS){
+                ConsoleDrawer.println(GameMessages.CHAOS_WINS);
+        } else{
+                ConsoleDrawer.println(GameMessages.ORDER_WINS);
+        }
+//        ConsoleDrawer.println("\n" + GameMessages.CONGRATULATIONS + " "
+//                + GameMessages.THE_WINNER_IS + " " + WinnerChecker.getWinnerRole(board) + "\n");
     }
 
 

@@ -19,9 +19,10 @@ public class Play {
         do {
             ConsoleGame game = new ConsoleGame();
             game.start();
-            System.out.print("Do you want to play again? [yes/no] ");
+            ConsoleDrawer.print("Do you want to play again? [yes/no] ");
         } while (scanner.nextLine().trim().equals("yes"));
 
+        ConsoleDrawer.println("See you next time!");
     }
 
 }

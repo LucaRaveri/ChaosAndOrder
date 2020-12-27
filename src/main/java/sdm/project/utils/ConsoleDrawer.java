@@ -27,7 +27,7 @@ public class ConsoleDrawer {
         println(COLUMNS_LABEL);
         println(ROW_SEPARATOR);
         IntStream.range(0, Board.SIZE).forEach(i -> {
-            print("   " + i + "  ");
+            print("   " + (i+1) + "  ");
             IntStream.range(0, Board.SIZE).forEach(j -> print(COLUMN_SEPARATOR + "  " + getCorrectSymbol(board.getCell(i, j)) + "  "));
             println(COLUMN_SEPARATOR);
             println(ROW_SEPARATOR);
@@ -43,5 +43,8 @@ public class ConsoleDrawer {
         //        return (cell.getSymbol() == null) ? " " : (cell.getSymbol() == Symbol.CROSS) ? "X" : "O";
     }
 
-
+    public static void println(Board board) {
+        print(board);
+        println("");
+    }
 }
