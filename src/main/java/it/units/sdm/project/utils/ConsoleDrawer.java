@@ -1,42 +1,46 @@
 package it.units.sdm.project.utils;
 
 import it.units.sdm.project.entities.Board;
+import it.units.sdm.project.entities.Cell;
 import it.units.sdm.project.entities.Symbol;
+
+import java.util.stream.IntStream;
 
 public class ConsoleDrawer {
 
     private static final String COLUMNS_LABEL = "         A     B     C     D     E     F       ";
     private static final String ROW_SEPARATOR = "      +-----+-----+-----+-----+-----+-----+    ";
-    private static final String COLUMN_SEPARATOR = " | ";
+    private static final String COLUMN_SEPARATOR = "|";
 
-    public static void print(String message){
+
+    public static void print(String message) {
         System.out.print(message);
+
     }
 
-    public static void println(String message){
+    public static void println(String message) {
         System.out.println(message);
     }
 
     public static void print(Board board) {
-        System.out.println();
-        System.out.println(COLUMNS_LABEL);
-        for (int k = 0; k < 6; k++) {
-            System.out.println(ROW_SEPARATOR);
-            System.out.print("  " + (k+1) + " ");
-            for (int i = 0; i < 6; i++) {
-                System.out.print(COLUMN_SEPARATOR);
-                if (board.getCell(k, i).getSymbol() == Symbol.CIRCLE) {
-                    System.out.print("O");
-                } else if (board.getCell(k, i).getSymbol() == Symbol.CROSS) {
-                    System.out.print("X");
-                } else {
-                    System.out.print(" ");
-                }
-            }
-            System.out.print("  |  \n");
-        }
-        System.out.println("      +-----+-----+-----+-----+-----+-----+ ");
-        System.out.println();
+        println("");
+        println(COLUMNS_LABEL);
+        println(ROW_SEPARATOR);
+        IntStream.range(0, Board.SIZE).forEach(i -> {
+            print("   " + i + "  ");
+            IntStream.range(0, Board.SIZE).forEach(j -> print(COLUMN_SEPARATOR + "  " + getCorrectSymbol(board.getCell(i, j)) + "  "));
+            println(COLUMN_SEPARATOR);
+            println(ROW_SEPARATOR);
+        });
+    }
+
+    // TODO: rename method
+    private static String getCorrectSymbol(Cell cell) {
+
+        if (cell.getSymbol() == null) return " ";
+        else return (cell.getSymbol() == Symbol.CIRCLE) ? "O" : "X";
+
+        //        return (cell.getSymbol() == null) ? " " : (cell.getSymbol() == Symbol.CROSS) ? "X" : "O";
     }
 
 
