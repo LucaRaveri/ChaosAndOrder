@@ -17,6 +17,7 @@
     -fx-border-width: 4;
     -fx-border-color: darkgrey;
     -fx-background-color: #4D4D4D;
+    -fx-margin: 0;
 }
 
 .radio{
