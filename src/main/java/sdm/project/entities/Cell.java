@@ -12,6 +12,7 @@ public class Cell {
         this.symbol = null;
     }
 
+
     public void setSymbol(Symbol symbol) {
         this.symbol = symbol;
     }
