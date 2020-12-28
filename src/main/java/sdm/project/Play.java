@@ -1,8 +1,7 @@
 package sdm.project;
 
-import sdm.project.console.ConsoleGame;
-import sdm.project.utils.ConsoleDrawer;
-import sdm.project.utils.GameMessages;
+import sdm.project.consolecomponents.ConsoleDrawer;
+import sdm.project.core.utils.GameMessages;
 
 import java.util.Scanner;
 

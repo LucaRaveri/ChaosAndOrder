@@ -3,10 +3,10 @@ package sdm.project;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import sdm.project.entities.Board;
-import sdm.project.entities.Move;
-import sdm.project.entities.Symbol;
-import sdm.project.exceptions.TakenCellException;
+import sdm.project.core.entities.Board;
+import sdm.project.core.entities.Move;
+import sdm.project.core.entities.Symbol;
+import sdm.project.core.exceptions.TakenCellException;
 
 import static org.junit.jupiter.api.Assertions.*;
 

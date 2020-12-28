@@ -1,10 +1,10 @@
 package sdm.project;
 
 import org.junit.jupiter.params.provider.ValueSource;
-import sdm.project.entities.Board;
-import sdm.project.entities.Player;
-import sdm.project.entities.Symbol;
-import sdm.project.utils.WinnerChecker;
+import sdm.project.core.entities.Board;
+import sdm.project.core.entities.Player;
+import sdm.project.core.entities.Symbol;
+import sdm.project.core.utils.WinnerChecker;
 import org.junit.jupiter.params.ParameterizedTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -24,4 +24,4 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.media']
 }
 
-mainClassName = "sdm.project.gui.GameScreen"
+mainClassName = "sdm.project.GUIGame"

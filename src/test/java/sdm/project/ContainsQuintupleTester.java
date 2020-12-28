@@ -3,9 +3,9 @@ package sdm.project;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import sdm.project.entities.Cell;
-import sdm.project.entities.Symbol;
-import sdm.project.utils.predicates.ContainsQuintuple;
+import sdm.project.core.entities.Cell;
+import sdm.project.core.entities.Symbol;
+import sdm.project.core.utils.predicates.ContainsQuintuple;
 
 import java.util.Arrays;
 
