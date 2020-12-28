@@ -4,11 +4,12 @@ import sdm.project.exceptions.TakenCellException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Board {
 
     public static final int SIZE = 6;
-    // TODO: set? list? Cell[][]?
+    // TODO: set? list?
     private final List<Cell> cells;
 
     public Board() {
@@ -37,17 +38,10 @@ public class Board {
     }
 
     private void build() {
-        for (int row = 0; row < SIZE; row++) {
-            for (int column = 0; column < SIZE; column++) {
+        IntStream.range(0, Board.SIZE).forEach(row -> {
+            IntStream.range(0, Board.SIZE).forEach(column -> {
                 cells.add(new Cell(row, column));
-            }
-        }
+            });
+        });
     }
-
-    /*TODO: check if it can be done
-    private void build(){
-        cells.stream().forEach(cells.add(Cell::new));
-    }*/
-
-
 }
