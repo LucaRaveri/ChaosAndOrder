@@ -5,14 +5,13 @@ import sdm.project.exceptions.BoardIndexOutOfBoundsException;
 import sdm.project.exceptions.IllegalSymbolException;
 import sdm.project.exceptions.WrongNumberOfArgumentsException;
 
-//TODO: keep it static?
 public class MoveParser {
 
-    private static int column;
-    private static int row;
-    private static Symbol symbol;
+    private  int column;
+    private  int row;
+    private  Symbol symbol;
 
-    public static void setMoveLine(String moveLine)
+    public  void setMoveLine(String moveLine)
             throws IllegalSymbolException, BoardIndexOutOfBoundsException, WrongNumberOfArgumentsException {
 
         //TODO: give a name to String token: tokens?
@@ -29,19 +28,19 @@ public class MoveParser {
 
     }
 
-    public static int getRow() {
+    public  int getRow() {
         return row;
     }
 
-    public static Symbol getSymbol() {
+    public  Symbol getSymbol() {
         return symbol;
     }
 
-    public static int getColumn() {
+    public  int getColumn() {
         return column;
     }
 
-    private static void checkMoveLineFormat(String[] tokens) throws BoardIndexOutOfBoundsException, IllegalSymbolException {
+    private  void checkMoveLineFormat(String[] tokens) throws BoardIndexOutOfBoundsException, IllegalSymbolException {
 
         if (!tokens[0].substring(0, 1).matches("[a-fA-F]")) {
             throw new BoardIndexOutOfBoundsException("Bad column value");
@@ -53,16 +52,16 @@ public class MoveParser {
     }
 
 
-    private static int retrieveRow(int row) {
+    private  int retrieveRow(int row) {
         return row - 1;
     }
 
-    private static int retrieveColumn(char column) {
+    private  int retrieveColumn(char column) {
         // converting the character in the current column value
         return column - 'a';
     }
 
-    private static Symbol retrieveSymbol(String symbol){
+    private  Symbol retrieveSymbol(String symbol){
         return symbol.equalsIgnoreCase("X") ? Symbol.CROSS : Symbol.CIRCLE;
     }
 

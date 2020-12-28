@@ -18,10 +18,12 @@ public class ConsoleGame {
 
     private final Board board;
     private Player currentPlayer;
+    private MoveParser moveParser;
 
     public ConsoleGame() {
         board = new Board();
         currentPlayer = Player.ORDER;
+        moveParser = new MoveParser();
     }
 
     public void start() {
@@ -32,8 +34,8 @@ public class ConsoleGame {
             try {
                 ConsoleDrawer.println(board);
                 ConsoleDrawer.print(currentPlayer.name() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
-                MoveParser.setMoveLine(scanner.nextLine());
-                Move move = new Move(MoveParser.getRow(), MoveParser.getColumn(), MoveParser.getSymbol());
+                moveParser.setMoveLine(scanner.nextLine());
+                Move move = new Move(moveParser.getRow(), moveParser.getColumn(), moveParser.getSymbol());
                 board.insert(move);
                 currentPlayer = (currentPlayer == Player.CHAOS) ? Player.ORDER : Player.CHAOS;
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
