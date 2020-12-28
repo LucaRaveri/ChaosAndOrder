@@ -8,8 +8,6 @@ import sdm.project.entities.Move;
 import sdm.project.entities.Symbol;
 import sdm.project.exceptions.TakenCellException;
 
-import java.util.stream.IntStream;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTester {
@@ -29,17 +27,17 @@ public class BoardTester {
      @CsvSource({"1, 4, CROSS", "0, 3, CIRCLE", "5, 5, CROSS"})
      public void testMove(int row, int column, Symbol symbol) throws TakenCellException {
         board.insert(new Move(row, column, symbol));
-        assertTrue(board.getCell(row, column).getSymbol()==symbol);
+         assertSame(board.getCell(row, column).getSymbol(), symbol);
      }
 
     @Test
-    public void testBoardIsFull() throws TakenCellException {
+    public void testBoardIsFull() {
         fillBoard(board, true);
         assertTrue(board.isFull());
     }
 
     @Test
-    public void testBoardIsNotFull() throws TakenCellException {
+    public void testBoardIsNotFull(){
         fillBoard(board, false);
         assertFalse(board.isFull());
     }
