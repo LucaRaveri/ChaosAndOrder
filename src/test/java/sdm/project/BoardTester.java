@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTester {
 
-    Board board = new Board();
+    private Board board = new Board();
 
     @ParameterizedTest
     @CsvSource({"1, 1, CIRCLE, CROSS", "2, 5, CIRCLE, CIRCLE", "3, 5, CROSS, CROSS", "4, 3, CIRCLE, CROSS"})

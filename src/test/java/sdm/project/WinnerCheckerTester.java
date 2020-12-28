@@ -10,14 +10,16 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class WinnerCheckerTester {
+
+   private Board board = new Board();
 
     @ParameterizedTest
     @CsvSource({"1, 1", "0, 0", "5, 1"})
     void testCheckRow(int row, int column) throws TakenCellException {
-        Board board = new Board();
         horizontalQuintupleFiller(board, row, column);
         assertEquals(Player.ORDER, WinnerChecker.getWinnerRole(board));
     }
