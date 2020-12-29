@@ -59,20 +59,14 @@ public class BoardController implements Initializable {
                 GridPane.setConstraints(cell, row, column);
                 cell.setPrefSize(80, 80);
                 cell.getStyleClass().add("cell");
-                cell.setOnMouseClicked(event -> {
-                    try {
-                        makeMove(cell, rootController.getSymbol());
-                    } catch (TakenCellException e) {
-                        System.out.println(e.getMessage());
-                    }
-                });
+                cell.setOnMouseClicked(event -> makeMove(cell, rootController.getSymbol()));
                 graphicBoard.add(cell, row, column);
             });
         });
 
     }
 
-    private void makeMove(StackPane cell, Symbol symbol) throws TakenCellException {
+    private void makeMove(StackPane cell, Symbol symbol) {
 
         ImageView symbolIcon = (symbol == Symbol.CIRCLE) ? new CircleImageView() : new CrossImageView();
 
@@ -84,7 +78,7 @@ public class BoardController implements Initializable {
 
         cell.getChildren().add(symbolIcon);
         cell.setDisable(true);
-        rootController.getLogicBoard().insert(new Move(GridPane.getRowIndex(cell), GridPane.getColumnIndex(cell), symbol));
+        rootController.getLogicBoard().getCell(GridPane.getRowIndex(cell), GridPane.getColumnIndex(cell)).setSymbol(symbol);
 
         if (WinnerChecker.getWinnerRole(rootController.getLogicBoard()) != null) {
             graphicBoard.getChildren().stream().filter(Predicate.not(Node::isDisabled)).forEach(pane -> pane.setDisable(true));
@@ -95,7 +89,7 @@ public class BoardController implements Initializable {
         }
     }
 
-    public void toEmptyBoard() {
+    public void newBoard() {
         rootController.setBoard(new Board());
         initialize(null, null);
     }

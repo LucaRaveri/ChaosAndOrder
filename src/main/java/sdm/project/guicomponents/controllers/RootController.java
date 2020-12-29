@@ -45,7 +45,7 @@ public class RootController implements Initializable {
     }
 
     public void newGame() {
-        boardController.toEmptyBoard();
+        boardController.newBoard();
         selectorSymbolController.setCurrentPlayer(Player.ORDER);
     }
 
