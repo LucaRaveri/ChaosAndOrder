@@ -9,9 +9,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import sdm.project.core.entities.Board;
 import sdm.project.core.entities.Move;
+import sdm.project.core.entities.Player;
 import sdm.project.core.entities.Symbol;
 import sdm.project.core.exceptions.TakenCellException;
 import sdm.project.guicomponents.imageviews.CircleImageView;
@@ -87,12 +90,10 @@ public class BoardController implements Initializable {
         if (WinnerChecker.getWinnerRole(rootController.getLogicBoard()) != null) {
             graphicBoard.getChildren().stream().filter(Predicate.not(Node::isDisabled)).forEach(pane -> pane.setDisable(true));
             EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.getLogicBoard()));
-            endGameWindow.show();
-
+            endGameWindow.display();
         } else {
             rootController.changePlayer();
         }
-
     }
 
     public void toEmptyBoard() {
