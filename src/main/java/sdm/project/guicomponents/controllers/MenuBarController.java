@@ -1,5 +1,9 @@
 package sdm.project.guicomponents.controllers;
 
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import sdm.project.GUIGame;
 import sdm.project.guicomponents.windows.InstructionsWindow;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,6 +24,7 @@ public class MenuBarController implements Initializable {
 
     @FXML Menu helpMenu;
     @FXML MenuItem readInstructions;
+    @FXML MenuItem about;
 
     RootController rootController;
 
@@ -32,6 +37,10 @@ public class MenuBarController implements Initializable {
         readInstructions.setOnAction(event -> {
             InstructionsWindow instructionsWindow = new InstructionsWindow();
             instructionsWindow.show();
+        });
+
+        about.setOnAction(event -> {
+            ((Node) event.getSource()).getScene().getStylesheets().add("/css/application2.css");
         });
 
     }

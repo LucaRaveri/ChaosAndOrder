@@ -1,5 +1,6 @@
 package sdm.project.guicomponents.controllers;
 
+import javafx.scene.control.ToggleGroup;
 import sdm.project.core.entities.Player;
 import sdm.project.core.entities.Symbol;
 import sdm.project.guicomponents.imageviews.CircleImageView;
@@ -30,6 +31,8 @@ public class SelectorSymbolController implements Initializable {
     RadioButton crossRadio;
     @FXML
     RadioButton circleRadio;
+    @FXML
+    ToggleGroup toggleGroup;
 
     Player currentPlayer;
     Symbol currentSymbol;
@@ -37,8 +40,6 @@ public class SelectorSymbolController implements Initializable {
     MediaPlayer mediaPlayer;
 
     {
-//        Circle circle = new
-
         currentPlayer = Player.ORDER;
         currentSymbol = Symbol.CIRCLE;
 
@@ -54,10 +55,18 @@ public class SelectorSymbolController implements Initializable {
         crossRadio.setGraphic(new CrossImageView());
         circleRadio.setGraphic(new CircleImageView());
         circleRadio.setEffect(circleEffect);
+        circleRadio.setSelected(true);
 
         nextMove.setTextFill(Color.WHITE);
         nextMove.setText("You are player " + currentPlayer.name() + ".\nSelect your next symbol!");
-        nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 20));
+        nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Bookerly-Bold.ttf"), 20));
+
+        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            ((RadioButton) oldValue).setEffect(null);
+            ((RadioButton) newValue).setEffect(newValue==crossRadio? crossEffect: circleEffect);
+            mediaPlayer.seek(Duration.ZERO);
+            mediaPlayer.play();
+        });
 
     }
 
@@ -72,39 +81,6 @@ public class SelectorSymbolController implements Initializable {
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
         nextMove.setText("You are player " + currentPlayer.name() + ".\nSelect your next symbol!");
-    }
-
-    @FXML
-    private void setEffect() {
-
-        mediaPlayer.seek(Duration.ZERO);
-        mediaPlayer.play();
-
-        if (circleRadio.isSelected()) {
-            circleRadio.setEffect(circleEffect);
-            crossRadio.setEffect(null);
-        } else {
-            crossRadio.setEffect(crossEffect);
-            circleRadio.setEffect(null);
-        }
-
-//        ToggleGroup tg = new ToggleGroup();
-//
-//        circleRadio.selectedProperty().addListener((observable, oldValue, newValue) -> {
-//            if(oldValue==true){
-//                circleRadio.setEffect(circleEffect);
-//            } else{
-//                circleRadio.setEffect(null);
-//            }
-//        });
-//
-//        crossRadio.selectedProperty().addListener((observable, oldValue, newValue) -> {
-//            if(newValue==true){
-//                circleRadio.setEffect(crossEffect);
-//            } else{
-//                circleRadio.setEffect(null);
-//            }
-//        });
     }
 
 

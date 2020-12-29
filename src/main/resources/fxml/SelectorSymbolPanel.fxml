@@ -15,9 +15,8 @@
 
     <Label fx:id="nextMove" AnchorPane.leftAnchor="10.0"/>
 
-    <RadioButton fx:id="crossRadio" onAction="#setEffect" AnchorPane.rightAnchor="40" toggleGroup="$toggleGroup"/>
-    <RadioButton fx:id="circleRadio" onAction="#setEffect" AnchorPane.rightAnchor="120" toggleGroup="$toggleGroup"
-                 selected="true"/>
+    <RadioButton fx:id="crossRadio" AnchorPane.rightAnchor="40" toggleGroup="$toggleGroup"/>
+    <RadioButton fx:id="circleRadio" AnchorPane.rightAnchor="120" toggleGroup="$toggleGroup"/>
 
 
 </AnchorPane>

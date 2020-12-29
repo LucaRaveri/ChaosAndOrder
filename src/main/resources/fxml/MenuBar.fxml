@@ -13,6 +13,7 @@
 
         <Menu fx:id="helpMenu" text="Help">
             <MenuItem fx:id="readInstructions" text="Read Instructions"/>
+            <MenuItem fx:id="about" text="About"/>
         </Menu>
 </MenuBar>
 
