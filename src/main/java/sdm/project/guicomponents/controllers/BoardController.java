@@ -53,7 +53,6 @@ public class BoardController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        // TODO: introducing unordered()?
         IntStream.range(0, Board.SIZE).forEach(row -> {
             IntStream.range(0, Board.SIZE).forEach(column -> {
                 StackPane cell = new StackPane();

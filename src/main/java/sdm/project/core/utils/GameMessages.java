@@ -1,6 +1,5 @@
 package sdm.project.core.utils;
 
-//TODO: it is worth to keep this class?
 public class GameMessages {
 
     public static final String TRY_AGAIN = "Try again.";

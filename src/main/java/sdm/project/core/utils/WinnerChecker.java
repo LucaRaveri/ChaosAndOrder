@@ -29,8 +29,8 @@ public class WinnerChecker {
 
     }
 
-    //TODO: rename method to be more readable
-    private static boolean checkGoingToDownDiagonals(Board board) {
+    // diagonals are the ones going from top-left to bottom-right
+    private static boolean checkDiagonals(Board board) {
 
         // the cells in which are interested in have their row index moved by one from their column index or equal to
         Stream<Cell[]> diagonals = IntStream.rangeClosed(-1, 1)
@@ -44,8 +44,8 @@ public class WinnerChecker {
 
     }
 
-    //TODO: rename method to be more readable
-    private static boolean checkGoingToUpDiagonals(Board board) {
+    // anti-diagonals are the ones going from bottom-left to top-right
+    private static boolean checkAntiDiagonals(Board board) {
 
         // the cells in which we are interested in have the summation of indexes in the interval [4,6]
         Stream<Cell[]> diagonals = IntStream.rangeClosed(4, 6).parallel()
@@ -58,7 +58,6 @@ public class WinnerChecker {
 
     public static Player getWinnerRole(Board board) {
 
-        //TODO: discuss if it is the case to avoid multiple returns
         if (chaosWinCondition(board)) {
             return Player.CHAOS;
         } else if (orderWinCondition(board)) {
@@ -74,7 +73,7 @@ public class WinnerChecker {
     }
 
     private static boolean orderWinCondition(Board board) {
-        return checkRows(board) || checkColumns(board) || checkGoingToDownDiagonals(board) || checkGoingToUpDiagonals(board);
+        return checkRows(board) || checkColumns(board) || checkDiagonals(board) || checkAntiDiagonals(board);
     }
 
 }

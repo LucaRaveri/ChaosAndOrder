@@ -14,7 +14,6 @@ public class MoveParser {
     public  void setMoveLine(String moveLine)
             throws IllegalSymbolException, BoardIndexOutOfBoundsException, WrongNumberOfArgumentsException {
 
-        //TODO: give a name to String token: tokens?
         String[] tokens = moveLine.trim().split(" ");
 
         if (tokens.length != 2 || tokens[0].length() < 2)

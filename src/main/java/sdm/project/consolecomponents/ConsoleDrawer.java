@@ -28,14 +28,13 @@ public class ConsoleDrawer {
         println(ROW_SEPARATOR);
         IntStream.range(0, Board.SIZE).forEach(i -> {
             print("   " + (i+1) + "  ");
-            IntStream.range(0, Board.SIZE).forEach(j -> print(COLUMN_SEPARATOR + "  " + getCorrectSymbol(board.getCell(i, j)) + "  "));
+            IntStream.range(0, Board.SIZE).forEach(j -> print(COLUMN_SEPARATOR + "  " + getCellContentAsString(board.getCell(i, j)) + "  "));
             println(COLUMN_SEPARATOR);
             println(ROW_SEPARATOR);
         });
     }
 
-    // TODO: rename method
-    private static String getCorrectSymbol(Cell cell) {
+    private static String getCellContentAsString(Cell cell) {
 
         if (cell.getSymbol() == null) return " ";
         else return (cell.getSymbol() == Symbol.CIRCLE) ? "O" : "X";

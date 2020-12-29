@@ -25,7 +25,6 @@ public class Board {
         return cells.stream().filter(cell -> cell.getRow() == row && cell.getColumn() == column).findFirst().get();
     }
 
-    //TODO: rename method?
     public void insert(Move move) throws TakenCellException {
         if (getCell(move.getRow(), move.getColumn()).getSymbol() != null) {
             throw new TakenCellException("Trying to modify a non empty cell.");

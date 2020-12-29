@@ -35,6 +35,7 @@ public class ContainsQuintupleTester {
 
         cells[5].setSymbol(unmatchSymbol);
         assertTrue(containsQuintuple.test(cells));
+        cells[5].setSymbol(matchSymbol);
 
         cells[3].setSymbol(unmatchSymbol);
         assertFalse(containsQuintuple.test(cells));
