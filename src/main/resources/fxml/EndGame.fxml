@@ -13,7 +13,7 @@
     <ImageView fx:id="imageview" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="30">
     </ImageView>
 
-    <Button text="New Game" fx:id="newGame"  AnchorPane.leftAnchor="150" AnchorPane.bottomAnchor="20"/>
-    <Button text="Back to game" fx:id="backToBoard" AnchorPane.rightAnchor="150" AnchorPane.bottomAnchor="20"/>
+    <Button text="Back to board" fx:id="backToBoard" AnchorPane.leftAnchor="150" AnchorPane.bottomAnchor="20"/>
+    <Button text="Exit Game" fx:id="exit"  AnchorPane.rightAnchor="150" AnchorPane.bottomAnchor="20"/>
 
 </AnchorPane>

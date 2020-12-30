@@ -1,28 +1,30 @@
 package sdm.project.guicomponents.windows;
 
+import com.sun.media.jfxmedia.events.PlayerEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import sdm.project.Play;
 import sdm.project.core.entities.Player;
+import sdm.project.guicomponents.controllers.EndGameController;
 
 import java.io.IOException;
 
 
 public class EndGameWindow {
 
-    public EndGameWindow(Player winner) {
-//        imageView.setImage(winner == Player.ORDER ? new Image("/images/Order.png") : new Image("/images/Chaos.png"));
-    }
-
-    public void display() {
+    public void display(Player winner) {
 
         Parent root = null;
         Stage stage = new Stage();
         try {
-            root = FXMLLoader.load(getClass().getResource("/fxml/EndGame.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndGame.fxml"));
+            root = loader.load();
+            EndGameController controller = loader.getController();
+            controller.setWinner(winner);
         } catch (IOException e) {
             e.printStackTrace();
         }

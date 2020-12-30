@@ -77,8 +77,8 @@ public class BoardController implements Initializable {
 
         if (WinnerChecker.getWinnerRole(rootController.getLogicBoard()) != null) {
             graphicBoard.getChildren().stream().filter(Predicate.not(Node::isDisabled)).forEach(pane -> pane.setDisable(true));
-            EndGameWindow endGameWindow = new EndGameWindow(WinnerChecker.getWinnerRole(rootController.getLogicBoard()));
-            endGameWindow.display();
+            EndGameWindow endGameWindow = new EndGameWindow();
+            endGameWindow.display(WinnerChecker.getWinnerRole(rootController.getLogicBoard()));
         } else {
             rootController.changePlayer();
         }
