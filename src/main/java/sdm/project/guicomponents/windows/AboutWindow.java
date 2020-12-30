@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -17,7 +16,6 @@ public class AboutWindow {
         Parent root = null;
         Stage stage = new Stage(StageStyle.UNDECORATED);
         stage.setResizable(false);
-//        stage.initModality(Modality.APPLICATION_MODAL);
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/About.fxml"));
@@ -31,7 +29,7 @@ public class AboutWindow {
         stage.setScene(scene);
 
         stage.focusedProperty().addListener((observable, wasFocused, isFocused) -> {
-            if(isFocused==false) stage.close();
+            if(!isFocused) stage.close();
         });
         stage.show();
     }
