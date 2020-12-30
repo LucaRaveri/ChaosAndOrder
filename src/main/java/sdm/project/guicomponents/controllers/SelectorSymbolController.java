@@ -57,7 +57,6 @@ public class SelectorSymbolController implements Initializable {
         circleRadio.setEffect(circleEffect);
         circleRadio.setSelected(true);
 
-//        nextMove.setTextFill(Color.WHITE);
         nextMove.setText("You are player " + currentPlayer.name() + ".\nSelect your next symbol!");
         nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Bookerly-Bold.ttf"), 20));
 

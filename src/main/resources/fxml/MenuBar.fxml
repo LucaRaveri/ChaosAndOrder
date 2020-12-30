@@ -4,7 +4,7 @@
 <MenuBar xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          fx:controller="sdm.project.guicomponents.controllers.MenuBarController"
-         fx:id="menuBar">
+         fx:id="menuBar" styleClass="menubar">
 
     <fx:define>
         <ToggleGroup fx:id="toggleGroup"/>

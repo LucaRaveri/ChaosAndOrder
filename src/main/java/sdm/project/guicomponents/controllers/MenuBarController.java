@@ -45,7 +45,7 @@ public class MenuBarController implements Initializable {
 
         newGame.setOnAction(event -> rootController.newGame());
         exitGame.setOnAction(event -> System.exit(0));
-        menuBar.getStyleClass().add("menubar");
+//        menuBar.getStyleClass().add("menubar");
 
         lightTheme.setOnAction(event -> {
 //            menuBar.getScene().getStylesheets().remove(getClass().getResource("/css/dark-theme.css").toExternalForm());
