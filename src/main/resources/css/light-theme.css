@@ -30,3 +30,7 @@
     -fx-border-color: black;
     -fx-padding: 20 20 20 20;
 }
+
+.hyperlink{
+    -fx-border-color: transparent;
+}

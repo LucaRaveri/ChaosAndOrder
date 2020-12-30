@@ -20,7 +20,7 @@ public class AboutController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Label label = new Label("Our Project can be found on Github:");
+        Label label = new Label("Our Project can be found on this Github page:");
         Hyperlink hyperlink = new Hyperlink("http://github.com/RacmanT/ChaosAndOrder");
         hyperlink.setOnAction(event-> {
             try {
@@ -29,6 +29,7 @@ public class AboutController implements Initializable {
                 e.printStackTrace();
             }
         });
+
         credits.getChildren().addAll(label, hyperlink);
 
     }

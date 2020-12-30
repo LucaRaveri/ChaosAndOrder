@@ -2,18 +2,21 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Box?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       prefHeight="300.0" prefWidth="600.0"
       fx:controller="sdm.project.guicomponents.controllers.AboutController"
-      styleClass="about" spacing="10">
+      fx:id="vbox" styleClass="about" spacing="10" alignment="CENTER">
 
-    <Label text="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri"/>
-    <TextFlow fx:id="credits">
-    </TextFlow>
+    <Label text="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri" minWidth="${vbox.prefWidth}"/>
+    <TextFlow fx:id="credits" minWidth="${vbox.prefWidth}"/>
+
+    <ImageView>
+        <Image smooth="true" url="/images/github.png" preserveRatio="true" requestedHeight="120"/>
+    </ImageView>
 
 </VBox>
