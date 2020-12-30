@@ -6,14 +6,24 @@
          fx:controller="sdm.project.guicomponents.controllers.MenuBarController"
          fx:id="menuBar">
 
-        <Menu fx:id="fileMenu" text="File">
-            <MenuItem fx:id="newGame" text="New Game"/>
-            <MenuItem fx:id="exitGame" text="Exit"/>
-        </Menu>
+    <fx:define>
+        <ToggleGroup fx:id="toggleGroup"/>
+    </fx:define>
 
-        <Menu fx:id="helpMenu" text="Help">
-            <MenuItem fx:id="readInstructions" text="Read Instructions"/>
-            <MenuItem fx:id="about" text="About"/>
+
+    <Menu fx:id="fileMenu" text="File">
+        <MenuItem fx:id="newGame" text="New Game"/>
+        <Menu fx:id="themeMenu" text="Themes">
+            <RadioMenuItem fx:id="lightTheme" text="Light Mode" selected="true" toggleGroup="$toggleGroup"/>
+            <RadioMenuItem fx:id="darkTheme" text="Dark Mode" toggleGroup="$toggleGroup"/>
         </Menu>
+        <MenuItem fx:id="exitGame" text="Exit"/>
+    </Menu>
+
+
+    <Menu fx:id="helpMenu" text="Help">
+        <MenuItem fx:id="readInstructions" text="Read Instructions"/>
+        <MenuItem fx:id="about" text="About"/>
+    </Menu>
 </MenuBar>
 

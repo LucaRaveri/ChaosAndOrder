@@ -1,0 +1,26 @@
+.root{
+    -fx-background-color:whitesmoke;
+}
+
+.menubar{
+    -fx-font-size: 15px;
+}
+
+.label {
+    -fx-text-fill: black;
+}
+
+.grid{
+    -fx-border-width: 4;
+    -fx-border-color: black;
+}
+
+.cell{
+    -fx-border-width: 4;
+    -fx-border-color: black;
+    -fx-background-color: whitesmoke;
+}
+
+.radio{
+    visibility: hidden;
+}

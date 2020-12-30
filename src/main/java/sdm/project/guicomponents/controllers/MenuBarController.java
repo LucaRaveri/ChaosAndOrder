@@ -1,9 +1,7 @@
 package sdm.project.guicomponents.controllers;
 
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import sdm.project.GUIGame;
+import javafx.scene.control.RadioMenuItem;
+import javafx.stage.Window;
 import sdm.project.guicomponents.windows.InstructionsWindow;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,15 +14,29 @@ import java.util.ResourceBundle;
 
 public class MenuBarController implements Initializable {
 
-    @FXML MenuBar menuBar;
+    @FXML
+    MenuBar menuBar;
 
-    @FXML Menu fileMenu;
-    @FXML MenuItem newGame;
-    @FXML MenuItem exitGame;
+    @FXML
+    Menu fileMenu;
+    @FXML
+    MenuItem newGame;
+    @FXML
+    MenuItem exitGame;
 
-    @FXML Menu helpMenu;
-    @FXML MenuItem readInstructions;
-    @FXML MenuItem about;
+    @FXML
+    Menu helpMenu;
+    @FXML
+    MenuItem readInstructions;
+    @FXML
+    MenuItem about;
+
+    @FXML
+    Menu themeMenu;
+    @FXML
+    RadioMenuItem lightTheme;
+    @FXML
+    RadioMenuItem darkTheme;
 
     RootController rootController;
 
@@ -33,6 +45,19 @@ public class MenuBarController implements Initializable {
 
         newGame.setOnAction(event -> rootController.newGame());
         exitGame.setOnAction(event -> System.exit(0));
+        menuBar.getStyleClass().add("menubar");
+
+        lightTheme.setOnAction(event -> {
+//            menuBar.getScene().getStylesheets().remove(getClass().getResource("/css/dark-theme.css").toExternalForm());
+            menuBar.getScene().getStylesheets().remove(menuBar.getScene().getStylesheets());
+            menuBar.getScene().getStylesheets().add("/css/light-theme.css");
+        });
+
+        darkTheme.setOnAction(event -> {
+            menuBar.getScene().getStylesheets().remove(menuBar.getScene().getStylesheets());
+//            menuBar.getScene().getStylesheets().remove(getClass().getResource("/css/light-theme.css").toExternalForm());
+            menuBar.getScene().getStylesheets().add("/css/dark-theme.css");
+        });
 
         readInstructions.setOnAction(event -> {
             InstructionsWindow instructionsWindow = new InstructionsWindow();
@@ -40,7 +65,8 @@ public class MenuBarController implements Initializable {
         });
 
         about.setOnAction(event -> {
-            ((Node) event.getSource()).getScene().getStylesheets().add("/css/application2.css");
+            Window window = Window.getWindows().stream().filter(Window::isShowing).findFirst().get();
+            window.getScene().getStylesheets().add("/css/light-theme.css");
         });
 
     }

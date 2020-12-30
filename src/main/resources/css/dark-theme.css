@@ -1,11 +1,15 @@
 .root{
     -fx-background-color:#4D4D4D;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .menubar{
-    -fx-border-width: 2;
-    -fx-border-color: blue;
+    -fx-background-color: darkgrey;
+    -fx-text-fill: black;
+}
+
+.label{
+    -fx-text-fill: white;
 }
 
 .grid{
