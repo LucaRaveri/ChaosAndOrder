@@ -10,6 +10,6 @@
                 AnchorPane.leftAnchor="50"
                 AnchorPane.rightAnchor="50"
                 AnchorPane.topAnchor="50"/>
-    <fx:include fx:id="board" source="Board.fxml" AnchorPane.bottomAnchor="25" AnchorPane.leftAnchor="50"/>
+    <fx:include fx:id="board" source="Board.fxml" AnchorPane.bottomAnchor="25" AnchorPane.leftAnchor="55"/>
 
 </AnchorPane>

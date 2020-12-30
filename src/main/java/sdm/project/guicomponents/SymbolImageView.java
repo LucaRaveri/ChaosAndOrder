@@ -1,4 +1,4 @@
-package sdm.project.guicomponents.imageviews;
+package sdm.project.guicomponents;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
+import sdm.project.guicomponents.windows.AboutWindow;
 import sdm.project.guicomponents.windows.InstructionsWindow;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -76,21 +77,24 @@ public class MenuBarController implements Initializable {
 
         about.setOnAction(event -> {
 
-            Parent root;
-            Stage stage = new Stage(StageStyle.UNDECORATED);
-            stage.initModality(Modality.APPLICATION_MODAL);
+            AboutWindow about = new AboutWindow();
+            about.display();
 
-            try {
-                root = FXMLLoader.load(getClass().getResource("/fxml/About.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                scene.getStylesheets().add("/css/light-theme.css");
-                root.getScene().setOnMouseClicked(event1 -> stage.close());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            stage.show();
+//            Parent root;
+//            Stage stage = new Stage(StageStyle.UNDECORATED);
+//            stage.initModality(Modality.APPLICATION_MODAL);
+//
+//            try {
+//                root = FXMLLoader.load(getClass().getResource("/fxml/About.fxml"));
+//                Scene scene = new Scene(root);
+//                stage.setScene(scene);
+//                scene.getStylesheets().add("/css/light-theme.css");
+//                root.getScene().setOnMouseClicked(event1 -> stage.close());
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            stage.show();
         });
 
     }

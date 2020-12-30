@@ -7,35 +7,33 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sdm.project.core.entities.Player;
-import sdm.project.guicomponents.controllers.EndGameController;
 
 import java.io.IOException;
 
+public class AboutWindow {
 
-public class EndGameWindow {
 
-    public void display(Player winner) {
-
+    public void display(){
         Parent root = null;
         Stage stage = new Stage(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+//        stage.initModality(Modality.APPLICATION_MODAL);
+
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndGame.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/About.fxml"));
             root = loader.load();
-            EndGameController controller = loader.getController();
-            controller.setWinner(winner);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         Scene scene = new Scene(root, Color.web("0x4D4D4D"));
         scene.getStylesheets().add("/css/light-theme.css");
-
         stage.setScene(scene);
-        stage.setTitle("Game comes up with an end");
-        stage.setResizable(false);
-        stage.show();
 
+        stage.focusedProperty().addListener((observable, wasFocused, isFocused) -> {
+            if(isFocused==false) stage.close();
+        });
+        stage.show();
     }
 
 }

@@ -28,5 +28,5 @@
 .about{
     -fx-border-width: 2px;
     -fx-border-color: black;
-    -fx-text-fill: white;
+    -fx-padding: 20 20 20 20;
 }

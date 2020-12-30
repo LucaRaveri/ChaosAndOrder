@@ -3,7 +3,7 @@ package sdm.project.guicomponents.controllers;
 import javafx.scene.control.ToggleGroup;
 import sdm.project.core.entities.Player;
 import sdm.project.core.entities.Symbol;
-import sdm.project.guicomponents.imageviews.SymbolImageView;
+import sdm.project.guicomponents.SymbolImageView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

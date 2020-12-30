@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
-<?import java.lang.String?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="300.0" prefWidth="600.0"
-            styleClass="about">
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      prefHeight="300.0" prefWidth="600.0"
+      styleClass="about" spacing="10">
 
-    <Text AnchorPane.topAnchor="20" text="${credits}"/>
+    <Label text="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri." />
+    <Label text="Our Project can be found on Github: https://github.com/RacmanT/ChaosAndOrder"/>
 
-
-    <fx:define>
-        <String fx:id="credits"
-                fx:value="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri.&#xD;Our Project can be found on Github: https://github.com/RacmanT/ChaosAndOrder"/>
-    </fx:define>
-
-
-</AnchorPane>
+</VBox>

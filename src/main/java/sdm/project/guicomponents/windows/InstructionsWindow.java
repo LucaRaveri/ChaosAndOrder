@@ -1,5 +1,6 @@
 package sdm.project.guicomponents.windows;
 
+import javafx.stage.StageStyle;
 import sdm.project.core.utils.GameMessages;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -12,11 +13,15 @@ import javafx.stage.Stage;
 public class InstructionsWindow extends Stage {
 
     public InstructionsWindow() {
-        super();
+        super(StageStyle.UNDECORATED);
+        setResizable(false);
         setTitle("Chaos & Order Instructions");
         getIcons().add(new Image(getClass().getResourceAsStream("/images/application_icon.png")));
-        initModality(Modality.APPLICATION_MODAL);
-        setResizable(false);
+
+        focusedProperty().addListener((observable, wasFocused, isFocused) -> {
+            if(isFocused==false) close();
+        });
+
 
         Label label = new Label();
         label.setText(GameMessages.INTRO);
@@ -25,7 +30,9 @@ public class InstructionsWindow extends Stage {
         StackPane layout = new StackPane();
         layout.getChildren().add(label);
 
-        setScene(new Scene(layout, 700, 300));
+        Scene scene = new Scene(layout, 700, 300);
+        setScene(scene);
+        scene.setOnMouseClicked(event1 -> close());
 
     }
 

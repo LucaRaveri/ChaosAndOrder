@@ -39,11 +39,11 @@ public class EndGameController implements Initializable {
     }
 
     public void setWinner(Player winner) {
-        winnerImage.setImage(new Image("/images/order.png"));
+        winnerImage.setImage(new Image(winner == Player.ORDER ? "/images/order.png" : "/images/chaos.png"));
         winnerImage.setSmooth(true);
         winnerImage.setCache(true);
 
-        congratulations.setText("Congratulations,\n"+winner.name());
+        congratulations.setText("Congratulations,\n" + winner.name());
     }
 
 

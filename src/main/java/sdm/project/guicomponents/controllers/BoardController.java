@@ -13,7 +13,7 @@ import javafx.util.Duration;
 import sdm.project.core.entities.Board;
 import sdm.project.core.entities.Symbol;
 import sdm.project.core.utils.WinnerChecker;
-import sdm.project.guicomponents.imageviews.SymbolImageView;
+import sdm.project.guicomponents.SymbolImageView;
 import sdm.project.guicomponents.windows.EndGameWindow;
 
 import java.net.URL;
