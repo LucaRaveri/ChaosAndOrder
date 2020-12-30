@@ -1,13 +1,10 @@
 package sdm.project.guicomponents.controllers;
 
-import javafx.scene.control.ToggleGroup;
-import sdm.project.core.entities.Player;
-import sdm.project.core.entities.Symbol;
-import sdm.project.guicomponents.SymbolImageView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Effect;
 import javafx.scene.layout.AnchorPane;
@@ -16,6 +13,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
+import sdm.project.core.entities.Player;
+import sdm.project.core.entities.Symbol;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,13 +33,11 @@ public class SelectorSymbolController implements Initializable {
     ToggleGroup toggleGroup;
 
     Player currentPlayer;
-    Symbol currentSymbol;
     Effect circleEffect, crossEffect;
     MediaPlayer mediaPlayer;
 
     {
         currentPlayer = Player.ORDER;
-        currentSymbol = Symbol.CIRCLE;
 
         circleEffect = new DropShadow(10d, Color.BLUE);
         crossEffect = new DropShadow(10d, Color.RED);
@@ -51,8 +48,6 @@ public class SelectorSymbolController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        crossRadio.setGraphic(new SymbolImageView(Symbol.CROSS));
-        circleRadio.setGraphic(new SymbolImageView(Symbol.CIRCLE));
         circleRadio.setEffect(circleEffect);
         circleRadio.setSelected(true);
 

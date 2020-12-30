@@ -6,14 +6,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.shape.Box?>
+<?import javafx.scene.control.skin.TitledPaneSkin.TitleRegion?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       prefHeight="300.0" prefWidth="600.0"
       fx:controller="sdm.project.guicomponents.controllers.AboutController"
-      fx:id="vbox" styleClass="about" spacing="10" alignment="CENTER">
+      fx:id="vbox" styleClass="about" spacing="15" alignment="CENTER">
 
-    <Label text="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri" minWidth="${vbox.prefWidth}"/>
-    <TextFlow fx:id="credits" minWidth="${vbox.prefWidth}"/>
+<!--    <TitleRegion>-->
+        <Label text="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri" minWidth="${vbox.prefWidth}"/>
+        <TextFlow fx:id="credits" minWidth="${vbox.prefWidth}"/>
+<!--    </TitleRegion>-->
+
+
 
     <ImageView>
         <Image smooth="true" url="/images/github.png" preserveRatio="true" requestedHeight="120"/>

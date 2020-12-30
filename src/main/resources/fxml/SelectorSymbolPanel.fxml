@@ -4,6 +4,10 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.shape.Line?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="anchorPane"
@@ -16,8 +20,32 @@
 
     <Label fx:id="nextMove" AnchorPane.leftAnchor="10.0"/>
 
-    <RadioButton fx:id="crossRadio" AnchorPane.rightAnchor="40" toggleGroup="$toggleGroup"/>
-    <RadioButton fx:id="circleRadio" AnchorPane.rightAnchor="120" toggleGroup="$toggleGroup"/>
+    <RadioButton fx:id="crossRadio" AnchorPane.rightAnchor="40" toggleGroup="$toggleGroup">
+        <graphic>
+            <ImageView fitHeight="50" preserveRatio="true">
+                <Image url="/images/cross.png"></Image>
+            </ImageView>
+        </graphic>
+    </RadioButton>
+
+
+    <RadioButton fx:id="circleRadio" AnchorPane.rightAnchor="120" toggleGroup="$toggleGroup">
+        <graphic>
+            <ImageView fitHeight="50" preserveRatio="true">
+                <Image url="/images/circle.png"></Image>
+            </ImageView>
+        </graphic>
+    </RadioButton>
+
+<!--    <ImageView>-->
+<!--        <Image url="@/images/cross.png"></Image>-->
+<!--    </ImageView>-->
+
+    <fx:define>
+        <ImageView fx:id="qualcosa" fitHeight="50" preserveRatio="true">
+            <Image url="@/images/cross.png"></Image>
+        </ImageView>
+    </fx:define>
 
 
 </AnchorPane>
