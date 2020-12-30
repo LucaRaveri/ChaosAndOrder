@@ -3,8 +3,7 @@ package sdm.project.guicomponents.controllers;
 import javafx.scene.control.ToggleGroup;
 import sdm.project.core.entities.Player;
 import sdm.project.core.entities.Symbol;
-import sdm.project.guicomponents.imageviews.CircleImageView;
-import sdm.project.guicomponents.imageviews.CrossImageView;
+import sdm.project.guicomponents.imageviews.SymbolImageView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -52,8 +51,8 @@ public class SelectorSymbolController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        crossRadio.setGraphic(new CrossImageView());
-        circleRadio.setGraphic(new CircleImageView());
+        crossRadio.setGraphic(new SymbolImageView(Symbol.CROSS));
+        circleRadio.setGraphic(new SymbolImageView(Symbol.CIRCLE));
         circleRadio.setEffect(circleEffect);
         circleRadio.setSelected(true);
 

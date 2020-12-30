@@ -13,8 +13,7 @@ import javafx.util.Duration;
 import sdm.project.core.entities.Board;
 import sdm.project.core.entities.Symbol;
 import sdm.project.core.utils.WinnerChecker;
-import sdm.project.guicomponents.imageviews.CircleImageView;
-import sdm.project.guicomponents.imageviews.CrossImageView;
+import sdm.project.guicomponents.imageviews.SymbolImageView;
 import sdm.project.guicomponents.windows.EndGameWindow;
 
 import java.net.URL;
@@ -63,7 +62,7 @@ public class BoardController implements Initializable {
 
     private void makeMove(StackPane cell, Symbol symbol) {
 
-        ImageView symbolIcon = (symbol == Symbol.CIRCLE) ? new CircleImageView() : new CrossImageView();
+        ImageView symbolIcon = new SymbolImageView((symbol == Symbol.CIRCLE) ? Symbol.CIRCLE: Symbol.CROSS);
 
         animation.setNode(symbolIcon);
         mediaPlayer.seek(Duration.ZERO);

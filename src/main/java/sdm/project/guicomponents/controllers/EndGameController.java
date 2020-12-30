@@ -32,8 +32,8 @@ public class EndGameController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         congratulations.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 30));
-        imageview.setFitHeight(100);
-        imageview.setPreserveRatio(true);
+//        imageview.setFitHeight(100);
+//        imageview.setPreserveRatio(true);
 
         backToBoard.setOnAction(event -> ((Stage) backToBoard.getScene().getWindow()).close());
         exit.setOnAction(event -> Platform.exit());
@@ -41,7 +41,11 @@ public class EndGameController implements Initializable {
     }
 
     public void setWinner(Player winner) {
-        imageview.setImage(new Image("/images/Chaos.png"));
+        imageview.setImage(new Image("/images/chaos.png"));
+        imageview.setFitWidth(100);
+        imageview.setPreserveRatio(true);
+        imageview.setSmooth(true);
+        imageview.setCache(true);
         congratulations.setText("Congratulations,\n"+winner.name());
     }
 
