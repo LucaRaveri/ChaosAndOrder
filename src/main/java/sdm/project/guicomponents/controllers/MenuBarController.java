@@ -1,5 +1,6 @@
 package sdm.project.guicomponents.controllers;
 
+import javafx.application.Platform;
 import javafx.scene.control.RadioMenuItem;
 import javafx.stage.Window;
 import sdm.project.guicomponents.windows.InstructionsWindow;
@@ -44,7 +45,7 @@ public class MenuBarController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         newGame.setOnAction(event -> rootController.newGame());
-        exitGame.setOnAction(event -> System.exit(0));
+        exitGame.setOnAction(event -> Platform.exit());
 //        menuBar.getStyleClass().add("menubar");
 
         lightTheme.setOnAction(event -> {

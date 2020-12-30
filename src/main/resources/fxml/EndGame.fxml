@@ -7,10 +7,10 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sdm.project.guicomponents.controllers.EndGameController"
-            prefHeight="200.0" prefWidth="500.0">
+            prefHeight="230.0" prefWidth="500.0">
 
     <Label fx:id="congratulations" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="30"/>
-    <ImageView fx:id="imageview" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="30">
+    <ImageView fx:id="winnerImage" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="20">
     </ImageView>
 
     <Button text="Back to board" fx:id="backToBoard" AnchorPane.leftAnchor="150" AnchorPane.bottomAnchor="20"/>
