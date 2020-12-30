@@ -1,15 +1,22 @@
 package sdm.project.guicomponents.controllers;
 
 import javafx.application.Platform;
-import javafx.scene.control.RadioMenuItem;
+import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import sdm.project.guicomponents.windows.InstructionsWindow;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -50,12 +57,14 @@ public class MenuBarController implements Initializable {
 
         lightTheme.setOnAction(event -> {
 //            menuBar.getScene().getStylesheets().remove(getClass().getResource("/css/dark-theme.css").toExternalForm());
-            menuBar.getScene().getStylesheets().remove(menuBar.getScene().getStylesheets());
+            System.out.println(menuBar.getScene().getStylesheets().remove(getClass().getResource("")));
             menuBar.getScene().getStylesheets().add("/css/light-theme.css");
+//        scene.getStylesheets().add("/css/light-theme.css");
+
         });
 
         darkTheme.setOnAction(event -> {
-            menuBar.getScene().getStylesheets().remove(menuBar.getScene().getStylesheets());
+            System.out.println(menuBar.getScene().getStylesheets().remove(menuBar.getScene().getStylesheets()));
 //            menuBar.getScene().getStylesheets().remove(getClass().getResource("/css/light-theme.css").toExternalForm());
             menuBar.getScene().getStylesheets().add("/css/dark-theme.css");
         });
@@ -66,8 +75,22 @@ public class MenuBarController implements Initializable {
         });
 
         about.setOnAction(event -> {
-            Window window = Window.getWindows().stream().filter(Window::isShowing).findFirst().get();
-            window.getScene().getStylesheets().add("/css/light-theme.css");
+
+            Parent root;
+            Stage stage = new Stage(StageStyle.UNDECORATED);
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            try {
+                root = FXMLLoader.load(getClass().getResource("/fxml/About.fxml"));
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                scene.getStylesheets().add("/css/light-theme.css");
+                root.getScene().setOnMouseClicked(event1 -> stage.close());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            stage.show();
         });
 
     }

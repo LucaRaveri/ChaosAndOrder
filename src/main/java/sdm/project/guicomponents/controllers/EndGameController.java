@@ -39,9 +39,7 @@ public class EndGameController implements Initializable {
     }
 
     public void setWinner(Player winner) {
-        winnerImage.setImage(new Image("/images/chaos.png"));
-        winnerImage.setFitHeight(142.25);
-        winnerImage.setPreserveRatio(true);
+        winnerImage.setImage(new Image("/images/order.png"));
         winnerImage.setSmooth(true);
         winnerImage.setCache(true);
 

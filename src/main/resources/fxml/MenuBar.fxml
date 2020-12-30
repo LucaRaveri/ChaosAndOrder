@@ -4,15 +4,15 @@
 <MenuBar xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          fx:controller="sdm.project.guicomponents.controllers.MenuBarController"
-         fx:id="menuBar" styleClass="menubar">
+         fx:id="menuBar" styleClass="menu-bar">
 
     <fx:define>
         <ToggleGroup fx:id="toggleGroup"/>
     </fx:define>
 
 
-    <Menu fx:id="fileMenu" text="File">
-        <MenuItem fx:id="newGame" text="New Game"/>
+    <Menu fx:id="fileMenu" text="File" styleClass="menu">
+        <MenuItem fx:id="newGame" text="New Game" styleClass="menu-item"/>
         <Menu fx:id="themeMenu" text="Themes">
             <RadioMenuItem fx:id="lightTheme" text="Light Mode" selected="true" toggleGroup="$toggleGroup"/>
             <RadioMenuItem fx:id="darkTheme" text="Dark Mode" toggleGroup="$toggleGroup"/>

@@ -24,3 +24,9 @@
 .radio{
     visibility: hidden;
 }
+
+.about{
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+}

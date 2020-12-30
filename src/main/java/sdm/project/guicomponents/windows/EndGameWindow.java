@@ -6,7 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sdm.project.Play;
 import sdm.project.core.entities.Player;
 import sdm.project.guicomponents.controllers.EndGameController;
@@ -19,7 +21,8 @@ public class EndGameWindow {
     public void display(Player winner) {
 
         Parent root = null;
-        Stage stage = new Stage();
+        Stage stage = new Stage(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndGame.fxml"));
             root = loader.load();
