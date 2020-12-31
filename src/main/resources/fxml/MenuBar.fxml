@@ -18,14 +18,14 @@
             <RadioMenuItem fx:id="lightTheme" text="Light Mode" selected="true" toggleGroup="$toggleGroup" >
                 <graphic>
                     <ImageView fitWidth="25" preserveRatio="true" smooth="true">
-                        <Image url="/images/light-mode.png"></Image>
+                        <Image url="/images/light-mode.png"/>
                     </ImageView>
                 </graphic>
             </RadioMenuItem>
             <RadioMenuItem fx:id="darkTheme" text="Dark Mode" toggleGroup="$toggleGroup" >
                 <graphic>
                     <ImageView fitWidth="25" preserveRatio="true" smooth="true">
-                        <Image url="/images/dark-mode.png" />
+                        <Image url="/images/dark-mode.png"/>
                     </ImageView>
                 </graphic>
             </RadioMenuItem>

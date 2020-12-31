@@ -38,3 +38,13 @@
 .hyperlink{
     -fx-border-color: transparent;
 }
+
+.instructions .label{
+    -fx-text-fill: black;
+    -fx-font-family: 'Baby_Girl';
+    -fx-font-size: 16;
+    -fx-font-style: normal;
+    -fx-font-weight: normal;
+    -fx-text-alignment: center;
+    -fx-padding: 20;
+}

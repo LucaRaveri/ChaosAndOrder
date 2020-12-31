@@ -6,8 +6,8 @@ public class GameMessages {
     public static final String MAKE_YOUR_MOVE = "make your move:";
     public static final String WELCOME = "Welcome to Chaos and Order!\n";
     public static final String INTRO =
-            "Order and Chaos is a tic-tac-toe variant, played on a 6×6 gameboard. \n" +
-                    "The player Order strives to create a five-in-a-row of either Xs or Os, \n" +
+            "Order and Chaos is a tic-tac-toe variant, played on a 6x6 gameboard. \n" +
+                    "The player Order strives to create a five-in-a-row of either crosses or circles, \n" +
                     "while opponent Chaos endeavors to prevent this. Order moves first. \n";
 
     public static final String ORDER_WINS =
