@@ -1,8 +1,8 @@
-.root{
+.root {
     -fx-background-color:whitesmoke;
 }
 
-.menu-bar{
+.menu-bar  {
     -fx-font-size: 15px;
 }
 
@@ -14,32 +14,32 @@
     -fx-font-weight: bold;
 }
 
-.grid{
+.grid {
     -fx-border-width: 4;
     -fx-border-color: black;
 }
 
-.cell{
+.cell {
     -fx-border-width: 4;
     -fx-border-color: black;
     -fx-background-color: whitesmoke;
 }
 
-.radio{
+.radio {
     visibility: hidden;
 }
 
-.about{
+.about {
     -fx-border-width: 2px;
     -fx-border-color: black;
     -fx-padding: 20 20 20 20;
 }
 
-.hyperlink{
+.hyperlink {
     -fx-border-color: transparent;
 }
 
-.instructions .label{
+.instructions .label {
     -fx-text-fill: black;
     -fx-font-family: 'Baby_Girl';
     -fx-font-size: 16;
