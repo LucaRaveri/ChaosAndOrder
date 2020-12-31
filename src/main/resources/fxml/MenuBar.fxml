@@ -16,7 +16,7 @@
 
         <MenuItem fx:id="newGame" text="New Game">
             <graphic>
-                <ImageView fitHeight="25" preserveRatio="true">
+                <ImageView fitHeight="16" preserveRatio="true">
                     <Image url="/images/menu-icons/new-game.png"/>
                 </ImageView>
             </graphic>
@@ -26,7 +26,7 @@
 
             <RadioMenuItem fx:id="lightTheme" text="Light Mode" selected="true" toggleGroup="$toggleGroup">
                 <graphic>
-                    <ImageView fitWidth="25" preserveRatio="true">
+                    <ImageView fitWidth="16" preserveRatio="true">
                         <Image url="/images/menu-icons/light-mode.png"/>
                     </ImageView>
                 </graphic>
@@ -34,14 +34,14 @@
 
             <RadioMenuItem fx:id="darkTheme" text="Dark Mode" toggleGroup="$toggleGroup">
                 <graphic>
-                    <ImageView fitWidth="25" preserveRatio="true">
+                    <ImageView fitWidth="16" preserveRatio="true">
                         <Image url="/images/menu-icons/dark-mode.png"/>
                     </ImageView>
                 </graphic>
             </RadioMenuItem>
 
             <graphic>
-                <ImageView fitWidth="25" preserveRatio="true">
+                <ImageView fitWidth="16" preserveRatio="true">
                     <Image url="/images/menu-icons/themes.png"/>
                 </ImageView>
             </graphic>
@@ -49,7 +49,7 @@
 
         <MenuItem fx:id="exitGame" text="Exit">
             <graphic>
-                <ImageView fitWidth="25" preserveRatio="true">
+                <ImageView fitWidth="16" preserveRatio="true">
                     <Image url="/images/menu-icons/exit.png"/>
                 </ImageView>
             </graphic>
@@ -62,7 +62,7 @@
 
         <MenuItem fx:id="readInstructions" text="Read Instructions">
             <graphic>
-                <ImageView fitWidth="25" preserveRatio="true">
+                <ImageView fitWidth="16" preserveRatio="true">
                     <Image url="/images/menu-icons/book.png"/>
                 </ImageView>
             </graphic>
@@ -70,7 +70,7 @@
 
         <MenuItem fx:id="about" text="About">
             <graphic>
-                <ImageView fitWidth="25" preserveRatio="true">
+                <ImageView fitWidth="16" preserveRatio="true">
                     <Image url="/images/menu-icons/info.png"/>
                 </ImageView>
             </graphic>

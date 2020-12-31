@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color:whitesmoke;
+    -fx-background-color: whitesmoke;
 }
 
 .menu-bar {
@@ -33,6 +33,7 @@
     -fx-border-width: 4;
     -fx-border-color: #333333;
     -fx-background-color: whitesmoke;
+
 }
 
 .radio {
