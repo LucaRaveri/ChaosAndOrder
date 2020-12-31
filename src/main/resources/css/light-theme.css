@@ -20,6 +20,10 @@
     -fx-font-weight: bold;
 }
 
+.selector-symbol-panel .label {
+    -fx-text-fill: black;
+}
+
 .grid {
     -fx-border-width: 4;
     -fx-border-color: #333333;

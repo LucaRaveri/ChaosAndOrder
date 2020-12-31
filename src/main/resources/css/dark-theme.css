@@ -1,29 +1,67 @@
-.root{
+.root {
     -fx-background-color:#4D4D4D;
-    -fx-text-fill: black;
 }
 
-.menubar{
-    -fx-background-color: darkgrey;
-    -fx-text-fill: black;
+.menu-bar {
+    -fx-font-size: 15px;
 }
 
-.selectorsymbolpanel{
-    -fx-text-fill: white;
+.radio-menu-item:checked > .left-container {
+    -fx-background-color: -fx-mark-color;
+    -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z";
+    -fx-scale-shape: false;
 }
 
-.grid{
+.selector-symbol-panel {
+    -fx-text-fill: whitesmoke;
+    -fx-font-family: 'Bookerly-Bold';
+    -fx-font-size: 20;
+    -fx-font-style: normal;
+    -fx-font-weight: bold;
+}
+
+.selector-symbol-panel .label {
+    -fx-text-fill: whitesmoke;
+}
+
+.grid {
     -fx-border-width: 4;
-    -fx-border-color: darkgrey;
+    -fx-border-color: whitesmoke;
 }
 
-.cell{
+.cell {
     -fx-border-width: 4;
-    -fx-border-color: darkgrey;
+    -fx-border-color: whitesmoke;
     -fx-background-color: #4D4D4D;
-    -fx-margin: 0;
 }
 
-.radio{
+.radio {
     visibility: hidden;
+}
+
+.about {
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-font-size: 14;
+}
+
+.about > * {
+    -fx-padding: 0 0 0 15;
+}
+
+.hyperlink {
+    -fx-border-color: transparent;
+}
+
+.instructions {
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+}
+
+.instructions .label {
+    -fx-text-fill: black;
+    -fx-font-family: 'Baby_Girl';
+    -fx-font-size: 16;
+    -fx-text-alignment: center;
+    -fx-padding: 15;
 }
