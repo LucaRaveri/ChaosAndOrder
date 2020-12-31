@@ -16,10 +16,6 @@ public class InstructionsWindow {
         Pane root = null;
         Stage stage = new Stage(StageStyle.UNDECORATED);
         stage.setResizable(false);
-
-        Label label = new Label();
-        label.setText(GameMessages.INTRO);
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Instructions.fxml"));
             root = loader.load();
@@ -27,7 +23,6 @@ public class InstructionsWindow {
             e.printStackTrace();
         }
 
-        root.getChildren().add(label);
         Scene scene = new Scene(root);
         scene.setOnMouseClicked(event1 -> stage.close());
         scene.getStylesheets().add("/css/light-theme.css");

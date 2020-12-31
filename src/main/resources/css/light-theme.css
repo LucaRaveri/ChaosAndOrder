@@ -22,12 +22,12 @@
 
 .grid {
     -fx-border-width: 4;
-    -fx-border-color: black;
+    -fx-border-color: #333333;
 }
 
 .cell {
     -fx-border-width: 4;
-    -fx-border-color: black;
+    -fx-border-color: #333333;
     -fx-background-color: whitesmoke;
 }
 
@@ -38,20 +38,26 @@
 .about {
     -fx-border-width: 2px;
     -fx-border-color: black;
-    -fx-padding: 20 20 20 20;
     -fx-font-size: 14;
+}
+
+.about > * {
+    -fx-padding: 0 0 0 15;
 }
 
 .hyperlink {
     -fx-border-color: transparent;
 }
 
+.instructions {
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+}
+
 .instructions .label {
     -fx-text-fill: black;
     -fx-font-family: 'Baby_Girl';
     -fx-font-size: 16;
-    -fx-font-style: normal;
-    -fx-font-weight: normal;
     -fx-text-alignment: center;
-    -fx-padding: 20;
+    -fx-padding: 15;
 }

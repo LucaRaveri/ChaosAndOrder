@@ -3,6 +3,7 @@ package sdm.project.guicomponents.controllers;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -53,6 +54,7 @@ public class BoardController implements Initializable {
                 GridPane.setConstraints(cell, row, column);
                 cell.setPrefSize(80, 80);
                 cell.getStyleClass().add("cell");
+                StackPane.setMargin(cell, new Insets(0, 0, 0, 0));
                 cell.setOnMouseClicked(event -> makeMove(cell, rootController.getSymbol()));
                 graphicBoard.add(cell, row, column);
             });
