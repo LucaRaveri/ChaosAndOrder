@@ -33,6 +33,7 @@ public class SelectorSymbolController implements Initializable {
     ToggleGroup toggleGroup;
 
     Player currentPlayer;
+    @FXML
     Effect circleEffect, crossEffect;
     MediaPlayer mediaPlayer;
 
@@ -52,11 +53,11 @@ public class SelectorSymbolController implements Initializable {
         circleRadio.setSelected(true);
 
         nextMove.setText("You are player " + currentPlayer.name() + ".\nSelect your next symbol!");
-        nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Bookerly-Bold.ttf"), 20));
+//        nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Bookerly-Bold.ttf"), 20));
 
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             ((RadioButton) oldValue).setEffect(null);
-            ((RadioButton) newValue).setEffect(newValue==crossRadio? crossEffect: circleEffect);
+            ((RadioButton) newValue).setEffect(newValue == crossRadio ? crossEffect : circleEffect);
             mediaPlayer.seek(Duration.ZERO);
             mediaPlayer.play();
         });

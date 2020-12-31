@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <MenuBar xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          fx:controller="sdm.project.guicomponents.controllers.MenuBarController"
@@ -10,12 +12,23 @@
         <ToggleGroup fx:id="toggleGroup"/>
     </fx:define>
 
-
     <Menu fx:id="fileMenu" text="File" styleClass="menu">
         <MenuItem fx:id="newGame" text="New Game" styleClass="menu-item"/>
         <Menu fx:id="themeMenu" text="Themes">
-            <RadioMenuItem fx:id="lightTheme" text="Light Mode" selected="true" toggleGroup="$toggleGroup"/>
-            <RadioMenuItem fx:id="darkTheme" text="Dark Mode" toggleGroup="$toggleGroup"/>
+            <RadioMenuItem fx:id="lightTheme" text="Light Mode" selected="true" toggleGroup="$toggleGroup" >
+                <graphic>
+                    <ImageView fitWidth="25" preserveRatio="true" smooth="true">
+                        <Image url="/images/light-mode.png"></Image>
+                    </ImageView>
+                </graphic>
+            </RadioMenuItem>
+            <RadioMenuItem fx:id="darkTheme" text="Dark Mode" toggleGroup="$toggleGroup" >
+                <graphic>
+                    <ImageView fitWidth="25" preserveRatio="true" smooth="true">
+                        <Image url="/images/dark-mode.png" />
+                    </ImageView>
+                </graphic>
+            </RadioMenuItem>
         </Menu>
         <MenuItem fx:id="exitGame" text="Exit"/>
     </Menu>

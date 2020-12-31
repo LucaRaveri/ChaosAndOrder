@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="anchorPane"
@@ -18,7 +19,11 @@
         <ToggleGroup fx:id="toggleGroup"/>
     </fx:define>
 
-    <Label fx:id="nextMove" AnchorPane.leftAnchor="10.0"/>
+    <Label fx:id="nextMove" AnchorPane.leftAnchor="10.0">
+<!--        <font>-->
+<!--            <Font name="Bookerly-Bold" size="20"/>-->
+<!--        </font>-->
+    </Label>
 
     <RadioButton fx:id="crossRadio" AnchorPane.rightAnchor="40" toggleGroup="$toggleGroup">
         <graphic>
@@ -36,16 +41,5 @@
             </ImageView>
         </graphic>
     </RadioButton>
-
-<!--    <ImageView>-->
-<!--        <Image url="@/images/cross.png"></Image>-->
-<!--    </ImageView>-->
-
-    <fx:define>
-        <ImageView fx:id="qualcosa" fitHeight="50" preserveRatio="true">
-            <Image url="@/images/cross.png"></Image>
-        </ImageView>
-    </fx:define>
-
 
 </AnchorPane>

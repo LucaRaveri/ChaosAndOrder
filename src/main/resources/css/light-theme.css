@@ -2,12 +2,16 @@
     -fx-background-color:whitesmoke;
 }
 
-.menubar{
+.menu-bar{
     -fx-font-size: 15px;
 }
 
 .selectorsymbolpanel {
     -fx-text-fill: black;
+    -fx-font-family: 'Bookerly-Bold';
+    -fx-font-size: 20;
+    -fx-font-style: normal;
+    -fx-font-weight: bold;
 }
 
 .grid{
