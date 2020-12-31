@@ -3,7 +3,6 @@ package sdm.project.guicomponents.windows;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,7 +27,7 @@ public class EndGameWindow {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene scene = new Scene(root, Color.web("0x4D4D4D"));
+        Scene scene = new Scene(root);
         scene.getStylesheets().add("/css/light-theme.css");
 
         stage.setScene(scene);

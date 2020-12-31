@@ -7,16 +7,20 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.shape.Box?>
 <?import javafx.scene.control.skin.TitledPaneSkin.TitleRegion?>
+<?import javafx.scene.layout.Region?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       prefHeight="300.0" prefWidth="600.0"
       fx:controller="sdm.project.guicomponents.controllers.AboutController"
       fx:id="vbox" styleClass="about" spacing="15" alignment="CENTER">
 
-<!--    <TitleRegion>-->
+    <TitleRegion>
+        <Region>
+
+        </Region>
+    </TitleRegion>
         <Label text="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri" minWidth="${vbox.prefWidth}"/>
         <TextFlow fx:id="credits" minWidth="${vbox.prefWidth}"/>
-<!--    </TitleRegion>-->
 
 
 

@@ -20,8 +20,7 @@ public class AboutController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Label label = new Label("Our Project can be found on this Github page:");
-        Hyperlink hyperlink = new Hyperlink("http://github.com/RacmanT/ChaosAndOrder");
+        Hyperlink hyperlink = new Hyperlink("https://github.com/RacmanT/ChaosAndOrder");
         hyperlink.setOnAction(event-> {
             try {
                 Desktop.getDesktop().browse(new URI(hyperlink.getText()));
@@ -30,7 +29,7 @@ public class AboutController implements Initializable {
             }
         });
 
-        credits.getChildren().addAll(label, hyperlink);
+        credits.getChildren().addAll(new Label("Our Project can be found on Github page: "), hyperlink);
 
     }
 }

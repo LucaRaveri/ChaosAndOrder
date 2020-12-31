@@ -2,11 +2,17 @@
     -fx-background-color:whitesmoke;
 }
 
-.menu-bar  {
+.menu-bar {
     -fx-font-size: 15px;
 }
 
-.selectorsymbolpanel {
+.radio-menu-item:checked > .left-container {
+    -fx-background-color: -fx-mark-color;
+    -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z";
+    -fx-scale-shape: false;
+}
+
+.selector-symbol-panel {
     -fx-text-fill: black;
     -fx-font-family: 'Bookerly-Bold';
     -fx-font-size: 20;
@@ -33,6 +39,7 @@
     -fx-border-width: 2px;
     -fx-border-color: black;
     -fx-padding: 20 20 20 20;
+    -fx-font-size: 14;
 }
 
 .hyperlink {
