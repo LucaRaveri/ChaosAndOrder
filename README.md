@@ -42,9 +42,9 @@ The game can be played both from a Command line interface (CLI) or from a Graphi
 
 To start the Command line interface move to the directory where you have extracted the deployed and run `./ChaosAndOrder --cli`.
 
-<!-- <p align="center">
-<img src="https://github.com/RacmanT/ChaosAndOrder/screenshots/CLI_1.png">
-</p> -->
+<p align="center">
+<img src="https://github.com/RacmanT/ChaosAndOrder/blob/main/screenshots/CLI_1.png">
+</p>
 
 Moves are given in the format _RowColumn Sign_, where the Row can be chosen among [A,F], the Column among [1,6] and the Sign between [X,O] (e.g. _A5 X, E2 O_,...) The game is not case sensitive and extra empty spaces will be handled too.
 
