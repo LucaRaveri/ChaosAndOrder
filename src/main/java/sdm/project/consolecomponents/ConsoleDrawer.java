@@ -8,8 +8,8 @@ import java.util.stream.IntStream;
 
 public class ConsoleDrawer {
 
-    private static final String COLUMNS_LABEL = "         A     B     C     D     E     F       ";
-    private static final String ROW_SEPARATOR = "      +-----+-----+-----+-----+-----+-----+    ";
+    private static final String COLUMNS_LABEL = "         A     B     C     D     E     F";
+    private static final String ROW_SEPARATOR = "      +-----+-----+-----+-----+-----+-----+";
     private static final String COLUMN_SEPARATOR = "|";
 
 
