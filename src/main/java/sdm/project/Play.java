@@ -1,5 +1,6 @@
 package sdm.project;
 
+import javafx.application.Application;
 import sdm.project.consolecomponents.ConsoleDrawer;
 import sdm.project.core.utils.GameMessages;
 
@@ -7,7 +8,24 @@ import java.util.Scanner;
 
 public class Play {
 
+    public static final String SYNTAX_INSTRUCTIONS = "Expected java -jar ChaosAndOrder.jar console|gui";
+
     public static void main(String[] args) {
+
+        if (args.length != 1 || !args[0].matches("(console)|(gui)")) {
+            System.out.println(SYNTAX_INSTRUCTIONS);
+            System.exit(0);
+        }
+
+        if (args[0].equals("console")) {
+            startConsoleGame();
+        } else {
+            Application.launch(GUIGame.class);
+        }
+
+    }
+
+    public static void startConsoleGame() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,5 +41,6 @@ public class Play {
 
         ConsoleDrawer.println("See you next time!");
     }
+
 
 }
