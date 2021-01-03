@@ -74,7 +74,7 @@ The application panel might be useful if:
 - you want to start a new game go to _File > New Game_
 - you want to exit _File > Exit_
 - you forgot about the rules go to _Help > Read Instructions_
-- you are wondering who made this beautiful game _Help > About _ :wink:
+- you are wondering who made this beautiful game _Help > About_ :wink:
 
 ##### Light / Dark Theme
 
