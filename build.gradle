@@ -10,24 +10,23 @@ repositories {
     mavenCentral()
 }
 
+mainClassName = "sdm.project.Play"
+
 dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
     testImplementation(platform('org.junit:junit-bom:5.6.2'))
     testImplementation('org.junit.jupiter:junit-jupiter')
 
-    //implementation 'org.openjfx:javafx:15.0.1'
-
     compile 'org.openjfx:javafx-controls:15.0.1'
     compile 'org.openjfx:javafx-fxml:15.0.1'
     compile 'org.openjfx:javafx-media:15.0.1'
-
 }
 
-jar{
-    manifest{
+jar {
+    manifest {
         attributes 'Implementation-Title': 'ChaosAndOrder',
-        'Implementation-Version': 1.0,
-        'Main-Class': 'sdm.project.Play'
+                'Implementation-Version': 1.0,
+                'Main-Class': 'sdm.project.Play'
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
@@ -39,8 +38,7 @@ test {
 }
 
 javafx {
-    version ="15.0.1"
+    version = "15.0.1"
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.media']
 }
 
-//mainClassName = "sdm.project.GUIGame"
