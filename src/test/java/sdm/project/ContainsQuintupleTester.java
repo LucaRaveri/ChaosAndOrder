@@ -9,15 +9,16 @@ import sdm.project.core.utils.predicates.ContainsQuintuple;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class ContainsQuintupleTester {
 
-    private ContainsQuintuple containsQuintuple = new ContainsQuintuple();
+    private final ContainsQuintuple containsQuintuple = new ContainsQuintuple();
     private Cell[] cells;
 
-    //TODO: Refactoring needed
+
     @ParameterizedTest
     @CsvSource({"CIRCLE, CROSS", "CROSS, CIRCLE"})
     public void testSixCellsArray(Symbol matchSymbol, Symbol unmatchSymbol) {

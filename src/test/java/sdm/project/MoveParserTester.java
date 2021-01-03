@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MoveParserTester {
 
-    private MoveParser moveParser = new MoveParser();
+    private final MoveParser moveParser = new MoveParser();
 
 
     @ParameterizedTest

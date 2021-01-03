@@ -3,21 +3,23 @@ package sdm.project.core.entities;
 import sdm.project.core.exceptions.TakenCellException;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class Board {
 
     public static final int SIZE = 6;
-    // TODO: set? list?
-    private final List<Cell> cells;
+
+    private final Set<Cell> cells;
 
     public Board() {
-        cells = new ArrayList<>();
+        cells = new HashSet<>();
         this.build();
     }
 
-    public List<Cell> getCells() {
+    public Set<Cell> getCells() {
         return cells;
     }
 

@@ -45,7 +45,7 @@ public class ConsoleGame {
         } while (WinnerChecker.getWinnerRole(board) == null);
 
         ConsoleDrawer.println(board);
-        //TODO: avoid WinnerChecker.getWinnerRole(board), is expansive
+
         if(WinnerChecker.getWinnerRole(board)==Player.CHAOS){
                 ConsoleDrawer.println(GameMessages.CHAOS_WINS);
         } else{

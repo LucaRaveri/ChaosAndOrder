@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class WinnerCheckerTester {
 
-    private Board board = new Board();
+    private final Board board = new Board();
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5})
