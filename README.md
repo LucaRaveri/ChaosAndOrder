@@ -2,7 +2,7 @@
 
 This repository contains the final project for the Software Development Methods 2020/21 [course](https://corsi.units.it/en/sm34/teaching-unit/software-development-methods-567sm-2020-pds0-2018-ord-2018-common) at [University of Trieste](https://www.units.it/en).
 
-<p>
+<p align="center">
 <img src="https://github.com/RacmanT/ChaosAndOrder/blob/main/screenshots/Logo.png" height="328" width="487">
 </p>
 
