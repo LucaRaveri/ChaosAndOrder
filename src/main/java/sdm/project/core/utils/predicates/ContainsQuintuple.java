@@ -5,32 +5,25 @@ import sdm.project.core.entities.Symbol;
 
 import java.util.Arrays;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class ContainsQuintuple implements Predicate<Cell[]> {
 
     @Override
     public boolean test(Cell[] cells) {
 
-        Supplier<Stream<Cell>> cellsStream = () -> Arrays.stream(cells);
+        if(cells.length == 5 || cells.length == 6)
+            return firstFiveMatch(cells) || lastFiveMatch(cells);
+        else
+            return false;
 
-        switch (cells.length){
+    }
 
-            case 6:
-                boolean firstFiveMatch = Arrays.stream(Symbol.values())
-                        .anyMatch(symbol -> cellsStream.get().limit(5).allMatch(cell -> cell.getSymbol() == symbol));
-                boolean lastFiveMatch = Arrays.stream(Symbol.values())
-                        .anyMatch(symbol -> cellsStream.get().skip(1).allMatch(cell -> cell.getSymbol() == symbol));
-                return firstFiveMatch || lastFiveMatch;
+    private boolean firstFiveMatch(Cell[] cells) {
+        return Arrays.stream(Symbol.values()).anyMatch(symbol -> Arrays.stream(cells).limit(5).allMatch(cell -> cell.getSymbol() == symbol));
+    }
 
-            case 5:
-                return Arrays.stream(Symbol.values())
-                        .anyMatch(symbol -> cellsStream.get().allMatch(cell -> cell.getSymbol() == symbol));
-            default:
-                return false;
-        }
-
+    private boolean lastFiveMatch(Cell[] cells) {
+        return Arrays.stream(Symbol.values()).anyMatch(symbol -> Arrays.stream(cells).skip(1).allMatch(cell -> cell.getSymbol() == symbol));
     }
 
 }

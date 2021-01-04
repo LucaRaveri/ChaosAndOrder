@@ -63,7 +63,7 @@ public class ContainsQuintupleTester {
     @ValueSource(ints = {2, 4, 7, 10})
     public void testNotFiveAndNotSixCellsArray(int length) {
         cells = new Cell[length];
-        cells = Arrays.stream(cells).map(cell -> cell = new Cell(2, 4)).toArray(Cell[]::new);
+        cells = Arrays.stream(cells).map(cell -> cell = new Cell(2, 4)).peek(cell -> cell.setSymbol(Symbol.CIRCLE)).toArray(Cell[]::new);
         assertFalse(containsQuintuple.test(cells));
     }
 
