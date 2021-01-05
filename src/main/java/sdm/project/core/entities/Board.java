@@ -25,11 +25,11 @@ public class Board {
         return cells.stream().filter(cell -> cell.getRow() == row && cell.getColumn() == column).findFirst().get();
     }
 
-    public void insert(Move move) throws TakenCellException {
-        if (getCell(move.getRow(), move.getColumn()).getSymbol() != null) {
+    public void insert(Cell cell, Symbol symbol) throws TakenCellException {
+        if (getCell(cell.getRow(), cell.getColumn()).getSymbol() != null) {
             throw new TakenCellException("Trying to modify a non empty cell.");
         }
-        getCell(move.getRow(), move.getColumn()).setSymbol(move.getSymbol());
+        getCell(cell.getRow(), cell.getColumn()).setSymbol(symbol);
     }
 
     public boolean isFull() {

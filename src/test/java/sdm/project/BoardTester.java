@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import sdm.project.core.entities.Board;
-import sdm.project.core.entities.Move;
+import sdm.project.core.entities.Cell;
 import sdm.project.core.entities.Symbol;
 import sdm.project.core.exceptions.TakenCellException;
 
@@ -18,15 +18,15 @@ public class BoardTester {
     @CsvSource({"1, 1, CIRCLE, CROSS", "2, 5, CIRCLE, CIRCLE", "3, 5, CROSS, CROSS", "4, 3, CIRCLE, CROSS"})
     public void testTakenCellException(int x, int y, Symbol symbol1, Symbol symbol2) {
         assertThrows(TakenCellException.class, () -> {
-            board.insert(new Move(x, y, symbol1));
-            board.insert(new Move(x, y, symbol2));
+            board.insert(new Cell(x, y), symbol1);
+            board.insert(new Cell(x, y), symbol2);
         });
     }
 
      @ParameterizedTest
      @CsvSource({"1, 4, CROSS", "0, 3, CIRCLE", "5, 5, CROSS"})
      public void testMove(int row, int column, Symbol symbol) throws TakenCellException {
-        board.insert(new Move(row, column, symbol));
+        board.insert(new Cell(row, column), symbol);
          assertSame(board.getCell(row, column).getSymbol(), symbol);
      }
 

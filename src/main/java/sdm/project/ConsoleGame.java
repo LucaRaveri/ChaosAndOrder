@@ -1,7 +1,6 @@
 package sdm.project;
 
 import sdm.project.core.entities.Board;
-import sdm.project.core.entities.Move;
 import sdm.project.core.entities.Player;
 import sdm.project.core.exceptions.BoardIndexOutOfBoundsException;
 import sdm.project.core.exceptions.IllegalSymbolException;
@@ -35,8 +34,7 @@ public class ConsoleGame {
                 ConsoleDrawer.println(board);
                 ConsoleDrawer.print(currentPlayer.name() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
                 moveParser.setMoveLine(scanner.nextLine());
-                Move move = new Move(moveParser.getRow(), moveParser.getColumn(), moveParser.getSymbol());
-                board.insert(move);
+                board.insert(board.getCell(moveParser.getRow(), moveParser.getColumn()), moveParser.getSymbol());
                 currentPlayer = (currentPlayer == Player.CHAOS) ? Player.ORDER : Player.CHAOS;
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
                     TakenCellException | WrongNumberOfArgumentsException e) {
