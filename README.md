@@ -34,10 +34,10 @@ Order moves first.
 ### The Game
 
 The game can be played both from a Command Line Interface (CLI) or a Graphical User Interface (GUI).  
-To Start it, move to the directory where you have cloned the repository and run:
+To start it, move to the directory where you have cloned the repository and run:
 
 `./gradlew jar`  
-`java jar ./build/libs/ChaosAndOrder-1.0.jar [OPTION]`
+`java -jar ./build/libs/ChaosAndOrder-1.0.jar [OPTION]`
 
 where `[OPTION]` can be:
 
@@ -48,23 +48,16 @@ If you want a portable version of the game you can run `./gradlew distZip`, whic
 
 - #### Command Line Interface
 
-<!-- To start the Command Line Interface move to the directory where you have cloned the repository and run:
-
-`./gradlew jar`
-`java jar ./build/libs/ChaosAndOrder-1.0.jar -cli`   -->
-
 <p align="center">
-<img src="https://github.com/RacmanT/ChaosAndOrder/blob/main/screenshots/CLI_1.png">
+    <img src="https://github.com/RacmanT/ChaosAndOrder/blob/main/screenshots/CLI_1.png">
 </p>
 
 Moves are given in the format `ColumnRow Symbol`, where the Column can be chosen among **[A,F]**, the Row among **[1,6]** and the Symbol between **[X,O]** (e.g. _A5 X_, _E2 O_). The game is not case sensitive and extra empty spaces are handled too.
 
 - #### Graphical User Interface
 
-<!-- To start the Graphical User Interface move to the directory where you have clone the repository and run:  -->
-
 <p align="center">
-<img src="https://github.com/RacmanT/ChaosAndOrder/blob/main/screenshots/GUI_1.png">
+    <img src="https://github.com/RacmanT/ChaosAndOrder/blob/main/screenshots/GUI_1.png">
 </p>
 
 To play your turn pick a symbol by clicking on a Circle or a Cross on top right corner and put it on the board by clicking on an empty cell. Player's turn is displayed on left corner so you can not mess up.
@@ -74,15 +67,15 @@ The application panel might be useful if:
 - you want to start a new game _File > New Game_
 - you want to exit _File > Exit_
 - you forgot about the rules _Help > Read Instructions_
-- you are wondering who made this beautiful game _Help > About_ :wink:
+- you are wondering who made this game _Help > About_  
 
 ##### Light / Dark Theme
 
 <p align="center">
-<img src="https://github.com/RacmanT/ChaosAndOrder/blob/main/screenshots/LightAndDarkMode.png">
+    <img src="https://github.com/RacmanT/ChaosAndOrder/blob/main/screenshots/LightAndDarkMode.png">
 </p>
 
-To activate the Dark Mode go to _File > Themes > Dark Mode_.
+To switch to the Dark Mode go to _File > Themes > Dark Mode_.
 
 ---
 
