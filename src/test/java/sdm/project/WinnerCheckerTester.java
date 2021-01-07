@@ -18,14 +18,16 @@ public class WinnerCheckerTester {
     @ValueSource(ints = {0, 1, 2, 3, 4, 5})
     public void testCheckRow(int row) {
         board.getCells().stream().filter(cell -> cell.getRow() == row).forEach(cell -> cell.setSymbol(Symbol.CIRCLE));
-        assertEquals(Player.ORDER, WinnerChecker.getWinnerRole(board));
+        WinnerChecker.setBoard(board);
+        assertEquals(Player.ORDER, WinnerChecker.getWinnerRole());
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4, 5})
     public void testCheckColumn(int column) {
         board.getCells().stream().filter(cell -> cell.getColumn() == column).forEach(cell -> cell.setSymbol(Symbol.CROSS));
-        assertEquals(Player.ORDER, WinnerChecker.getWinnerRole(board));
+        WinnerChecker.setBoard(board);
+        assertEquals(Player.ORDER, WinnerChecker.getWinnerRole());
     }
 
 
@@ -33,14 +35,16 @@ public class WinnerCheckerTester {
     @ValueSource(ints = {-1, 0, 1})
     public void testCheckGoingToDownDiagonals(int index) {
         board.getCells().stream().filter(cell -> cell.getRow() == cell.getColumn() + index).forEach(cell -> cell.setSymbol(Symbol.CIRCLE));
-        assertNotNull(WinnerChecker.getWinnerRole(board));
+        WinnerChecker.setBoard(board);
+        assertNotNull(WinnerChecker.getWinnerRole());
     }
 
     @ParameterizedTest
     @ValueSource(ints = {4, 5, 6})
     public void testCheckGoingToUpDiagonals(int sum) {
         board.getCells().stream().filter(cell -> cell.getRow() + cell.getColumn() == sum).forEach(cell -> cell.setSymbol(Symbol.CROSS));
-        assertNotNull(WinnerChecker.getWinnerRole(board));
+        WinnerChecker.setBoard(board);
+        assertNotNull(WinnerChecker.getWinnerRole());
     }
 
 

@@ -11,8 +11,13 @@ import java.util.stream.Stream;
 public class WinnerChecker {
 
     private static final ContainsQuintuple containsQuintuple = new ContainsQuintuple();
+    private static Board board;
 
-    private static boolean checkRows(Board board) {
+    public static void setBoard(Board newBoard) {
+        board = newBoard;
+    }
+
+    private static boolean checkRows() {
 
         Stream<Cell[]> rows = IntStream.range(0, Board.SIZE).parallel()
                 .mapToObj(row -> board.getCells().stream().filter(cell -> cell.getRow() == row).toArray(Cell[]::new));
@@ -20,7 +25,7 @@ public class WinnerChecker {
         return rows.anyMatch(containsQuintuple);
     }
 
-    private static boolean checkColumns(Board board) {
+    private static boolean checkColumns() {
 
         Stream<Cell[]> columns = IntStream.range(0, Board.SIZE).parallel()
                 .mapToObj(column -> board.getCells().stream().filter(cell -> cell.getColumn() == column).toArray(Cell[]::new));
@@ -30,7 +35,7 @@ public class WinnerChecker {
     }
 
     // diagonals are the ones going from top-left to bottom-right
-    private static boolean checkDiagonals(Board board) {
+    private static boolean checkDiagonals() {
 
         // the cells in which are interested in have their row index moved by one from their column index or equal to
         Stream<Cell[]> diagonals = IntStream.rangeClosed(-1, 1)
@@ -45,7 +50,7 @@ public class WinnerChecker {
     }
 
     // anti-diagonals are the ones going from bottom-left to top-right
-    private static boolean checkAntiDiagonals(Board board) {
+    private static boolean checkAntiDiagonals() {
 
         // the cells in which we are interested in have the summation of indexes in the interval [4,6]
         Stream<Cell[]> diagonals = IntStream.rangeClosed(4, 6).parallel()
@@ -56,11 +61,11 @@ public class WinnerChecker {
     }
 
 
-    public static Player getWinnerRole(Board board) {
+    public static Player getWinnerRole() {
 
-        if (chaosWinCondition(board)) {
+        if (chaosWinCondition()) {
             return Player.CHAOS;
-        } else if (orderWinCondition(board)) {
+        } else if (orderWinCondition()) {
             return Player.ORDER;
         } else {
             return null;
@@ -68,12 +73,12 @@ public class WinnerChecker {
 
     }
 
-    private static boolean chaosWinCondition(Board board) {
-        return board.isFull() && !orderWinCondition(board);
+    private static boolean chaosWinCondition() {
+        return board.isFull() && !orderWinCondition();
     }
 
-    private static boolean orderWinCondition(Board board) {
-        return checkRows(board) || checkColumns(board) || checkDiagonals(board) || checkAntiDiagonals(board);
+    private static boolean orderWinCondition() {
+        return checkRows() || checkColumns() || checkDiagonals() || checkAntiDiagonals();
     }
 
 }

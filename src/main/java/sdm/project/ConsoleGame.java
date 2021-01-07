@@ -35,16 +35,17 @@ public class ConsoleGame {
                 ConsoleDrawer.print(currentPlayer.name() + " " + GameMessages.MAKE_YOUR_MOVE + " ");
                 moveParser.setMoveLine(scanner.nextLine());
                 board.insert(board.getCell(moveParser.getRow(), moveParser.getColumn()), moveParser.getSymbol());
+                WinnerChecker.setBoard(board);
                 currentPlayer = (currentPlayer == Player.CHAOS) ? Player.ORDER : Player.CHAOS;
             } catch (IllegalSymbolException | BoardIndexOutOfBoundsException |
                     TakenCellException | WrongNumberOfArgumentsException e) {
                 ConsoleDrawer.println(e.getMessage() + " " + GameMessages.TRY_AGAIN + "\n");
             }
-        } while (WinnerChecker.getWinnerRole(board) == null);
+        } while (WinnerChecker.getWinnerRole() == null);
 
         ConsoleDrawer.println(board);
 
-        if(WinnerChecker.getWinnerRole(board)==Player.CHAOS){
+        if(WinnerChecker.getWinnerRole()==Player.CHAOS){
                 ConsoleDrawer.println(GameMessages.CHAOS_WINS);
         } else{
                 ConsoleDrawer.println(GameMessages.ORDER_WINS);

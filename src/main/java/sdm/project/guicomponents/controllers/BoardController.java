@@ -75,11 +75,11 @@ public class BoardController implements Initializable {
         cell.getChildren().add(symbolIcon);
         cell.setDisable(true);
         rootController.getLogicBoard().getCell(GridPane.getRowIndex(cell), GridPane.getColumnIndex(cell)).setSymbol(symbol);
-
-        if (WinnerChecker.getWinnerRole(rootController.getLogicBoard()) != null) {
+        WinnerChecker.setBoard(rootController.getLogicBoard());
+        if (WinnerChecker.getWinnerRole() != null) {
             graphicBoard.getChildren().stream().filter(Predicate.not(Node::isDisabled)).forEach(pane -> pane.setDisable(true));
             EndGameWindow endGameWindow = new EndGameWindow();
-            endGameWindow.display(WinnerChecker.getWinnerRole(rootController.getLogicBoard()));
+            endGameWindow.display(WinnerChecker.getWinnerRole());
         } else {
             rootController.changePlayer();
         }
