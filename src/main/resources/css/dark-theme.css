@@ -39,20 +39,6 @@
     visibility: hidden;
 }
 
-.about {
-    -fx-border-width: 2px;
-    -fx-border-color: black;
-    -fx-font-size: 14;
-}
-
-.about > * {
-    -fx-padding: 0 0 0 15;
-}
-
-.hyperlink {
-    -fx-border-color: transparent;
-}
-
 .instructions {
     -fx-border-width: 2px;
     -fx-border-color: black;

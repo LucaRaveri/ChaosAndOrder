@@ -1,0 +1,13 @@
+.root {
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-font-size: 14;
+}
+
+.root > * {
+    -fx-padding: 0 0 0 15;
+}
+
+.hyperlink {
+    -fx-border-color: transparent;
+}
