@@ -6,5 +6,4 @@
           fx:id="graphicBoard"
           fx:controller="sdm.project.guicomponents.controllers.mainwindow.BoardController"
           styleClass="grid">
-
 </GridPane>
