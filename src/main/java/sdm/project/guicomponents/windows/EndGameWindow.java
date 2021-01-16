@@ -17,7 +17,7 @@ public class EndGameWindow {
     public void display(Player winner) {
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndGame.fxml")).load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndGame.fxml"));
             Parent root = loader.load();
 
             Stage stage = new Stage(StageStyle.UNDECORATED);

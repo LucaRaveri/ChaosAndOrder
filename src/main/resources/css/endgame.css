@@ -1,7 +1,5 @@
 @font-face{
     font-family: 'Bookerly Bold';
-    font-size: 30;
-    font-style: normal;
     src: url('/fonts/Bookerly-Bold.ttf');
 }
 
@@ -13,5 +11,7 @@
 
 .label{
     -fx-font-family: 'Bookerly Bold';
+    -fx-font-style: normal;
+    -fx-font-weight: lighter;
     -fx-font-size: 30;
 };

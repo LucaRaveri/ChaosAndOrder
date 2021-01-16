@@ -21,6 +21,8 @@
 
 .selector-symbol-panel .label {
     -fx-text-fill: black;
+    -fx-font-family: "Bookerly Bold";
+    -fx-font-size: 22;
 }
 
 .grid {
@@ -37,17 +39,4 @@
 
 .radio {
     visibility: hidden;
-}
-
-.instructions {
-    -fx-border-width: 2px;
-    -fx-border-color: black;
-}
-
-.instructions .label {
-    -fx-text-fill: black;
-    -fx-font-family: 'Baby_Girl';
-    -fx-font-size: 16;
-    -fx-text-alignment: center;
-    -fx-padding: 15;
 }

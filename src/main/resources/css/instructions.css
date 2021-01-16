@@ -1,0 +1,20 @@
+@font-face{
+    font-family: '212 Baby Girl';
+    src: url('/fonts/Baby-Girl.ttf');
+}
+
+.root {
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-background-color: whitesmoke;
+}
+
+.root .label {
+    -fx-font-size: 18;
+    -fx-text-fill: black;
+    -fx-font-weight: lighter;
+    -fx-font-style: normal;
+    -fx-font-family: '212 Baby Girl';
+    -fx-text-alignment: center;
+    -fx-padding: 15;
+}
