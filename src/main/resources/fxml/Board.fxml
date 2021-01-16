@@ -4,7 +4,7 @@
 <GridPane xmlns="http://javafx.com/javafx"
           xmlns:fx="http://javafx.com/fxml"
           fx:id="graphicBoard"
-          fx:controller="sdm.project.guicomponents.controllers.BoardController"
+          fx:controller="sdm.project.guicomponents.controllers.mainwindow.BoardController"
           styleClass="grid">
 
 </GridPane>

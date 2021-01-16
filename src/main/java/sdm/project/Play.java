@@ -12,16 +12,16 @@ public class Play {
 
     public static void main(String[] args) {
 
-//        if (args.length != 1 || !args[0].matches("(-cli)|(-gui)")) {
-//            System.out.println(SYNTAX_INSTRUCTIONS);
-//            System.exit(0);
-//        }
-//
-//        if (args[0].equals("-cli")) {
-//            startConsoleGame();
-//        } else {
+        if (args.length != 1 || !args[0].matches("(-cli)|(-gui)")) {
+            System.out.println(SYNTAX_INSTRUCTIONS);
+            System.exit(0);
+        }
+
+        if (args[0].equals("-cli")) {
+            startConsoleGame();
+        } else {
             Application.launch(GUIGame.class);
-//        }
+        }
 
     }
 

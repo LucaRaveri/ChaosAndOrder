@@ -1,4 +1,4 @@
-package sdm.project.guicomponents.controllers;
+package sdm.project.guicomponents.controllers.mainwindow;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;

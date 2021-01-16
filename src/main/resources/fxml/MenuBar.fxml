@@ -5,7 +5,7 @@
 <?import javafx.scene.image.Image?>
 <MenuBar xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
-         fx:controller="sdm.project.guicomponents.controllers.MenuBarController"
+         fx:controller="sdm.project.guicomponents.controllers.mainwindow.MenuBarController"
          fx:id="menuBar" styleClass="menu-bar">
 
     <fx:define>

@@ -1,4 +1,4 @@
-package sdm.project.guicomponents.controllers;
+package sdm.project.guicomponents.controllers.mainwindow;
 
 import sdm.project.core.entities.Board;
 import sdm.project.core.entities.Player;
