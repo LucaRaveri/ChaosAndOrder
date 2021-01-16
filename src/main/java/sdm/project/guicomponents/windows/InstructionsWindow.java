@@ -2,11 +2,9 @@ package sdm.project.guicomponents.windows;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import sdm.project.core.utils.GameMessages;
 
 import java.io.IOException;
 

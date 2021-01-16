@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?language javascript?>
 
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
+
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      prefHeight="250.0" prefWidth="600.0"
-      fx:controller="sdm.project.guicomponents.controllers.AboutController"
+      prefHeight="250.0" prefWidth="500.0"
       fx:id="vbox" stylesheets="/css/about-window.css" spacing="10" alignment="CENTER">
 
     <Label text="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri" minWidth="${vbox.prefWidth}"/>
-    <TextFlow fx:id="credits" minWidth="${vbox.prefWidth}"/>
+    <TextFlow fx:id="credits" minWidth="${vbox.prefWidth}">
+        <Label text="Our Project can be found on Github"/>
+        <Hyperlink onAction='java.awt.Desktop.getDesktop().browse(new java.net.URI("https://github.com/RacmanT/ChaosAndOrder"));'>
+            <text>page</text>
+        </Hyperlink>
+    </TextFlow>
 
     <ImageView>
         <Image smooth="true" url="/images/github.png" preserveRatio="true" requestedHeight="120"/>
