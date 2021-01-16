@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="sdm.project.guicomponents.controllers.InstructionsController"
       prefHeight="300.0" prefWidth="600.0" styleClass="instructions" alignment="CENTER">
 
     <ImageView id="github-icon">
         <Image smooth="true" url="/images/rules.png" requestedWidth="200" preserveRatio="true"/>
     </ImageView>
 
-    <Label fx:id="instructions"/>
+    <Label wrapText="true">
+        <text>
+            Order and Chaos is a tic-tac-toe variant, played on a 6x6 gameboard.
+            The player Order strives to create a five-in-a-row of either crosses or circles,
+            while opponent Chaos endeavors to prevent this. Order moves first.
+        </text>
+    </Label>
 
 </VBox>

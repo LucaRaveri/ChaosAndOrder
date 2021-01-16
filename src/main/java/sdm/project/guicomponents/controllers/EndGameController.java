@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sdm.project.core.entities.Player;
 
@@ -16,17 +15,13 @@ import java.util.ResourceBundle;
 
 public class EndGameController implements Initializable {
 
-    @FXML
-    Label congratulations;
+    @FXML Label congratulations;
 
-    @FXML
-    Button exit;
+    @FXML Button exit;
 
-    @FXML
-    Button backToBoard;
+    @FXML Button backToBoard;
 
-    @FXML
-    ImageView winnerImage;
+    @FXML ImageView winnerIcon;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,9 +32,9 @@ public class EndGameController implements Initializable {
     }
 
     public void setWinner(Player winner) {
-        winnerImage.setImage(new Image(winner == Player.ORDER ? "/images/order.png" : "/images/chaos.png"));
-        winnerImage.setSmooth(true);
-        winnerImage.setCache(true);
+        winnerIcon.setImage(new Image(winner == Player.ORDER ? "/images/order.png" : "/images/chaos.png"));
+        winnerIcon.setSmooth(true);
+        winnerIcon.setCache(true);
 
         congratulations.setText("Congratulations,\n" + winner.name());
     }

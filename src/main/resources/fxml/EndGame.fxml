@@ -11,7 +11,7 @@
             prefHeight="230.0" prefWidth="500.0" stylesheets="/css/endgame.css">
 
     <Label fx:id="congratulations" AnchorPane.leftAnchor="50" AnchorPane.topAnchor="30"/>
-    <ImageView fx:id="winnerImage" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="20"/>
+    <ImageView fx:id="winnerIcon" AnchorPane.rightAnchor="50" AnchorPane.topAnchor="20"/>
 
     <Button text="Back to board" fx:id="backToBoard" AnchorPane.leftAnchor="150" AnchorPane.bottomAnchor="20"/>
     <Button text="Exit Game" fx:id="exit"  AnchorPane.rightAnchor="150" AnchorPane.bottomAnchor="20"/>

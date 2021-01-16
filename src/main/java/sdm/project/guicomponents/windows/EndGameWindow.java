@@ -17,7 +17,7 @@ public class EndGameWindow {
     public void display(Player winner) {
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndGame.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EndGame.fxml")).load();
             Parent root = loader.load();
 
             Stage stage = new Stage(StageStyle.UNDECORATED);
@@ -26,10 +26,7 @@ public class EndGameWindow {
             EndGameController controller = loader.getController();
             controller.setWinner(winner);
 
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add("/css/light-theme.css");
-
-            stage.setScene(scene);
+            stage.setScene(new Scene(root));
             stage.setResizable(false);
             stage.show();
 

@@ -10,26 +10,30 @@ import java.io.IOException;
 
 public class InstructionsWindow {
 
-    public void display(){
-        Pane root = null;
-        Stage stage = new Stage(StageStyle.UNDECORATED);
-        stage.setResizable(false);
+    public void display() {
+
         try {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Instructions.fxml"));
-            root = loader.load();
+            Pane root = loader.load();
+
+            Stage stage = new Stage(StageStyle.UNDECORATED);
+            stage.setResizable(false);
+            stage.focusedProperty().addListener((observable, wasFocused, isFocused) -> {
+                if (!isFocused) stage.close();
+            });
+
+            Scene scene = new Scene(root);
+            scene.setOnMouseClicked(event -> stage.close());
+            scene.getStylesheets().add("/css/light-theme.css"); //TODO
+
+            stage.setScene(scene);
+            stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Scene scene = new Scene(root);
-        scene.setOnMouseClicked(event1 -> stage.close());
-        scene.getStylesheets().add("/css/light-theme.css");
-        stage.setScene(scene);
-
-        stage.focusedProperty().addListener((observable, wasFocused, isFocused) -> {
-            if(!isFocused) stage.close();
-        });
-        stage.show();
     }
 
 
