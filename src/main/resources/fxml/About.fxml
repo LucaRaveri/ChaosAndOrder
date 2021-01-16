@@ -11,7 +11,7 @@
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       prefHeight="250.0" prefWidth="500.0"
-      fx:id="vbox" stylesheets="/css/about-window.css" spacing="10" alignment="CENTER">
+      fx:id="vbox" stylesheets="/css/about.css" spacing="10" alignment="CENTER">
 
     <Label text="Authors: Massimo Palmisano, Tibor Racman and Luca Raveri" minWidth="${vbox.prefWidth}"/>
     <TextFlow fx:id="credits" minWidth="${vbox.prefWidth}">

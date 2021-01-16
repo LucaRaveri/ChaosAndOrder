@@ -1,0 +1,17 @@
+@font-face{
+    font-family: 'Bookerly Bold';
+    font-size: 30;
+    font-style: normal;
+    src: url('/fonts/Bookerly-Bold.ttf');
+}
+
+.root{
+    -fx-background-color: whitesmoke;
+    -fx-border-width: 4;
+    -fx-border-color: black;
+}
+
+.label{
+    -fx-font-family: 'Bookerly Bold';
+    -fx-font-size: 30;
+};

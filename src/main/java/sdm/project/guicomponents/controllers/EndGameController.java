@@ -31,8 +31,6 @@ public class EndGameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        congratulations.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Baby_Girl.otf"), 30));
-
         backToBoard.setOnAction(event -> ((Stage) backToBoard.getScene().getWindow()).close());
         exit.setOnAction(event -> Platform.exit());
 
