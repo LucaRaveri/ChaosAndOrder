@@ -3,7 +3,8 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sdm.project.guicomponents.controllers.mainwindow.RootController" styleClass="root">
+            fx:controller="sdm.project.guicomponents.controllers.mainwindow.RootController" styleClass="root"
+            prefWidth="600" prefHeight="650">
 
     <fx:include fx:id="menuBar" source="MenuBar.fxml" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"/>
     <fx:include fx:id="selectorSymbol" source="SelectorSymbolPanel.fxml"

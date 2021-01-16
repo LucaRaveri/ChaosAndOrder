@@ -13,14 +13,15 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import sdm.project.core.entities.Board;
 import sdm.project.core.entities.Symbol;
-import sdm.project.core.utils.WinnerChecker;
 import sdm.project.guicomponents.SymbolImageView;
-import sdm.project.guicomponents.windows.EndGameWindow;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
+
+import static sdm.project.core.entities.Symbol.CIRCLE;
+import static sdm.project.core.entities.Symbol.CROSS;
 
 public class BoardController implements Initializable {
 
@@ -64,7 +65,7 @@ public class BoardController implements Initializable {
 
     private void makeMove(StackPane cell, Symbol symbol) {
 
-        ImageView symbolIcon = new SymbolImageView((symbol == Symbol.CIRCLE) ? Symbol.CIRCLE: Symbol.CROSS);
+        ImageView symbolIcon = new SymbolImageView((symbol == CIRCLE) ? CIRCLE : CROSS);
 
         animation.setNode(symbolIcon);
         mediaPlayer.seek(Duration.ZERO);
@@ -74,20 +75,18 @@ public class BoardController implements Initializable {
 
         cell.getChildren().add(symbolIcon);
         cell.setDisable(true);
-        rootController.getLogicBoard().getCell(GridPane.getRowIndex(cell), GridPane.getColumnIndex(cell)).setSymbol(symbol);
-        WinnerChecker.setBoard(rootController.getLogicBoard());
-        if (WinnerChecker.getWinnerRole() != null) {
-            graphicBoard.getChildren().stream().filter(Predicate.not(Node::isDisabled)).forEach(pane -> pane.setDisable(true));
-            EndGameWindow endGameWindow = new EndGameWindow();
-            endGameWindow.display(WinnerChecker.getWinnerRole());
-        } else {
-            rootController.changePlayer();
-        }
+
+        rootController.makeMove(GridPane.getRowIndex(cell), GridPane.getColumnIndex(cell), symbol);
+
     }
 
-    public void newBoard() {
+    public void reinitializeBoard() {
         rootController.setBoard(new Board());
         initialize(null, null);
+    }
+
+    public void disableEnabledCells(){
+        graphicBoard.getChildren().stream().filter(Predicate.not(Node::isDisabled)).forEach(pane -> pane.setDisable(true));
     }
 
 }

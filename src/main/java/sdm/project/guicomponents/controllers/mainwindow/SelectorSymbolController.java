@@ -6,12 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.util.Duration;
 import sdm.project.core.entities.Player;
 import sdm.project.core.entities.Symbol;
@@ -21,45 +18,46 @@ import java.util.ResourceBundle;
 
 public class SelectorSymbolController implements Initializable {
 
-    @FXML
-    AnchorPane anchorPane;
-    @FXML
-    Label nextMove;
-    @FXML
-    RadioButton crossRadio;
-    @FXML
-    RadioButton circleRadio;
-    @FXML
-    ToggleGroup toggleGroup;
+    @FXML AnchorPane anchorPane;
+
+    @FXML Label nextMove;
+    @FXML ToggleGroup toggleGroup;
+    @FXML RadioButton crossRadio;
+    @FXML RadioButton circleRadio;
+
+    @FXML DropShadow circleEffect;
+    @FXML DropShadow crossEffect;
 
     Player currentPlayer;
-    @FXML
-    Effect circleEffect, crossEffect;
+
     MediaPlayer mediaPlayer;
 
     {
         currentPlayer = Player.ORDER;
-
-        circleEffect = new DropShadow(10d, Color.BLUE);
-        crossEffect = new DropShadow(10d, Color.RED);
-
         mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/sounds/switch-symbol.mp3").toString()));
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        circleRadio.setEffect(circleEffect);
-        circleRadio.setSelected(true);
+        // only circleEffect has to be shown
+        crossEffect.setRadius(0d);
 
         nextMove.setText("You are player " + currentPlayer.name() + ".\nSelect your next symbol!");
-//        nextMove.setFont(Font.loadFont(getClass().getResourceAsStream("/fonts/Bookerly-Bold.ttf"), 20));
 
-        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            ((RadioButton) oldValue).setEffect(null);
-            ((RadioButton) newValue).setEffect(newValue == crossRadio ? crossEffect : circleEffect);
+        toggleGroup.selectedToggleProperty().addListener((observable, oldSymbol, newSymbol) -> {
+
+            if (oldSymbol == crossRadio) {
+                crossEffect.setRadius(0d);
+                circleEffect.setRadius(10d);
+            } else {
+                crossEffect.setRadius(10d);
+                circleEffect.setRadius(0d);
+            }
+
             mediaPlayer.seek(Duration.ZERO);
             mediaPlayer.play();
+
         });
 
     }
@@ -82,4 +80,5 @@ public class SelectorSymbolController implements Initializable {
         currentPlayer = (currentPlayer == Player.CHAOS) ? Player.ORDER : Player.CHAOS;
         nextMove.setText("You are player " + currentPlayer.name() + ".\nSelect your next symbol!");
     }
+
 }

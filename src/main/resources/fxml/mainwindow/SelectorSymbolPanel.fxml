@@ -6,6 +6,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.effect.Effect?>
+<?import javafx.scene.effect.DropShadow?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:id="anchorPane"
@@ -18,21 +20,27 @@
 
     <Label fx:id="nextMove" AnchorPane.leftAnchor="10.0"/>
 
+    <RadioButton fx:id="circleRadio" AnchorPane.rightAnchor="120" toggleGroup="$toggleGroup" selected="true">
+        <graphic>
+            <ImageView fitHeight="50" preserveRatio="true">
+                <Image url="/images/circle.png"></Image>
+                <effect>
+                    <DropShadow fx:id="circleEffect" radius="10d" color="blue"/>
+                </effect>
+            </ImageView>
+        </graphic>
+    </RadioButton>
+
     <RadioButton fx:id="crossRadio" AnchorPane.rightAnchor="40" toggleGroup="$toggleGroup">
         <graphic>
             <ImageView fitHeight="50" preserveRatio="true">
                 <Image url="/images/cross.png"/>
+                <effect>
+                    <DropShadow fx:id="crossEffect" radius="10d" color="red"/>
+                </effect>
             </ImageView>
         </graphic>
     </RadioButton>
 
-
-    <RadioButton fx:id="circleRadio" AnchorPane.rightAnchor="120" toggleGroup="$toggleGroup">
-        <graphic>
-            <ImageView fitHeight="50" preserveRatio="true">
-                <Image url="/images/circle.png"/>
-            </ImageView>
-        </graphic>
-    </RadioButton>
 
 </AnchorPane>
