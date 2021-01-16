@@ -39,12 +39,12 @@ public class MenuBarController implements Initializable {
 
         lightTheme.setOnAction(event -> {
                 menuBar.getScene().getStylesheets().clear();
-                menuBar.getScene().getStylesheets().add("/css/light-theme.css");
+                menuBar.getScene().getStylesheets().add("/css/themes/light-theme.css");
         });
 
         darkTheme.setOnAction(event -> {
             menuBar.getScene().getStylesheets().clear();
-            menuBar.getScene().getStylesheets().add("/css/dark-theme.css");
+            menuBar.getScene().getStylesheets().add("/css/themes/dark-theme.css");
         });
 
         readInstructions.setOnAction(event -> {

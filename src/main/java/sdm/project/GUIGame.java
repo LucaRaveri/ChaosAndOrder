@@ -14,7 +14,7 @@ public class GUIGame extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainwindow/Root.fxml"));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/css/light-theme.css");
+        scene.getStylesheets().add("/css/themes/light-theme.css");
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/application_icon.png")));
 
         primaryStage.setScene(scene);

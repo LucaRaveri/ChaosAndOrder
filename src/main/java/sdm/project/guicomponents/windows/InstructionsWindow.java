@@ -25,7 +25,7 @@ public class InstructionsWindow {
 
             Scene scene = new Scene(root);
             scene.setOnMouseClicked(event -> stage.close());
-            scene.getStylesheets().add("/css/light-theme.css"); //TODO
+            scene.getStylesheets().add("/css/themes/light-theme.css"); //TODO
 
             stage.setScene(scene);
             stage.show();
